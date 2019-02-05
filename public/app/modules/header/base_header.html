@@ -1,0 +1,162 @@
+<div class="container-fluid">
+  <a class="navbar-brand" href="https://laudea.psgcas.ac.in">
+    <img src="branding/logo" alt="Logo" />
+  </a>
+  <a class="a-link text-white d-none d-md-inline-block ml-5" ng-click="toggleLeftSection($event);" ng-show="$state.current.name == 'organizationTree'"><i
+      class="la la-dedent"></i></a>
+  <div class="collapse navbar-collapse megamenu-collapse" id="navbarCollapse">
+    <ul class="nav navbar-nav w-100 justify-content-end">
+      <li class="d-md-block d-lg-none md-menu">
+        <a data-ui-sref="dashboard" class="menu-logo float-left"> <img src="branding/logo" alt="Logo"></a>
+        <a class="btn-link text-white float-right" data-toggle="collapse" data-target=".megamenu-collapse"> <i class="la la-times"></i>
+        </a>
+      </li>
+      <li>
+        <a class="nav-link page-scroll" data-ui-sref="dashboard" data-ui-sref-active="active" data-toggle="collapse"
+          data-target=".megamenu-collapse.show"> Dashboard</a>
+      </li>
+
+      <li>
+        <div class="dropdown"> <a class="dropdown-toggle nav-link">Masters<span class="caret"></span></a>
+          <ul class="dropdown-menu animated fadeIn">
+            <div class="dropdown-item">
+              <ul>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="institution" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Institution</a>
+                </li>
+                <!-- <li>
+                  <a class="nav-link page-scroll" data-ui-sref="masterData" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Department</a>
+                </li>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="model" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Model</a>
+                </li>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="masterData" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Categories and Depreciation</a>
+                </li>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="masterData" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Supplier</a>
+                </li>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="masterData" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Manufacturer</a>
+                </li>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="masterData" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Create Status Label</a>
+                </li> -->
+
+
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <div class="dropdown"> <a class="dropdown-toggle nav-link">Create<span class="caret"></span></a>
+          <ul class="dropdown-menu animated fadeIn">
+            <div class="dropdown-item">
+              <ul>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="assetMaster" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Create Asset</a>
+                </li>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="licenseMaster" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show"> Create License</a>
+                </li>
+                <!-- <li>
+                    <a class="nav-link page-scroll" data-ui-sref="form" data-ui-sref-active="active" data-toggle="collapse"
+                      data-target=".megamenu-collapse.show"> Create License</a>
+                  </li> -->
+
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </li>
+      <!-- <li ng-if="Auth.principal.userRoles && Auth.principal.userRoles['GROUPS_ADMIN'] && fields.ShowReports"> -->
+      <li>
+        <div class="dropdown"> <a class="dropdown-toggle nav-link">Views<span class="caret"></span></a>
+          <ul class="dropdown-menu animated fadeIn">
+            <div class="dropdown-item">
+              <ul>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="viewAsset" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show">View Asset</a>
+                </li>
+
+
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="dropdown"> <a class="dropdown-toggle nav-link">Maintenance<span class="caret"></span></a>
+          <ul class="dropdown-menu animated fadeIn">
+            <div class="dropdown-item">
+              <ul>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="assetMaintanance" data-ui-sref-active="active"
+                    data-toggle="collapse" data-target=".megamenu-collapse.show">Asset Maintenance</a>
+                </li>
+
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="dropdown"> <a class="dropdown-toggle nav-link">Reports<span class="caret"></span></a>
+          <ul class="dropdown-menu animated fadeIn">
+            <div class="dropdown-item">
+              <ul>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="depreciationReport" data-ui-sref-active="active"
+                    data-toggle="collapse" data-target=".megamenu-collapse.show">Depreciation Report</a>
+                </li>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="licenseReport" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show">License Report</a>
+                </li>
+                <li>`
+                  <a class="nav-link page-scroll" data-ui-sref="assetMaster" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show">Asset Maintenance Report</a>
+                </li>
+                <li>
+                  <a class="nav-link page-scroll" data-ui-sref="assetMaster" data-ui-sref-active="active" data-toggle="collapse"
+                    data-target=".megamenu-collapse.show">Asset Report</a>
+                </li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="nav-header">
+    <ul class="nav-header-list">
+      <li><button class="btn-link navbar-toggler" type="button" data-toggle="collapse" data-target=".megamenu-collapse"
+          aria-controls="navbarCollapse"> <i class="la la-bars"></i> </button></li>
+      <li class="dropdown">
+        <a class="btn-link user-icon"> <i class="la la-user align-middle"></i> <span class="caret"></span> </a>
+        <div class="dropdown-menu dropdown-menu-right animated fadeIn">
+          <!--  <a class="dropdown-item" tabindex="-1" href="javascript:void(0)"> <i class="la la-user-plus"></i> My profile</a> <a class="dropdown-item" tabindex="-1" href="javascript:void(0)"><span class="badge badge-pill badge-warning float-right">58</span> <i class="la la-comments"></i> Messages</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"><i class="la la-cog"></i> Account settings</a>  -->
+          <a class="dropdown-item" href="javascript:void(0);" ng-click="logout()"><i class="la la-sign-out"></i> Logout</a>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+
+</div>

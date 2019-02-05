@@ -1,0 +1,56 @@
+<ol class="breadcrumb border-bottom">
+    <li class="breadcrumb-item">
+        <a href="#"> HOME</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#"> Master </a>
+    </li>
+</ol>
+
+<section class="content">
+
+    <div class="col-xl-6">
+        <!-- Basic -->
+        <div class="card">
+            <div class="card-body">
+
+                <div ng-repeat="asset in assetMasterValue">
+                    <h3 class="subtitle">Asset : {{asset.assetName}}</h3>
+                    <ul>
+                        <h6>Asset Name</h6>
+                        <span class="desc">{{asset.assetName}}</span> <br>
+                        <h6>Institution Name</h6>
+                        <span class="desc">{{asset.assetOrganaization}}</span> <br>
+                        <h6>Department Name</h6>
+                        <span class="desc">{{asset.assetDepartment}}</span> <br>
+                        <h6>Asset Tag</h6>
+                        <span class="desc">{{asset.assetTag}}</span> <br>
+                        <h6>Asset Model</h6>
+                        <span class="desc">{{asset.assetModel}}</span> <br>
+                        <h6>Asset Status</h6>
+                        <span class="desc">{{asset.assetStatus}} </span> <br>
+                        <h6>Asset Serial Number</h6>
+                        <span class="desc">{{asset.assetSerialNumber}}</span> <br>
+                        <h6>Asset Purchase Date</h6>
+                        <span class="desc">{{asset.assetPurchaseDate}}</span> <br>
+                        <h6>Supplier Name</h6>
+                        <span class="desc">{{asset.assetSupplier}}</span> <br>
+                        <h6>Order Number</h6>
+                        <span class="desc">{{asset.orderNumber}}</span> <br>
+                        <h6>Purchase Cost</h6>
+                        <span class="desc">{{asset.assetPurchaseCost}}</span> <br>
+                        <h6>Depreciation </h6>
+                        <span class="desc">{{asset.assetDepreciation}}</span> <br>
+                        <h6>Warranty</h6>
+                        <span class="desc">{{asset.assetWarranty}}</span> <br>
+                        <h6>Annual Maintanance</h6>
+                        <span class="desc">{{asset.assetMaintain}} </span> <br>
+                        <h6>Notes</h6>
+                        <span class="desc">{{asset.assetNotes}}</span> <br>
+                        <h6>Asset Image</h6>
+                        <span class="desc">{{asset.assetImage}}</span> <br>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>

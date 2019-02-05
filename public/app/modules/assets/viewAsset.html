@@ -1,0 +1,93 @@
+<ol class="breadcrumb border-bottom">
+    <li class="breadcrumb-item">
+        <a href="#"> HOME</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#"> Master </a>
+    </li>
+</ol>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="table-container">
+            <table class="standard-table table-border">
+                <thead>
+                    <tr>
+                        <th width="25%">Asset Name</th>
+                        <th>Asset Tag</th>
+                        <th>Asset Image</th>
+                        <th>Serial Number</th>
+                        <th>Asset Model</th>
+                        <th>Asset Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="asset in assetMasterValue ">
+                        <td data-title="Asset Name"><a class="nav-link page-scroll" data-ui-sref="editAsset"
+                                data-ui-sref-active="active" data-toggle="collapse" data-target=".megamenu-collapse.show">{{asset.assetName}}</a>
+                        </td>
+                        <td data-title="Asset Tag">{{asset.assetTag}}</td>
+                        <td data-title="asset Image">{{asset.assetImage}}</td>
+                        <td data-title="Serial Number">{{asset.aSerial}}</td>
+                        <td data-title="Asset Model">{{asset.assetModel}}</td>
+                        <td data-title="Asset Status">{{asset.assetStatus}}</td>
+
+                        <td>
+                            <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="deleteAssetSure(assetMasterValue._id)"
+                                data-toggle="modal">
+                                <i class="la la-trash"></i> Delete </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row mb-4">
+        <div class="col-12">
+            <div class="table-container">
+                <table class="standard-table table-border">
+                    <thead>
+                        <tr>
+                            <th width="25%">Institution Name</th>
+                            <th>Department Name</th>
+                            <th>Address Line1</th>
+                            <th>Address Line2</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Pin Code</th>
+                            <th>Country</th>
+
+                            <th width="25%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr ng-repeat="masterData in masterDataValue ">
+                            <td data-title="Institution Name"><a href="#" data-toggle="modal" data-target="#basic-modal">{{masterData.institutionName}}
+                                </a> </td>
+                            <td data-title="Department Name">{{masterData.DepartmentName}}</td>
+                            <td data-title="Address Line1">{{masterData.institutionAddressOne}}</td>
+                            <td data-title="Address Line2">{{masterData.institutionAddressTwo}}</td>
+                            <td data-title="City">{{masterData.institutionCity}}</td>
+                            <td data-title="Pin Code">{{masterData.institutionPin}}</td>
+
+                            <td>
+                                <!-- <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="setEnvironmentForEdit(masterData)"
+                                    data-toggle="modal">
+                                    <i class="la la-edit mr-1"></i> Edit </a> -->
+                                <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="deleteMasterSure(masterDataValue._id)"
+                                    data-toggle="modal">
+                                    <i class="la la-trash"></i> Delete </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

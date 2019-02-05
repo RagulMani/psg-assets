@@ -1,0 +1,32 @@
+{
+      "palette": {
+        "vbar": [
+          ["#ffffff", "#6573C8"], 
+          ["#ffffff", "#C8BA65"], 
+          ["#ffffff", "#65C8BA"], 
+          ["#ffffff", "#8965C8"],
+          ["#ffffff", "#C88965"],
+		  ["#ffffff", "#65A5C8"],
+		  ["#ffffff", "#C86573"]
+        ],
+		"hbar": [
+          ["#ffffff", "#6573C8"], 
+          ["#ffffff", "#C8BA65"], 
+          ["#ffffff", "#65C8BA"], 
+          ["#ffffff", "#8965C8"],
+          ["#ffffff", "#C88965"],
+		  ["#ffffff", "#65A5C8"],
+		  ["#ffffff", "#C86573"]
+        ],
+        "pie": [
+          ["#ffffff", "#6573C8"], 
+          ["#ffffff", "#7c88d0"], 
+          ["#ffffff", "#65C8BA"], 
+          ["#ffffff", "#8965C8"], 
+          ["#ffffff", "#C88965"],
+		  ["#ffffff", "#65A5C8"],
+		  ["#ffffff", "#C86573"]
+        ]
+      }
+
+ }  

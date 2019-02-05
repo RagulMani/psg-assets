@@ -1,0 +1,73 @@
+<ol class="breadcrumb border-bottom">
+    <li class="breadcrumb-item">
+        <a href="#"> HOME</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#"> Master </a>
+    </li>
+</ol>
+<section class="content">
+    <div class="element-wrapper">
+        <h1 class="element-title">Maintanace</h1>
+        <div class="element-actions">
+            <a class="btn btn-primary btn-sm" href="#">
+                <i class="anticon anticon-plus-circle-o"></i>
+                <span>Action Button</span></a>
+        </div>
+    </div>
+</section>
+<form name="newAssetform">
+
+    <div class="row">
+
+        <div class="col-md-" scroll-spy="" data-target="#header-navbar" data-scroll-offset="350">
+
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="subtitle" id="Personal">Create Asset</h3>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="assetMaintainType">Select the Type of Maintanace</label>
+                            <select class="form-control form-control-sm" id="assetMaintainType" ng-model="newAsset.assetMaintainType"
+                                placeholder="Select Maintanace Type">
+                                <option value="" disabled selected>Select Status</option>
+                                <option value="Maintanace">Maintanace</option>
+                                <option value="Repair">Repair</option>
+                                <option value="Upgrade">Upgrade</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group  col-md-6">
+                            <label for="assetMaintananceDate">Start and End Date</label>
+                            <div class="column">
+                                <input class="orm-control form-control-sm" placeholder="dd-mm-yyyy" ng-flatpickr fp-opts="dateRangeOpts"
+                                  ng-model="newAsset.assetMaintananceDate" id="assetMaintananceDate">
+                                <span class="calender-caret" ng-model="newAsset.assetMaintananceDate"></span>
+
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label for="assetMaintainAmount">Amount(In Rupees)</label>
+                            <input type="text" class="form-control form-control-sm" id="assetMaintainAmount" ng-model="newAsset.assetMaintainAmount"
+                                placeholder="Amount">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label for="assetMaintainNotes">Notes</label>
+                            <input type="textarea" class="form-control form-control-sm" id="assetMaintainNotes"
+                                ng-model="newAsset.assetMaintainNotes" placeholder="Model Name">
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 mb-2" ng-if="dataMode=='ADD'"
+                            ng-click="saveAsset()">Submit</button>
+                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 mb-2" ng-if="dataMode=='EDIT'"
+                            ng-click="updateAsset(newAsset)">Update</button>
+                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1mb-2">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</form>

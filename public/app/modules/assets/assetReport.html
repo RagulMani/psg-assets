@@ -1,0 +1,54 @@
+<ol class="breadcrumb border-bottom">
+        <li class="breadcrumb-item">
+            <a href="#"> HOME</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="#"> Master </a>
+        </li>
+    </ol>
+    
+    <div class="row mb-4">
+            <div class="col-12">
+                <div class="table-container">
+                    <table class="standard-table table-border">
+                        <thead>
+                            <tr>
+                                <th width="25%">Asset Name</th>
+                                <th>Asset Tag</th>
+                                <th>Asset Image</th>
+                                <th>Serial Number</th>
+                                <th>Asset Model</th>
+                                <th>Asset Status</th>
+    
+                                <th width="25%">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                            <tr ng-repeat="asset in assetMasterValue ">
+                                <td data-title="Asset Name"><a href="#" data-toggle="modal" data-target="#viewModal">{{asset.assetName}}
+                                    </a> </td>
+                                <td data-title="Asset Tag">{{asset.assetTag}}</td>
+                                <td data-title="asset Image">{{asset.assetImage}}</td>
+                                <td data-title="Serial Number">{{asset.assetSerial}}</td>
+                                <td data-title="Asset Model">{{asset.assetModel}}</td>
+                                <td data-title="Asset Status">{{asset.assetStatus}}</td>
+    
+                                <td>
+                                    <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="setEnvironmentForEdit(asset)"
+                                        data-toggle="modal">
+                                        <i class="la la-edit mr-1"></i> Edit </a>
+                                    <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="deleteAssetSure(assetMasterValue.id)"
+                                        data-toggle="modal">
+                                        <i class="la la-trash"></i> Delete </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+        

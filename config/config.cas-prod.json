@@ -1,0 +1,112 @@
+{
+    "serverConfig": {
+        "maintenanceMode": false,
+        "behindHttps": false
+    },
+    "timeZoneConfig": {
+        "hoursOffset": 5,
+        "minsOffset": 30
+    },
+    "entitiesRemoteUrl": {
+        "sisStudentsSearch": "http://laudea.psgcas.ac.in/sis/students/filter",
+        "facultiesSearch": "http://laudea.psgcas.ac.in/fis/faculties/search",
+        "facultiesInDepartment": "http://laudea.psgcas.ac.in/fis/faculties/departmentName",
+        "currentAcademicYear": "http://laudea.psgcas.ac.in/courses/academicTerms/getCurrentAcademicYear",
+        "departmentEventList": "http://laudea.psgcas.ac.in/events/events/getAllEventListWithProjection"
+    },
+    "dbConfig": {
+        "url": "mongodb://localhost:27017/ies-assets"
+    },
+    "amqpConfig": {
+        "url": "amqp://admin:PsgSt02112016@192.168.20.29"
+    },
+    "authServerConfig": {
+        "verifyToken": true,
+        "bypassId":"annasarpprasanna",
+        "verifyTokenUrl": "http://accounts.psgcas.ac.in/auth/realms/ies/protocol/openid-connect/userinfo",
+        "settings": {
+            "baseUrl": "https://accounts.psgcas.ac.in/auth",
+            "username": "admin",
+            "password": "PsgSt02112016",
+            "grant_type": "password",
+            "client_id": "admin-cli"
+        },
+        "realmName": "ies",
+        "userGroup": "NODE_ADMIN"
+    },
+    "fieldConfig": {
+        "sectionList": {
+            "sections": [
+                {
+                    "lable": "About",
+                    "show": true
+                },
+                {
+                    "lable": "MOU",
+                    "show": true
+                },
+                {
+                    "lable": "distinguishedAlumni",
+                    "show": true
+                },
+                {
+                    "lable": "research",
+                    "show": true
+                },
+                {
+                    "lable": "skills",
+                    "show": true
+                },
+                {
+                    "lable": "achivements",
+                    "show": true
+                },
+                {
+                    "lable": "activities",
+                    "show": true
+                },
+                {
+                    "lable": "placements",
+                    "show": true
+                }
+            ]
+        },
+        "showEdit": false,
+        "showDelete": false,
+        "ShowReports": true
+    },
+    "brandingConfig": {
+        "logoImageFileName": "psgcas-logo.png"
+    },
+    "emailConfig": {
+        "enableGlobalListInvite": true,
+        "mockEmail_disabled": "arun@psgsoftwaretechnologies.com"
+    },
+    "mailServiceConfig": {
+        "apiKey-dev": "***",
+        "apiKey": "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",
+        "apiKey-prod": "xxx",
+        "path": "/v3/mail/send",
+        "fromEmail": "donotreply@psgitech.ac.in"
+    },
+    "logConfig": {
+        "httpRequestLog": {
+            "fname": "httpRequest.log",
+            "rfsOptions": {
+                "size": "10M",
+                "interval": "1d",
+                "compress": "gzip"
+            },
+            "format": ":remote-addr - :remote-user :date[clf] ':method :url HTTP/:http-version' :status :res[content-length] :response-time ':referrer' ':user-agent'"
+        },
+        "appLog": {
+            "streamConfig": {
+                "type": "rotating-file",
+                "fname": "app.log",
+                "period": "1d",
+                "count": 7,
+                "level": "debug"
+            }
+        }
+    }
+}

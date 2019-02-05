@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-md-3 px-0">
+
+    </div>
+    <div class="col-md-9" scroll-spy="" data-target="#header-navbar" data-scroll-offset="350">
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="subtitle" id="Personal">Create License</h3>
+                <div class="row">
+                    <div class="form-group col-xs-12 col-md-3">
+                        <label for="aSid">Select the Institution:</label>
+                        <input type="text" class="form-control form-control-sm" id="aSid" ng-model="newAsset.asid"
+                            placeholder="Institution Name">
+                    </div>
+                    <div class="form-group col-xs-12 col-md-3">
+                        <label for="adept" class="control-label">Select Department </label>
+                        <!--<a href="javascript:void(0)" data-toggle="popover" data-trigger="click" data-placement="top" title="Popover Help title" data-content="And here's some amazing content. It's very engaging. Right?"> <i class="la la-question-circle ml-1 text-primary" ></i></a>-->
+                        <input type="text" class="form-control form-control-sm" id="adept" ng-model="newAsset.adept"
+                            placeholder="Department Name">
+                    </div>
+
+                </div>
+                <div class="row mb-5">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="asoft">Software Name</label>
+                                <input type="textarea" class="form-control form-control-sm" id="asoft" ng-model="newAsset.asoft"
+                                    placeholder="Software Name">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="acat">Catagory Name</label>
+                                <input type="textarea" class="form-control form-control-sm" id="acat" ng-model="newAsset.acat"
+                                    placeholder="Catagory Name">
+                            </div>
+                        </div>
+
+
+                        <h3 class="subtitle" id="Contact">Contact Information</h3>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="aprod">Product Key</label>
+                                <input type="text" class="form-control form-control-sm" id="aprod" ng-model="newAsset.aprod"
+                                    placeholder="Product Key">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-md-6">
+                                        <label for="amanu">Select Manufacturer</label>
+                                        <input type="text" class="form-control form-control-sm" ng-model="newAsset.amanu"
+                                            id="amanu" placeholder="Manufacturer Name">
+                                    </div>
+                                    <div class="form-group col-xs-12 col-md-6">
+                                        <label for="alie">Licensed to Name</label>
+                                        <input type="text" class="form-control form-control-sm" ng-model="newAsset.alie"
+                                            id="alie" placeholder="License Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-md-6">
+                                        <label for="aliemail">Licensed to Email</label>
+                                        <input type="text" class="form-control form-control-sm" ng-model="newAsset.aliemail"
+                                            id="aliemail" placeholder="Licensed to Email">
+                                    </div>
+                                    <div class="form-group col-xs-12 col-md-6">
+                                        <label for="aSup">Select Supplier</label>
+                                        <input type="text" class="form-control form-control-sm" ng-model="newAsset.aSup"
+                                            id="aSup" placeholder="Select Supplier">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="mobileNumer">Order Number</label>
+                                <input type="text" class="form-control form-control-sm" id="aONum" ng-model="newAsset.aONum"
+                                    placeholder="Order Number">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="emailId">Email Address</label>
+                                <input type="text" class="form-control form-control-sm" id="emailId" ng-model="newAsset.email"
+                                    placeholder="Email Address">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="googleMapUrl">Purchase Cost</label>
+                                <input type="text" class="form-control form-control-sm" id="aPur" ng-model="newAsset.aPur"
+                                    placeholder="Purchase Cost">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="googleMapUrl">Select Depreciation</label>
+                                <input type="text" class="form-control form-control-sm" id="aDep" ng-model="newAsset.Dep"
+                                    placeholder="Select Depreciation">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="aWar">Warranty</label>
+                                <input type="text" class="form-control form-control-sm" id="aWar" ng-model="newAsset.aWar"
+                                    placeholder="Warranty">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="anotes">Notes</label>
+                                <input type="text" class="form-control form-control-sm" id="anotes" ng-model="newAsset.anotes"
+                                    placeholder="Notes">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                    <label for="uploadImage">Upload Image</label>
+                                    <input type="text" class="form-control form-control-sm" id="aImage" ng-model="newAsset.aImage"
+                                        placeholder="upload Image">
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary mr-1 mb-2" ng-click="saveAsset()">Submit</button>
+                            <button type="button" class="btn btn-primary mr-1 mb-2">Cancel</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>

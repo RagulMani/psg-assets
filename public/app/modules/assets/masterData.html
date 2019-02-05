@@ -1,0 +1,147 @@
+<ol class="breadcrumb border-bottom">
+
+    <li class="breadcrumb-item">
+        <a href="#"> HOME</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#"> Master </a>
+    </li>
+</ol>
+<section class="content">
+    <div class="element-wrapper">
+        <h1 class="element-title">Master Data</h1>
+        <div class="element-actions">
+
+            <a class="add btn btn-primary btn-sm" data-target="#basic-modal" data-toggle="modal">
+                <i class="icon-add"></i>
+                <span>Add Institution</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="table-container">
+                <table class="standard-table table-border">
+                    <thead>
+                        <tr>
+                            <th width="25%">Key</th>
+                            <th>Value</th>
+                            <!-- <th>Accountable</th> -->
+                            <th width="25%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="masterData in mastersDataValue">
+                            <td data-title="Key">{{masterData.key}}</td>
+                            <td data-title="values">
+                                <span ng-repeat="value in mastersDatas">{{value}}<span ng-hide='$last'>,
+                                    </span></span>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="setMasterDataForEdit(masterData)"
+                                    data-toggle="modal">
+                                    <i class="la la-edit"></i> Edit </a>
+                                <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="askDeleteModal(mastersDataValue._id)"
+                                    data-toggle="modal">
+                                    <i class="la la-trash"></i> Delete </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <div id="basic-modal" class="modal modal-top fade" data-keyboard="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Add/Edit Master Data</h6>
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">×</span>
+                    <span class="sr-only">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mt-2">
+                    <input id="key" ng-model="masterData.key">
+
+                    <tags-input ng-model="masterData.values" use-strings="true"></tags-input>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="saveMasterData()" ng-if="dataMode == 'ADD'">Save</button>
+                <button type="button" class="btn btn-primary" ng-click="saveEditedMasterData(masterData)" ng-if="dataMode == 'EDIT'">Edit</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div id="basic-modal" class="modal modal-top fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Modal Title</h6>
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">×</span> <span class="sr-only">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="newDepartmentForm">
+                    <div class="row">
+                        <div class="card">
+                            <div class="caed-copy">
+                                <h3 class="subtitle" id="peronal">Create Department</h3>
+                                <div class="form-group col-md-6">
+                                        <label for="masterOrgName">Select Institution Name:</label>
+                                        <input type="text" class="form-control form-control-sm" id="masterOrgName"
+                                            ng-model="newMaster.masterOrgName" placeholder="Department Name">
+                                    </div>
+                                <div class="form-group col-md-6">
+                                    <label for="masterDeptName">Enter The Department Name:</label>
+                                    <input type="text" class="form-control form-control-sm" id="masterDeptName"
+                                        ng-model="newMaster.masterDeptName" placeholder="Department Name">
+                                </div>
+                                <div class="form-group">
+                                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 mb-2" ng-if="dataMode=='ADD'"
+                                            ng-click="saveMasterData()">Submit</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 mb-2" ng-if="dataMode=='EDIT'"
+                                            ng-click="updateMasterData(newMaster)">Update</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1mb-2">Cancel</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="askDeleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want delete ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="">No</button>
+                <button type="button" class="btn btn-primary" ng-click="deleteMasterDataSure()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>

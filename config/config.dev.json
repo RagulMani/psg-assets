@@ -1,0 +1,113 @@
+{
+    "lookupConfig": "../config/assetMasterData.json",
+    "lookupConfigPath": "../config/assetMasterData.json",    
+    "validationInformationPath": "../config/validationInformationPath.js",
+    "serverConfig": {
+        "maintenanceMode": false,
+        "behindHttps": false
+    },
+    "timeZoneConfig": {
+        "hoursOffset": 5,
+        "minsOffset": 30
+    },
+    "dbConfig": {
+        "url": "mongodb://localhost:27017/ies-assets"
+    },
+    "authServerConfig": {
+        "verifyToken": false,
+        "bypassId": "annasarpprasanna",
+        "verifyTokenUrl": "http://accounts.psgcas.ac.in/auth/realms/ies/protocol/openid-connect/userinfo",
+        "settings": {
+            "baseUrl": "http://localhost:8080/auth",
+            "username": "admin",
+            "password": "admin",
+            "grant_type": "password",
+            "client_id": "admin-cli"
+        },
+        "realmName": "ies",
+        "userGroup": "NODE_ADMIN"
+    },
+    "brandingConfig": {
+        "logoImageFileName": "psgcas-logo.png"
+    },
+    "fieldConfig": {
+        "sectionList": {
+            "sections": [
+                {
+                    "lable": "About",
+                    "show": true
+                },
+                {
+                    "lable": "MOU",
+                    "show": true
+                },
+                {
+                    "lable": "distinguishedAlumni",
+                    "show": true
+                },
+                {
+                    "lable": "research",
+                    "show": true
+                },
+                {
+                    "lable": "skills",
+                    "show": true
+                },
+                {
+                    "lable": "achivements",
+                    "show": true
+                },
+                {
+                    "lable": "activities",
+                    "show": true
+                },
+                {
+                    "lable": "placements",
+                    "show": true
+                }
+            ]
+        },
+        "showEdit": true,
+        "showDelete": true,
+        "ShowReports": true
+    },
+    "entitiesRemoteUrl": {
+        "sisStudentsSearch": "http://laudea.psgcas.ac.in/sis/students/filter",
+        "facultiesSearch": "http://laudea.psgcas.ac.in/fis/faculties/search",
+        "facultiesInDepartment": "http://laudea.psgcas.ac.in/fis/faculties/departmentName",
+        "currentAcademicYear": "http://laudea.psgcas.ac.in/courses/academicTerms/getCurrentAcademicYear",
+        "departmentEventList": "http://laudea.psgcas.ac.in/events/events/getAllEventListWithProjection"
+    },
+    "emailConfig": {
+        "enableGlobalListInvite": true,
+        "mockEmail": "prasanna@psgsoftwaretechnologies.com",
+        "redirectURL": "http://localhost:8013/#!/reviewer_registration"
+    },
+    "mailServiceConfig": {
+        "apiKey-dev": "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",
+        "apiKey": "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",
+        "apiKey-prod": "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",
+        "path": "/v3/mail/send",
+        "fromEmail": "admin@psgtechjournal.com"
+    },
+    "logConfig": {
+        "httpRequestLog": {
+            "fname": "httpRequest.log",
+            "rfsOptions": {
+                "size": "10M",
+                "interval": "1d",
+                "compress": "gzip"
+            },
+            "format": ":remote-addr - :remote-user :date[clf] ':method :url HTTP/:http-version' :status :res[content-length] :response-time ':referrer' ':user-agent'"
+        },
+        "appLog": {
+            "streamConfig": {
+                "type": "rotating-file",
+                "fname": "app.log",
+                "period": "1d",
+                "count": 7,
+                "level": "debug"
+            }
+        }
+    }
+}

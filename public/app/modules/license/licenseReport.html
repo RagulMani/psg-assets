@@ -1,0 +1,42 @@
+<ol class="breadcrumb border-bottom">
+        <li class="breadcrumb-item">
+            <a href="#"> HOME</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="#"> Master </a>
+        </li>
+    </ol>
+    
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="table-container">
+                <table class="standard-table table-border">
+                    <thead>
+                        <tr>
+                            <th width="25%">Institution Name</th>
+                            <th>License Person Name</th>
+                            <th>Product key</th>
+                            <th>Purchased Date</th>
+                            <th>Purchased Cost</th>
+                            <th>Expiration Date</th>
+                            
+    
+                        </tr>
+                    </thead>
+                    <tbody>
+    
+    
+                        <tr ng-repeat="license in licenseMasters ">
+                            <td data-title="Institution Name"><a href="#" data-toggle="modal" data-target="#viewModal">{{license.licensedInstitution}}
+                                </a> </td>
+                            <td data-title="License Person Name">{{license.LicenseName}}</td>
+                            <td data-title="Product key">{{license.licenseProductKey}}</td>
+                            <td data-title="Purchased Date">{{license.licensePurchaseDate}}</td>
+                            <td data-title="Purchased Cost">{{license.licensePurchaseCost}}</td>
+                            <td data-title="Expiration Date">{{license.liecnseExpireDate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

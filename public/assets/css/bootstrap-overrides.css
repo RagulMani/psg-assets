@@ -1,0 +1,12 @@
+/* Small Gutters for Bootstrat 4 */
+
+.row {
+        margin-right: -8px !important;
+        margin-left: -8px !important;
+    }
+        .row > [class^="col-"], .row > [class^=" col-"] {
+        padding-right: 8px !important;
+        padding-left: 8px !important;
+    }
+
+
