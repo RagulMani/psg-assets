@@ -5,6 +5,8 @@ var config = require('../config/config.' + process.env.NODE_ENV);
 var mongoConfig = config.dbConfig;
 var url = mongoConfig.url;
 
+var multer = require('multer');
+
 function connect(callback) {
     MongoClient.connect(url, callback);
 };

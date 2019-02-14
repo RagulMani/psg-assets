@@ -14,9 +14,8 @@
         $scope.dataMode = "ADD";
         assetMasterService.getAssetById($scope.assetId,function (err, res) {
             if (!err) {
-                $scope.viewData = res;
+                $scope.ViewDataValue = res;
             }
-        })
-        
+        })  
     }
 })();

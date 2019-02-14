@@ -2,15 +2,16 @@
     'use strict';
     var App = angular.module('app');
 
-    App.service('assetMasterService', assetMasterService);
-    assetMasterService.$inject = ["$http", "$rootScope"];
-    function assetMasterService($http, $rootScope) {
+    App.service('assetMasterValueService', assetMasterValueService);
+    assetMasterValueService.$inject = ["$http", "$rootScope"];
+    function assetMasterValueService($http, $rootScope) {
 
-        this.getAllAsset = function (callback) {
+        
+        this.getAllInstitution = function (callback) {
             var responsePromise = $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/getAllAsset'
+                url: 'assetMaster/getAllInstitution'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -18,24 +19,12 @@
                 callback(error, null);
             });
         }
-        this.getAssetById = function (id, callback) {
-            var responsePromise = $http({
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-                url: 'asset/readAssetById/'+ id
-            });
-            responsePromise.then(function (responseData) {
-                callback(null, responseData.data);
-            }, function (error) {
-                callback(error, null);
-            });
-        }
-        this.createAsset = function (recordToInsert, callback) {
+        this.createInstitution = function (recordToInsert, callback) {
             var responsePromise = $http({
                 method: 'POST',
                 data: recordToInsert,
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/createAsset'
+                url: 'assetMaster/createInstitution'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -43,12 +32,12 @@
                 callback(error, null);
             });
         }
-        this.updateAsset = function (id, recordToEdit, callback) {
+        this.updateInstitution = function (id, recordToEdit, callback) {
             var responsePromise = $http({
                 method: 'PUT',
                 data: JSON.stringify({ id: id, recordToEdit: recordToEdit }),
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/updateAsset'
+                url: 'assetMaster/updateInstitution'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -56,12 +45,12 @@
                 callback(error, null);
             });
         }
-        this.deleteAsset = function (id, callback) {
+        this.deleteInstitution = function (id, callback) {
             var responsePromise = $http({
                 method: 'DELETE',
                 data: { id: id },
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/deleteAsset'
+                url: 'assetMaster/deleteInstitution'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -69,25 +58,11 @@
                 callback(error, null);
             });
         }
-        this.removeDirtyAttachment = function (id, callback) {
-            var responseData = $http ({
-                method: 'DELETE',
-                data: { "dirtyFileId": id },
-                timeout: 2 * 60 * 1000,
-                headers: { 'Content-type': 'application/json' },
-                url: "asset/removeDirtyAttachment"
-            });
-            responseData.then(function (response) {
-                callback(null, response.data);
-            }, function (error) {
-                callback(error, null);
-            });
-        }
-        this.getAllMasterData = function (callback) {
+        this.getAllCategories = function (callback) {
             var responsePromise = $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'assetMaster/getAllMasterData'
+                url: 'assetMaster/getAllCategories'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -95,13 +70,12 @@
                 callback(error, null);
             });
         }
-
-        this.createMasterData = function (recordToInsert, callback) {
+        this.createCategories = function (recordToInsert, callback) {
             var responsePromise = $http({
                 method: 'POST',
                 data: recordToInsert,
                 headers: { 'Content-Type': 'application/json' },
-                url: 'assetMaster/createMasterData'
+                url: 'assetMaster/createCategories'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -109,12 +83,12 @@
                 callback(error, null);
             });
         }
-        this.updateMasterData = function (id, recordToEdit, callback) {
+        this.updateCategories = function (id, recordToEdit, callback) {
             var responsePromise = $http({
                 method: 'PUT',
                 data: JSON.stringify({ id: id, recordToEdit: recordToEdit }),
                 headers: { 'Content-Type': 'application/json' },
-                url: 'assetMaster/updateMasterData'
+                url: 'assetMaster/updateCategories'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -122,12 +96,12 @@
                 callback(error, null);
             });
         }
-        this.deleteMasterData = function (id, callback) {
+        this.deleteCategories = function (id, callback) {
             var responsePromise = $http({
                 method: 'DELETE',
                 data: { id: id },
                 headers: { 'Content-Type': 'application/json' },
-                url: 'assetMaster/deleteMasterData'
+                url: 'assetMaster/deleteCategories'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -135,11 +109,11 @@
                 callback(error, null);
             });
         }
-        this.getAllLicense = function (callback) {
+        this.getAllManufacturer = function (callback) {
             var responsePromise = $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/getAllLicense'
+                url: 'assetMaster/getAllManufacturer'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -147,13 +121,12 @@
                 callback(error, null);
             });
         }
-
-        this.createLicense = function (recordToInsert, callback) {
+        this.createManufacturer = function (recordToInsert, callback) {
             var responsePromise = $http({
                 method: 'POST',
                 data: recordToInsert,
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/createLicense'
+                url: 'assetMaster/createManufacturer'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -161,12 +134,12 @@
                 callback(error, null);
             });
         }
-        this.updatelicense = function (id, recordToEdit, callback) {
+        this.updateManufacturer = function (id, recordToEdit, callback) {
             var responsePromise = $http({
                 method: 'PUT',
                 data: JSON.stringify({ id: id, recordToEdit: recordToEdit }),
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/updateLicense'
+                url: 'assetMaster/updateManufacturer'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -174,12 +147,12 @@
                 callback(error, null);
             });
         }
-        this.deleteLicense = function (id, callback) {
+        this.deleteManufacturer = function (id, callback) {
             var responsePromise = $http({
                 method: 'DELETE',
                 data: { id: id },
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/deleteLicense'
+                url: 'assetMaster/deleteManufacturer'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -187,6 +160,107 @@
                 callback(error, null);
             });
         }
-
+        this.getAllModel = function (callback) {
+            var responsePromise = $http({
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/getAllModel'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.createModel= function (recordToInsert, callback) {
+            var responsePromise = $http({
+                method: 'POST',
+                data: recordToInsert,
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/createModel'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.updateModel = function (id, recordToEdit, callback) {
+            var responsePromise = $http({
+                method: 'PUT',
+                data: JSON.stringify({ id: id, recordToEdit: recordToEdit }),
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/updateModel'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.deleteModel = function (id, callback) {
+            var responsePromise = $http({
+                method: 'DELETE',
+                data: { id: id },
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/deleteModel'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.getAllSupplier = function (callback) {
+            var responsePromise = $http({
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/getAllSupplier'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.createSupplier = function (recordToInsert, callback) {
+            var responsePromise = $http({
+                method: 'POST',
+                data: recordToInsert,
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/createSupplier'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.updateSupplier = function (id, recordToEdit, callback) {
+            var responsePromise = $http({
+                method: 'PUT',
+                data: JSON.stringify({ id: id, recordToEdit: recordToEdit }),
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/updateSupplier'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.deleteSupplier = function (id, callback) {
+            var responsePromise = $http({
+                method: 'DELETE',
+                data: { id: id },
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/deleteSupplier'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
     }
 })();

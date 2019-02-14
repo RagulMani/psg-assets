@@ -18,11 +18,10 @@
 </section>
 <form name="newAssetform">
 
-    <div class="row">
+   
 
-        <div class="col-md-" scroll-spy="" data-target="#header-navbar" data-scroll-offset="350">
-
-            <div class="card">
+       
+            <div class="card p-2 m-3">
                 <div class="card-body">
                     <h3 class="subtitle" id="Personal">Create Asset</h3>
                     <div class="row">
@@ -59,15 +58,17 @@
 
 
                     </div>
-                    <div class="form-group">
-                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 mb-2" ng-if="dataMode=='ADD'"
+                    <div class="col">
+                    <div class="form-group float-right">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 " ng-if="dataMode=='ADD'"
                             ng-click="saveAsset()">Submit</button>
-                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 mb-2" ng-if="dataMode=='EDIT'"
+                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 " ng-if="dataMode=='EDIT'"
                             ng-click="updateAsset(newAsset)">Update</button>
-                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1mb-2">Cancel</button>
+                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1">Cancel</button>
                     </div>
+                </div>
 
                 </div>
             </div>
-        </div>
+       
 </form>

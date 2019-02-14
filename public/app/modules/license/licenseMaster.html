@@ -11,25 +11,11 @@
         <h1 class="element-title">License</h1>
         <div class="element-actions">
             <a class="add btn btn-primary btn-sm" data-ui-sref="licenseMaster" data-toggle="modal" data-target="#license-modal">
-                <i class="icon-add"></i>
+                <i class="la la-plus-circle"></i>
                 <span>Add License</span>
             </a>
-            <!-- <a class="add btn btn-primary btn-sm" data-ui-sref="licenseMaster" data-toggle="modal" data-target="#license-modal">
-                <i class="icon-add"></i>
-                <span>view License</span>
-            </a>
-            <a class="add btn btn-primary btn-sm" data-ui-sref="licenseMaster" data-toggle="modal" data-target="#license-modal">
-                <i class="icon-add"></i>
-                <span>Update License</span>
-            </a> -->
-            <!-- <a class="add btn btn-primary btn-sm" data-ui-sref="licenseMaster" data-toggle="modal" data-target="#license-modal">
-                <i class="icon-add"></i>
-                <span>Delete License</span>
-            </a> -->
         </div>
     </div>
-
-
     <div class="row mb-5">
         <div class="col-12">
             <div class="table-container">
@@ -37,22 +23,19 @@
                     <thead>
                         <tr>
                             <th width="25%">Software Name</th>
-                            <th>License Name</th>
-
-                            <th width="25%">Action</th>
+                            <th width="55%">License Name</th>
+                            <th width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr ng-repeat="license in licenseMasters ">
+                        <tr ng-repeat="license in licenseMasterValue ">
                             <td data-title="Software Name">{{license.licenseSoftwareName}}</td>
                             <td data-title="License Name">{{license.LicenseName}}</td>
-
                             <td>
-                                <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="setEnvironmentForEdit(license)"
+                                <a class="btn btn-sm btn-block btn-info rounded-0 py-0 text-white" ng-click="setEnvironmentForEdit(license)"
                                     data-toggle="modal">
                                     <i class="la la-edit"></i> Edit </a>
-                                <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="confirmModal(licenseMasters.id)"
+                                <a class="btn btn-sm btn-block btn-danger rounded-0 py-0 text-white" ng-click="confirmModal($index)"
                                     data-toggle="modal">
                                     <i class="la la-trash"></i> Delete </a>
                             </td>
@@ -69,7 +52,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title" ng-if="dataMode == 'ADD'">Add License</h6>
+                <h6 class="modal-title">Add License</h6>
                 <h6 class="modal-title" ng-if="dataMode == 'EDIT'">Edit License</h6>
                 <button type="button" class="close" data-dismiss="modal" ng-click="dataMode='ADD'">
                     <span aria-hidden="true">×</span>
@@ -78,161 +61,142 @@
             </div>
             <div class="modal-body">
                 <form name="newLicenseform">
+                    <div class="row ">
+                        <div class="form-group  col-md-6">
+                            <label for="licensedInstitution">Select the Institution:</label>
+                            <input type="text" class="form-control form-control-sm" id="licensedInstitution" ng-model="newLicense.licensedInstitution"
+                                placeholder="Institution Name">
+                        </div>
 
-                    <div class="row">
+                        <div class="form-group  col-md-6">
+                            <label for="licenseDept" class="control-label">Select Department </label>
+                            <!--<a href="javascript:void(0)" data-toggle="popover" data-trigger="click" data-placement="top" title="Popover Help title" data-content="And here's some amazing content. It's very engaging. Right?"> <i class="la la-question-circle ml-1 text-primary" ></i></a>-->
+                            <input type="text" class="form-control form-control-sm" id="licenseDept" ng-model="newLicense.licenseDept"
+                                placeholder="Department Name">
+                        </div>
 
-                        <!-- <div class="col-md-9" scroll-spy="" data-target="#header-navbar" data-scroll-offset="350"> -->
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="subtitle" id="Personal">Create License</h3>
-                                <div class="row ">
-                                    <div class="form-group  col-md-6">
-                                        <label for="licensedInstitution">Select the Institution:</label>
-                                        <input type="text" class="form-control form-control-sm" id="licensedInstitution"
-                                            ng-model="newLicense.licensedInstitution" placeholder="Institution Name">
-                                    </div>
+                        <div class="form-group  col-md-6">
+                            <label for="licenseSoftwareName">Software Name</label>
+                            <input type="textarea" class="form-control form-control-sm" id="licenseSoftwareName"
+                                ng-model="newLicense.licenseSoftwareName" placeholder="Software Name">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label for="licenseCatagory">Catagory Name</label>
+                            <select required class="form-control form-control-sm custom-select" id="stateselect">
+                                <option disabled selected>Select</option>
+                                <option>Software</option>
+                                <option>Hard Ware</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group  col-md-6">
+                            <label for="licenseProductKey">Product Key</label>
+                            <input type="text" class="form-control form-control-sm" id="licenseProductKey" ng-model="newLicense.licenseProductKey"
+                                placeholder="Product Key">
+                        </div>
+
+
+                        <div class="form-group  col-md-6">
+                            <label for="licenseManufacturer">Select Manufacturer</label>
+                            <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseManufacturer"
+                                id="licenseManufacturer" placeholder="Manufacturer Name">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label for="LicenseName">Licensed to Name</label>
+                            <input type="text" class="form-control form-control-sm" ng-model="newLicense.LicenseName"
+                                id="LicenseName" placeholder="License Name">
+                        </div>
+
+                        <div class="form-group  col-md-6">
+                            <label for="licenseEmail">Licensed to Email</label>
+                            <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseEmail"
+                                id="licenseEmail" placeholder="Licensed to Email">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label for="licenseSupplier">Select Supplier</label>
+                            <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseSupplier"
+                                id="licenseSupplier" placeholder="Select Supplier">
+                        </div>
+
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label for="licensePurchaseCost">Purchase Cost</label>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text font-wwight-bold">&#8377;</span>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group  col-md-6">
-                                        <label for="licenseDept" class="control-label">Select Department </label>
-                                        <!--<a href="javascript:void(0)" data-toggle="popover" data-trigger="click" data-placement="top" title="Popover Help title" data-content="And here's some amazing content. It's very engaging. Right?"> <i class="la la-question-circle ml-1 text-primary" ></i></a>-->
-                                        <input type="text" class="form-control form-control-sm" id="licenseDept"
-                                            ng-model="newLicense.licenseDept" placeholder="Department Name">
-                                    </div>
+                                <input type="text" class="form-control form-control-sm" id="licensePurchaseCost"
+                                    ng-model="newLicense.licensePurchaseCost" placeholder="Purchase Cost">
+                                <div class="input-group-append">
 
-                                    <!-- </div> -->
-                                    <!-- <div class="row "> -->
-                                    <!-- <div class=" col-md-6"> -->
-                                    <!-- <div class="row"> -->
-                                    <div class="form-group  col-md-6">
-                                        <label for="licenseSoftwareName">Software Name</label>
-                                        <input type="textarea" class="form-control form-control-sm" id="licenseSoftwareName"
-                                            ng-model="newLicense.licenseSoftwareName" placeholder="Software Name">
-                                    </div>
-                                    <div class="form-group  col-md-6">
-                                        <label for="licenseCatagory">Catagory Name</label>
-                                        <select required class="form-control form-control-sm custom-select" id="stateselect">
-                                            <option disabled selected>Select</option>
-                                            <option>Software</option>
-                                            <option>Hard Ware</option>
-                                        </select>
-                                    </div>
-                                    <!-- </div> -->
-
-
-                                    <!-- <div class="row"> -->
-                                    <div class="form-group  col-md-6">
-                                        <label for="licenseProductKey">Product Key</label>
-                                        <input type="text" class="form-control form-control-sm" id="licenseProductKey"
-                                            ng-model="newLicense.licenseProductKey" placeholder="Product Key">
-                                    </div>
-
-                                    <!-- </div> -->
-
-                                    <!-- <div class="row"> -->
-                                    <!-- <div class="col-md-6"> -->
-                                    <!-- <div class="row mb-5"> -->
-                                    <div class="form-group  col-md-6">
-                                        <label for="licenseManufacturer">Select Manufacturer</label>
-                                        <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseManufacturer"
-                                            id="licenseManufacturer" placeholder="Manufacturer Name">
-                                    </div>
-                                    <div class="form-group  col-md-6">
-                                        <label for="LicenseName">Licensed to Name</label>
-                                        <input type="text" class="form-control form-control-sm" ng-model="newLicense.LicenseName"
-                                            id="LicenseName" placeholder="License Name">
-                                    </div>
-                                    <!-- </div> -->
-                                    <!-- </div> -->
-                                    <!-- <div class=" col-md-6"> -->
-                                    <!-- <div class="row mb-5"> -->
-                                    <div class="form-group  col-md-6">
-                                        <label for="licenseEmail">Licensed to Email</label>
-                                        <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseEmail"
-                                            id="licenseEmail" placeholder="Licensed to Email">
-                                    </div>
-                                    <div class="form-group  col-md-6">
-                                        <label for="licenseSupplier">Select Supplier</label>
-                                        <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseSupplier"
-                                            id="licenseSupplier" placeholder="Select Supplier">
-                                    </div>
-                                    <!-- </div> -->
-
-                                    <!-- </div> -->
-                                    <div class="form-group col-xs-12 col-md-6">
-                                        <label for="licensePurchaseCost">Purchase Cost</label>
-                                        <div class="input-group input-group-sm">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text font-wwight-bold">&#8377;</span>
-                                            </div>
-                                            <input type="text" class="form-control form-control-sm" id="licensePurchaseCost"
-                                                ng-model="newLicense.licensePurchaseCost" placeholder="Purchase Cost">
-                                            <div class="input-group-append">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group  col-md-6">
-                                        <label for="licensePurchaseDate">Purchase Date</label>
-                                        <div class="column">
-                                            <input class="form-control" placeholder="mm/dd/yyyy" ng-flatpickr fp-opts="dateOpts1"
-                                                ng-model="newLicense.licensePurchaseDate">
-                                            <span class="calender-caret" ng-model="newLicense.licensePurchaseDate"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group  col-md-6">
-                                        <label for="liecnseExpireDate">Expire Date</label>
-                                        <div class="column">
-                                            <input class="form-control" placeholder="mm/dd/yyyy" ng-flatpickr fp-opts="dateOpts1"
-                                                ng-model="newLicense.licenseExpireDate">
-                                            <span class="calender-caret" ng-model="newLicense.licenseExpireDate"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group  col-md-6">
-                                        <label for="licensePurOrderNumber"> Purchase Order Number</label>
-                                        <input type="text" class="form-control form-control-sm" id="licensePurOrderNumber"
-                                            ng-model="newLicense.licensePurOrderNumber" placeholder="Purchase Order Number">
-                                    </div>
-
-
-                                    <div class="form-group  col-md-6">
-                                        <label for="googleMapUrl">Select Depreciation(In Percentage)</label>
-                                        <input type="text" class="form-control form-control-sm" id="aDep" ng-model="newLicense.Dep"
-                                            placeholder="Select Depreciation">
-                                    </div>
-
-                                    <div class="form-group col-md-6">
-                                        <label for="licenseNotes">Notes</label>
-                                        <input type="text" class="form-control form-control-sm" id="licenseNotes"
-                                            ng-model="newLicense.licenseNotes" placeholder="Notes">
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 mb-2"
-                                            ng-click="saveLicense()">Submit</button>
-                                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 mb-2">Cancel</button>
-                                    </div>
-                                    <!-- </div> -->
-                                    <!-- </div> -->
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="form-group  col-md-6">
+                            <label for="licensePurchaseDate">Purchase Date</label>
+                            <div class="column">
+                                <input class="form-control" placeholder="mm/dd/yyyy" ng-flatpickr fp-opts="dateOpts1"
+                                    ng-model="newLicense.licensePurchaseDate">
+                                <span class="calender-caret" ng-model="newLicense.licensePurchaseDate"></span>
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label for="liecnseExpireDate">Expire Date</label>
+                            <div class="column">
+                                <input class="form-control" placeholder="mm/dd/yyyy" ng-flatpickr fp-opts="dateOpts1"
+                                    ng-model="newLicense.licenseExpireDate">
+                                <span class="calender-caret" ng-model="newLicense.licenseExpireDate"></span>
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label for="licensePurOrderNumber"> Purchase Order Number</label>
+                            <input type="text" class="form-control form-control-sm" id="licensePurOrderNumber" ng-model="newLicense.licensePurOrderNumber"
+                                placeholder="Purchase Order Number">
+                        </div>
+
+
+                        <div class="form-group  col-md-6">
+                            <label for="googleMapUrl">Select Depreciation(In Percentage)</label>
+                            <input type="text" class="form-control form-control-sm" id="aDep" ng-model="newLicense.Dep"
+                                placeholder="Select Depreciation">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="licenseNotes">Notes</label>
+                            <textarea type="text" class="form-control form-control-sm" id="licenseNotes" ng-model="newLicense.licenseNotes"
+                                placeholder="Notes">
+                                            </textarea>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col">
+                        <div class="form-group float-right">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 ">Cancel</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-success mr-1 " ng-click="saveLicense()">Submit</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="updateLicense(newLicense);"
+                    ng-if="dataMode == 'EDIT'">Update</button>
+
+                        </div>
+                    </div>
+
+
                 </form>
-            </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" ng-click="dataMode='ADD'" data-dismiss="modal">Close</button>
-                <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveNewLicense();" ng-if="dataMode == 'ADD'">Save
-                </button>
+            <!-- </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveLicense()">Save</button>
                 <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="updateLicense(newLicense);"
                     ng-if="dataMode == 'EDIT'">Update</button>
 
             </div> -->
         </div>
     </div>
+</div>
 </div>
 <div id="confirmModal" class="modal fade">
     <div class="modal-dialog modal-sm modal-confirm">
@@ -241,10 +205,9 @@
                 <h4 class="modal-title text-center">
                     Are you sure want to delete?</h4>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteLicenseSure();">Confirm</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteLicenseSure()">Confirm</button>
             </div>
         </div>
     </div>

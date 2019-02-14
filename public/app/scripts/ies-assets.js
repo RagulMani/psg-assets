@@ -24,7 +24,7 @@
                     url: '/assetMaster',
                     templateUrl: 'app/modules/assets/assetMaster.html',
                     controller: 'assetMasterCtrl',
-                    /*resolve: {
+                    resolve: {
                         loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
                                 insertBefore: '#css-bootstrap',
@@ -46,7 +46,7 @@
                                 ]
                             });
                         }]
-                    }*/
+                    }
                 })
 
                 .state('form', {
@@ -79,20 +79,12 @@
                     templateUrl: 'app/modules/assets/viewAsset.html',
                     controller: 'assetMasterCtrl'
                 })
-
-
-
                 .state('editAsset', {
-                    url: '/editAsset/:id',
+                    url: '/editAsset/:assetId',
                     templateUrl: 'app/modules/assets/editAsset.html',
-                    // params:
-                    // {
-                    //     'asset': 'asset'
-                    // },
-                    controller: 'assetMasterViewCtrl'
+                    controller: 'assetMaintainCtrl'
                 })
-
-                .state('depreciationReport', {
+                 .state('depreciationReport', {
                     url: '/depreciationReport',
                     templateUrl: 'app/modules/assets/depreciationReport.html',
                     controller: 'assetMasterCtrl'

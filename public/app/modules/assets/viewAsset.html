@@ -6,82 +6,37 @@
         <a href="#"> Master </a>
     </li>
 </ol>
-
 <div class="row mb-4">
     <div class="col-12">
-        <div class="table-container">
-            <table class="standard-table table-border">
-                <thead>
-                    <tr>
-                        <th width="25%">Asset Name</th>
-                        <th>Asset Tag</th>
-                        <th>Asset Image</th>
-                        <th>Serial Number</th>
-                        <th>Asset Model</th>
-                        <th>Asset Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr ng-repeat="asset in assetMasterValue ">
-                        <td data-title="Asset Name"><a class="nav-link page-scroll" data-ui-sref="editAsset"
-                                data-ui-sref-active="active" data-toggle="collapse" data-target=".megamenu-collapse.show">{{asset.assetName}}</a>
-                        </td>
-                        <td data-title="Asset Tag">{{asset.assetTag}}</td>
-                        <td data-title="asset Image">{{asset.assetImage}}</td>
-                        <td data-title="Serial Number">{{asset.aSerial}}</td>
-                        <td data-title="Asset Model">{{asset.assetModel}}</td>
-                        <td data-title="Asset Status">{{asset.assetStatus}}</td>
-
-                        <td>
-                            <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="deleteAssetSure(assetMasterValue._id)"
-                                data-toggle="modal">
-                                <i class="la la-trash"></i> Delete </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="row mb-4">
-        <div class="col-12">
-            <div class="table-container">
-                <table class="standard-table table-border">
+        <div class="table-container  p-3">
+            <div class="table-body">
+                <table id="dropouts-table" class="datatable table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th width="25%">Institution Name</th>
-                            <th>Department Name</th>
-                            <th>Address Line1</th>
-                            <th>Address Line2</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Pin Code</th>
-                            <th>Country</th>
-
-                            <th width="25%">Action</th>
+                            <th width="25%">Asset Name</th>
+                            <th>Asset Tag</th>
+                            <th>Asset Image</th>
+                            <th>Serial Number</th>
+                            <th>Asset Model</th>
+                            <th>Asset Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        <tr ng-repeat="masterData in masterDataValue ">
-                            <td data-title="Institution Name"><a href="#" data-toggle="modal" data-target="#basic-modal">{{masterData.institutionName}}
-                                </a> </td>
-                            <td data-title="Department Name">{{masterData.DepartmentName}}</td>
-                            <td data-title="Address Line1">{{masterData.institutionAddressOne}}</td>
-                            <td data-title="Address Line2">{{masterData.institutionAddressTwo}}</td>
-                            <td data-title="City">{{masterData.institutionCity}}</td>
-                            <td data-title="Pin Code">{{masterData.institutionPin}}</td>
+                        <tr ng-repeat="asset in assetMasterValue ">
+                            <td data-title="Asset Name"><a class="nav-link page-scroll" data-ui-sref="editAsset({assetId:asset._id})"
+                                    data-ui-sref-active="active" data-toggle="collapse" data-target=".megamenu-collapse.show">{{asset.assetName}}</a>
+                            </td>
+                            <td data-title="Asset Tag">{{asset.assetTag}}</td>
+                            <td data-title="asset Image">{{asset.assetImage}}</td>
+                            <td data-title="Serial Number">{{asset.assetSerialNumber}}</td>
+                            <td data-title="Asset Model">{{asset.assetModel}}</td>
+                            <td data-title="Asset Status">{{asset.assetStatus}}</td>
 
                             <td>
-                                <!-- <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="setEnvironmentForEdit(masterData)"
-                                    data-toggle="modal">
-                                    <i class="la la-edit mr-1"></i> Edit </a> -->
-                                <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="deleteMasterSure(masterDataValue._id)"
+
+                                <a class="btn btn-sm btn-block btn-danger rounded-0 py-0 text-white" ng-click="confirmModal($index)"
                                     data-toggle="modal">
                                     <i class="la la-trash"></i> Delete </a>
                             </td>
@@ -91,3 +46,39 @@
             </div>
         </div>
     </div>
+
+</div>
+<!-- <div class="col">
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+                <span class="page-link">
+                    2
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div> -->
+
+<div id="confirmModal" class="modal fade">
+    <div class="modal-dialog modal-sm modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Are you sure want to delete?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteAssetSure()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

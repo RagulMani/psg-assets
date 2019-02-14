@@ -29,7 +29,6 @@ function getAll(callback) {
     var coll = db.collection(this.getCollectionName());
     coll.find({}).toArray(function (err, result) {
         if (!err) {
-            
             callback(null, result);
         } else {
             callback(err, null);
@@ -37,10 +36,10 @@ function getAll(callback) {
     });
 }
 
-function getById(query, callback) {
+function getById(id, callback) {
     var db = mongodb.getDb();
     var coll = db.collection(this.getCollectionName());
-    coll.findOne(query, function (err, result) {
+    coll.findOne({ _id: mongodb.ObjectID(id) }, function (err, result) {
         if (!err) {
             callback(null, result);
         } else {
