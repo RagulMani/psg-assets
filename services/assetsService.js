@@ -1,5 +1,5 @@
 var assetDao = require('../daos/assetsDao');
-var assetMaintainDao=require('../daos/assetMaintainDao');
+var assetMaintainDao = require('../daos/assetMaintainDao');
 var componentDao = require('../daos/componentDao');
 var licenseDao = require('../daos/licenseDao');
 // var gridfsDao = require('../daos/gridfsDao');
@@ -15,8 +15,11 @@ function createAsset(recordToInsert, callback) {
 function getAllAsset(callback) {
     assetDao.getAll(callback);
 }
-function readAssetById(id,callback) {
-    assetDao.getById(id,callback);
+function readAssetById(id, callback) {
+    assetDao.getById(id, callback);
+}
+function getAssetByQuery(query,callback){
+    assetDao.getByQuery(query,callback);
 }
 function updateAsset(id, detailsToUpdate, callback) {
     assetDao.updateById(id, detailsToUpdate, callback);
@@ -70,10 +73,11 @@ function deleteLicense(id, callback) {
 
 module.exports.updateAsset = updateAsset;
 module.exports.getAllAsset = getAllAsset;
+module.exports.getAssetByQuery=getAssetByQuery;
 module.exports.readAssetById = readAssetById;
 module.exports.createAsset = createAsset;
 module.exports.deleteAsset = deleteAsset;
-module.exports.removeDirtyAttachment=removeDirtyAttachment;
+module.exports.removeDirtyAttachment = removeDirtyAttachment;
 
 
 
@@ -87,7 +91,7 @@ module.exports.getAllLicense = getAllLicense;
 module.exports.createLicense = createLicense;
 module.exports.deleteLicense = deleteLicense;
 
-module.exports.createAssetMaintain=createAssetMaintain;
-module.exports.getAllAssetMaintain=getAllAssetMaintain;
-module.exports.updateAssetMaintain=updateAssetMaintain;
-module.exports.deleteAssetMaintain=deleteAssetMaintain;
+module.exports.createAssetMaintain = createAssetMaintain;
+module.exports.getAllAssetMaintain = getAllAssetMaintain;
+module.exports.updateAssetMaintain = updateAssetMaintain;
+module.exports.deleteAssetMaintain = deleteAssetMaintain;

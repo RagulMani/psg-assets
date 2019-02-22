@@ -1,9 +1,9 @@
 (function () {
     'use strict';
     var App = angular.module('app');
-    App.controller('assetMasterCtrl', assetMasterCtrl);
-    assetMasterCtrl.$inject = ['$scope', 'assetMasterService', '$timeout', '$window', 'assetMaintainService'];
-    function assetMasterCtrl($scope, assetMasterService, $timeout, $window, assetMaintainService) {
+    App.controller('assetReportCtrl', assetReportCtrl);
+    assetReportCtrl.$inject = ['$scope', 'assetMasterService', '$timeout', '$window', 'assetMaintainService'];
+    function assetReportCtrl($scope, assetMasterService, $timeout, $window, assetMaintainService) {
 
         $scope.goToAsset = function (asset) {
             $state.go('assetMaster', { asset: asset });
@@ -11,22 +11,69 @@
         //alert("welcome");
         $scope.newAsset = {};
         $scope.assetMasterValue = [];
-        $scope.assetFilter = [];
-        $scope.asset = [];
         $scope.assetMaintainValue = [];
         $scope.dataMode = "ADD";
+        $scope.item = {};
         function loadInitial() {
             assetMasterService.getAllAsset(function (err, res) {
                 if (!err) {
                     $scope.assetMasterValue = res;
+                    $scope.allData = res;
                     angular.element('#filterResult').toggle();
                     $('#dropouts-table').DataTable().clear();
                     $('#dropouts-table').DataTable().destroy();
                     $timeout(function () {
                         $('#dropouts-table').DataTable({
-                            "aoColumnDefs": [{ "bSortable": false, "aTargets": [] }]
+                            "aoColumnDefs": [{ "bSortable": false, "aTargets": [] }],
+
+                            "footerCallback": function (row, data, start, end, display) {
+                                var api = this.api(), data;
+
+                                // Remove the formatting to get integer data for summation
+                                var intVal = function (i) {
+                                    // var lastThree = result[0].substring(result[0].length - 3);
+                                    // var otherNumbers = result[0].substring(0, result[0].length - 3);
+                                    // if (otherNumbers != '')
+                                    //     lastThree = ',' + lastThree;
+                                    return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+                                };
+                                // Total over all pages
+                                var total = api
+                                    .column(8)
+                                    .data()
+                                    .reduce(function (a, b) {
+                                        return intVal(a) + intVal(b);
+                                    }, 0);
+                                var total2 = api
+                                    .column(9)
+                                    .data()
+                                    .reduce(function (a, b) {
+                                        return intVal(a) + intVal(b);
+                                    }, 0);
+                                // Total over this page
+                                var pageTotal = api
+                                    .column(8, { page: 'current' })
+                                    .data()
+                                    .reduce(function (a, b) {
+                                        return intVal(a) + intVal(b);
+                                    }, 0);
+                                var pageTotal2 = api
+                                    .column(9, { page: 'current' })
+                                    .data()
+                                    .reduce(function (a, b) {
+                                        return intVal(a) + intVal(b);
+                                    }, 0);
+                                // Update footer
+                                $(api.column(8).footer()).html(
+                                    '₹ ' + pageTotal + ' ( ₹ ' + total + ' Total)'
+                                );
+                                $(api.column(9).footer()).html(
+                                    '₹ ' + pageTotal2 + ' ( ₹ ' + total2 + ' Total)'
+                                );
+                            }
                         });
                     }, 50);
+
                 }
             })
         }
@@ -152,16 +199,32 @@
                 }
             })
         }
-        $scope.assetFilter = function (assetMasterValue, filter) {
-            var result = [];
-            for (i = 0; i < assetMasterValue.length; i++) {
-                for (var prop in filter) {
-                    if (assetMasterValue.hasOwnProperty(prop) && assetMasterValue[i][prop] === filter[prop]) {
-                        result.push(assetMasterValue[i]);
-                    }
-                }
+        $scope.assetFilter = function () {
+            var query = {};
+            if ($scope.item["assetOrganaization"]) {
+                query["assetOrganaization"] = $scope.item["assetOrganaization"]["assetOrganaization"];
             }
-            return result;
+            if ($scope.item["assetDepartment"]) {
+                query["assetDepartment"] = $scope.item["assetDepartment"]["assetDepartment"];
+            }
+            if ($scope.item["fromDate"]) {
+                query["assetPurchaseDate"] = { $gte: $scope.item["fromDate"] };
+            }
+            if ($scope.item["endDate"]) {
+                query["assetPurchaseDate"] = { $lte: $scope.item["endDate"] };
+            }
+            assetMasterService.getAssetByQuery(query, function (err, res) {
+                if (!err) {
+                    $scope.assetMasterValue = res;
+                }
+                else {
+                    console.log(err);
+                }
+
+            });
+
+            //get by query
+
         }
     }
 })();

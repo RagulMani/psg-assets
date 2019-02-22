@@ -26,7 +26,7 @@
                 }
             })
         }
-        $scope.setEnvironmentForEdit = function (asset) {
+        $scope.setEnvironmentForInstEdit = function (asset) {
             $scope.dataMode = "EDIT";
             $('#institution-modal').modal("show");
             $scope.newInstitution = JSON.parse(JSON.stringify(asset));
@@ -50,14 +50,14 @@
             $scope.newInstitution.splice(index, 1);
         }
 
-        $scope.confirmModal = function (index) {
-            $("#confirmModal").modal("show");
+        $scope.instDeleteModal = function (index) {
+            $("#instDeleteModal").modal({ backdrop: 'static', keyboard: false });
             $scope.deleteIndex = index;
         }
 
         $scope.deleteInstitutionSure = function () {
             assetMasterValueService.deleteInstitution($scope.institutionValue[$scope.deleteIndex]._id, function (err, res) {
-                $("#confirmModal").modal('hide');
+                $("#instDeleteModal").modal('hide');
                 $scope.institutionValue.splice($scope.deleteIndex, 1);
             })
         }
@@ -84,7 +84,7 @@
                 }
             })
         }
-        $scope.setEnvironmentForEdit = function (asset) {
+        $scope.setEnvironmentCategoryForEdit = function (asset) {
             $scope.dataMode = "EDIT";
             $('#categories-modal').modal("show");
             $scope.newCategory = JSON.parse(JSON.stringify(asset));
@@ -108,14 +108,14 @@
             $scope.newCategory.splice(index, 1);
         }
 
-        $scope.confirmModal = function (index) {
-            $("#confirmModal").modal("show");
+        $scope.categoryDeleteModal = function (index) {
+            $("#categoryDeleteModal").modal("show");
             $scope.deleteIndex = index;
         }
 
         $scope.deleteCategoriesSure = function () {
             assetMasterValueService.deleteCategories($scope.categoryValue[$scope.deleteIndex]._id, function (err, res) {
-                $("#confirmModal").modal('hide');
+                $("#categoryDeleteModal").modal('hide');
                 $scope.categoryValue.splice($scope.deleteIndex, 1);
             })
         }
@@ -130,7 +130,7 @@
                     $scope.manufacturerValue = res;
                 }
             })
-        } 
+        }
         loadInitialManufacturer();
         $scope.saveManufacturer = function () {
             assetMasterValueService.createManufacturer($scope.newManufacturer, function (err, res) {
@@ -142,9 +142,9 @@
                     alert("Data inserted successfully");
                 }
             })
-            
+
         }
-        $scope.setEnvironmentForEdit = function (asset) {
+        $scope.setEnvironmentForManuEdit = function (asset) {
             $scope.dataMode = "EDIT";
             $('#manufacturer-modal').modal("show");
             $scope.newManufacturer = JSON.parse(JSON.stringify(asset));
@@ -168,14 +168,14 @@
             $scope.newManufacturer.splice(index, 1);
         }
 
-        $scope.confirmModal = function (index) {
-            $("#confirmModal").modal("show");
+        $scope.manuDeleteModal = function (index) {
+            $("#manuDeleteModal").modal("show");
             $scope.deleteIndex = index;
         }
 
         $scope.deleteManufacturerSure = function () {
             assetMasterValueService.deleteManufacturer($scope.manufacturerValue[$scope.deleteIndex]._id, function (err, res) {
-                $("#confirmModal").modal('hide');
+                $("#manuDeleteModal").modal('hide');
                 $scope.manufacturerValue.splice($scope.deleteIndex, 1);
             })
         }
@@ -200,9 +200,9 @@
                     alert("Data inserted successfully");
                 }
             })
-           
+
         }
-        $scope.setEnvironmentForEdit = function (asset) {
+        $scope.setEnvironmentForModelEdit = function (asset) {
             $scope.dataMode = "EDIT";
             $('#add-modal').modal("show");
             $scope.newModel = JSON.parse(JSON.stringify(asset));
@@ -226,14 +226,14 @@
             $scope.newModel.splice(index, 1);
         }
 
-        $scope.confirmModal = function (index) {
-            $("#confirmModal").modal("show");
+        $scope.modelDeleteModal = function (index) {
+            $("#modelDeleteModal").modal("show");
             $scope.deleteIndex = index;
         }
 
         $scope.deleteModelSure = function () {
-            assetMasterValueService.deleteAsset($scope.modelValue[$scope.deleteIndex]._id, function (err, res) {
-                $("#confirmModal").modal('hide');
+            assetMasterValueService.deleteModel($scope.modelValue[$scope.deleteIndex]._id, function (err, res) {
+                $("#modelDeleteModal").modal('hide');
                 $scope.modelValue.splice($scope.deleteIndex, 1);
             })
         }
@@ -259,7 +259,7 @@
                 }
             })
         }
-        $scope.setEnvironmentForEdit = function (asset) {
+        $scope.setEnvironmentForSupplierEdit = function (asset) {
             $scope.dataMode = "EDIT";
             $('#supplier-modal').modal("show");
             $scope.newSupplier = JSON.parse(JSON.stringify(asset));
@@ -283,15 +283,21 @@
             $scope.newSupplier.splice(index, 1);
         }
 
-        $scope.confirmModal = function (index) {
-            $("#confirmModal").modal("show");
+        $scope.supplierDeleteModal = function (index) {
+            $("#supplierDeleteModal").modal("show");
             $scope.deleteIndex = index;
         }
 
         $scope.deleteSupplierSure = function () {
-            assetMasterValueService.deleteAsset($scope.supplierValue[$scope.deleteIndex]._id, function (err, res) {
-                $("#confirmModal").modal('hide');
+            assetMasterValueService.deleteSupplier($scope.supplierValue[$scope.deleteIndex]._id, function (err, res) {
+                $("#supplierDeleteModal").modal('hide');
                 $scope.supplierValue.splice($scope.deleteIndex, 1);
+            })
+        }
+        $scope.deleteModelSure = function () {
+            assetMasterValueService.deleteModel($scope.modelValue[$scope.deleteIndex]._id, function (err, res) {
+                $("#modelDeleteModal").modal('hide');
+                $scope.modelValue.splice($scope.deleteIndex, 1);
             })
         }
 

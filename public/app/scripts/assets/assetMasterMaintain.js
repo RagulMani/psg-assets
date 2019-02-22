@@ -60,5 +60,84 @@
                 $scope.assetMaintainValue.splice($scope.deleteIndex, 1);
             })
         }
+
+        // $scope.imageAttachment = {
+        //     dzOptions: {
+        //         url: "asset/file/upload",
+        //         method: "put",
+        //         parallelUploads: 1,
+        //         addRemoveLinks: true,
+        //         acceptedFiles: 'image/jpeg, images/jpg, image/png',
+        //         dictDefaultMessage: 'Click to add or drop photos',
+        //         autoProcessQueue: true,
+        //         createImageThumbnails: true,
+        //         previewContainer: true,
+        //         dictResponseError: 'Could not upload this file',
+        //         paramName: function () {
+        //             return "fileAttachment";
+        //         },
+        //         renameFile: function (file) {
+        //             file.upload.filename = file.name;
+        //         },
+        //     },
+        //     dzCallbacks: {
+        //         init: function () {
+        //             this.on("addedfile", function (file) {
+        //             });
+        //         },
+        //         "sending": function (file, xhr, formData) {
+        //         },
+        //         "addedfile": function (file) {
+        //             console.info('File added from dropzone .', file);
+        //             $scope.displayFile = file.name;
+        //         },
+        //         "removedfile": function (file) {
+        //             console.info('File removed from Server .', file);
+        //             $scope.removeFile(file.id);
+        //             removeFile(file);
+        //         },
+        //         "success": function (file, xhr) {
+        //             console.info(file);
+        //             file.id = xhr[0].id;
+        //             file.xhr = xhr;
+        //             if (!$scope.assetMaintain) {
+        //                 $scope.assetMaintain = {};
+        //             }
+        //             $scope.assetMaintain.fileAttachmentDetails = {
+        //                 "id": file.id,
+        //                 "contentType": file.type,
+        //                 "originalName": file.name,
+        //                 "imageUrl": "asset/loadimg/" + file.id + "/" + file.name + "/" + file.type
+        //             };
+        //             //console.info("details",$scope.imageInput.fileAttachmentDetails);
+        //         },
+        //         "error": function (file) {
+        //         },
+        //         "complete": function (file) {
+        //         }
+        //     },
+        //     dzMethods: {
+
+        //     }
+        // };
+        // $scope.removeFile = function (id) {
+        //     $scope.removeDirtyAttachment(id)
+        //     $scope.assetMaintain = {};
+        //     $scope.assetMaintain.fileAttachmentDetails = {};
+        // }
+        // $scope.removeDirtyAttachment = function (id) {
+        //     $scope.dirtyFileRemoved = undefined;
+        //     assetMaintainService.removeDirtyAttachment(id, function (err, res) {
+        //         if (!err) {
+        //             $scope.dirtyFileRemoved = true;
+        //             return;
+        //         }
+        //         else {
+        //             $scope.dirtyFileRemoved = false;
+        //             return;
+        //         }
+        //     })
+        // }
+
     }
 })();

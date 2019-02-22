@@ -123,6 +123,15 @@
                             <input type="textarea" class="form-control form-control-sm" id="assetTag" name="Asset Tag"
                                 placeholder="Name" validation="required" ng-model="newAsset.assetTag" />
                         </div>
+                        <div class="col-md-6 form-group">
+                                <label class="required">Asset Category Type</label>
+                                <select required class="form-control form-control-sm" id="assetCategoryType"
+                                ng-model="newAsset.assetCategoryType" placeholder="Select Status">
+                                <option value="" disabled selected>Select Type</option>
+                                <option value="Hardware">Hardware</option>
+                                <option value="Software">Software</option>
+                                </select>
+                            </div>
                         <div class="form-group  col-md-6">
                             <label for="assetModel">Model</label>
                             <input type="textarea" class="form-control form-control-sm" id="assetModel"
@@ -148,6 +157,17 @@
                             <div class="row">
                                 <div class="col-sm-4" ng-if="newAsset.assetStatus=='Scraped'">
                                     <div class="col-sm-12 form-group">
+                                        <label class="control-label" for="scrapedValue">Scraped Value</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text font-wwight-bold">&#8377;</span>
+                                            <input type="text" class="form-control" id="scrapedValue"
+                                                name="scrapedValue" ng-model="newAsset.scrapedValue"
+                                                validation="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" ng-if="newAsset.assetStatus=='Scraped'">
+                                    <div class="col-sm-12 form-group">
                                         <label class="control-label" for="scrapedRemarks">Remarks</label>
                                         <div class="input-group-prepend">
                                             <input type="text" class="form-control" id="scrapedRemarks"
@@ -157,23 +177,10 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-4" ng-if="newAsset.assetStatus=='Scraped'">
-                                    <div class="col-sm-12 form-group">
-                                        <label class="control-label" for="scrapedValue">Scraped Value</label>
-                                        <div class="input-group-prepend">
-                                            <input type="text" class="form-control" id="scrapedValue"
-                                                name="scrapedValue" ng-model="newAsset.scrapedValue"
-                                                validation="required">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4" ng-if="newAsset.assetStatus=='Scraped'">
-                                    <div class="col-sm-12 form-group">
-                                        <label class="control-label" for="scrapedApproval">Approval</label>
-                                        <div class="input-group-prepend">
-                                            <input type="text" class="form-control" id="scrapedApproval"
-                                                name="scrapedApproval" ng-model="newAsset.scrapedApproval"
-                                                validation="required">
-                                        </div>
+                                    <label class="control-label" for="scrapedApproval">Approval</label>
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-info btn-block mr-1 mb-2">Send Mail to
+                                            Principal</button>
                                     </div>
                                 </div>
                             </div>
@@ -291,8 +298,11 @@
                                 <div class="col-sm-3" ng-if="newAsset.assetWarranty=='YES'">
                                     <div class="form-group ">
                                         <label for="warrantyCard">Upload Warranty card</label>
-                                        <input type="file" ng-model="newAsset.warrantyCard"
-                                            class="form-control form-control-sm" validation="required" placeholder="">
+                                        <div class="dropzone dropzone-formcontroll col-md-6"
+                                            options="imageAttachment.dzOptions" callbacks="imageAttachment.dzCallbacks"
+                                            methods="imageAttachment.dzMethods" ng-dropzone
+                                            ng-model="newAsset.warrantyCardImage">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -308,6 +318,23 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="row">
+                                <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
+                                    <div class="form-group ">
+                                        <label for="insuranceCompany">Insurance Company</label>
+                                        <input type="text" id="insuranceCompany" ng-model="newAsset.insuranceCompany"
+                                            class="form-control form-control-sm" validation="required"
+                                            placeholder="Company Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
+                                    <div class="form-group">
+                                        <label for="insuranceAmount">Insurance Amount</label>
+
+                                        <input type="text" id="insuranceAmount" ng-model="newAsset.insuranceAmount"
+                                            class="form-control form-control-sm" validation="required"
+                                            placeholder="Amount">
+                                    </div>
+                                </div>
                                 <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
                                     <div class="form-group">
                                         <label for="insuranceStartDate" class="required"> Insurance Start Date</label>
@@ -330,23 +357,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
-                                    <div class="form-group ">
-                                        <label for="insuranceCompany">Insurance Company</label>
-                                        <input type="text" id="insuranceCompany" ng-model="newAsset.insuranceCompany"
-                                            class="form-control form-control-sm" validation="required"
-                                            placeholder="Company Name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
-                                    <div class="form-group">
-                                        <label for="insuranceAmount">Insurance Amount</label>
 
-                                        <input type="text" id="insuranceAmount" ng-model="newAsset.insuranceAmount"
-                                            class="form-control form-control-sm" validation="required"
-                                            placeholder="Amount">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group  col-md-6">
@@ -404,9 +415,8 @@
                         </div>
                         <div class="form-group  col-md-6">
                             <label for="assetNotes">Upload Image</label>
-                            <div class="dropzone dropzone-formcontroll col-md-6"
-                                options="fileAttachmentAwards.dzOptions" callbacks="fileAttachmentAwards.dzCallbacks"
-                                methods="fileAttachmentAwards.dzMethods" ng-model="newAsset.assetImage" ng-dropzone>
+                            <div class="dropzone dropzone-formcontroll col-md-6" options="imageAttachment.dzOptions"
+                                callbacks="imageAttachment.dzCallbacks" methods="imageAttachment.dzMethods" ng-dropzone>
                             </div>
                         </div>
                     </div>

@@ -111,7 +111,7 @@ function update(query, detailsToUpdate, callback) {
         if (!err) {
             callback(null, result);
         } else {
-            callback(err, null);
+            callback(err, null); 
         }
     });
 }

@@ -26,9 +26,7 @@
                 if (!err) {
                     $scope.mastersData.push(res);
                 }
-
             })
         }
-
     }
 });

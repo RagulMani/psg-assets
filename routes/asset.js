@@ -41,6 +41,20 @@ router.get('/getAllAsset',authService.verifyCallerWithKeycloak, function (req, r
     });
 });
 
+router.post('/getAssetByQuery',authService.verifyCallerWithKeycloak, function (req, res, next) {
+    assetServices.getAssetByQuery(req.body.asset,function (err, response) {
+        if (!err) {
+            // appLogger.info(" successfully updated");
+            
+            res.send(response);
+        }
+        else {
+            // appLogger.error({ err: err }, "Error while updating Authority details");
+            console.log("Error While read the item")
+            res.status(500).send({ error: err.name, message: err.message });
+        }
+    });
+});
 router.get('/readAssetById/:id',authService.verifyCallerWithKeycloak, function(req,res,next){
     assetServices.readAssetById(req.params.id,function(err,response){
         if(!err){

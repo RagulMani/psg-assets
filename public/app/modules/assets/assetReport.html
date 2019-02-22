@@ -1,54 +1,133 @@
 <ol class="breadcrumb border-bottom">
-        <li class="breadcrumb-item">
-            <a href="#"> HOME</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="#"> Master </a>
-        </li>
-    </ol>
-    
-    <div class="row mb-4">
-            <div class="col-12">
-                <div class="table-container">
-                    <table class="standard-table table-border">
-                        <thead>
-                            <tr>
-                                <th width="25%">Asset Name</th>
-                                <th>Asset Tag</th>
-                                <th>Asset Image</th>
-                                <th>Serial Number</th>
-                                <th>Asset Model</th>
-                                <th>Asset Status</th>
-    
-                                <th width="25%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-    
-                            <tr ng-repeat="asset in assetMasterValue ">
-                                <td data-title="Asset Name"><a href="#" data-toggle="modal" data-target="#viewModal">{{asset.assetName}}
-                                    </a> </td>
-                                <td data-title="Asset Tag">{{asset.assetTag}}</td>
-                                <td data-title="asset Image">{{asset.assetImage}}</td>
-                                <td data-title="Serial Number">{{asset.assetSerial}}</td>
-                                <td data-title="Asset Model">{{asset.assetModel}}</td>
-                                <td data-title="Asset Status">{{asset.assetStatus}}</td>
-    
-                                <td>
-                                    <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="setEnvironmentForEdit(asset)"
-                                        data-toggle="modal">
-                                        <i class="la la-edit mr-1"></i> Edit </a>
-                                    <a class="btn btn-table btn-sm rounded-0 py-0" ng-click="deleteAssetSure(assetMasterValue.id)"
-                                        data-toggle="modal">
-                                        <i class="la la-trash"></i> Delete </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <li class="breadcrumb-item">
+        <a href="#"> HOME</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#"> Master </a>
+    </li>
+</ol>
+<section class="content">
+    <div class="card">
+        <div class="table-container">
+            <div class="table-header" id="accordion1">
+                <div class="standard-table-collapsible-header px-0">
+                    <div class="row mx-0">
+                        <div class="col-md-2 border-right" data-toggle="collapse" data-target="#getData1"
+                            aria-expanded="true"> <a class="top-level filter-collapse"><i
+                                    class="la la-filter text-primary"></i> Apply Filters </a>
+                        </div>
+                        <div class="col-md-8 border-right"></div>
+                        <div class="col-md-2  "> <span class="top-level"><i
+                                    class="la la-external-link-square text-primary"></i> Export to </span>
+                            <div class="btn-group btn-group-sm btn-group-toggle float-right" data-toggle="buttons">
+                                <label class="btn btn-sm btn-outline-mauve">
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                                    <i class="anticon anticon-file-pdf"></i> PDF </label>
+                                <label class="btn btn-sm btn-outline-mauve">
+                                    <input type="radio" name="options" id="option2" autocomplete="off">
+                                    <i class="anticon anticon-file-excel"></i> Excel </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="standard-collapsible-body py-2 px-2 border-top collapse show" data-parent="#accordion1"
+                    id="getData1">
+                    <div class="row form-group mb-0">
+                        <div class="col-md-12">
+                            <div class="input-group input-group-sm">
+                                <div class="mr-1">
+                                    <label class="my-0">Institution</label>
+                                    <select class="custom-select form-control form-control-sm" id="assetOrganaization"
+                                        meterial-select ng-model="item.assetOrganaization"
+                                        ng-options="asset as asset.assetOrganaization for asset in allData">
+                                        <option value="">chooose..</option>
+                                    </select>
+                                </div>
+
+                                <div class="mx-1">
+                                    <label class="my-0">Department</label>
+                                    <select class="custom-select form-control form-control-sm" id="assetDepartment"
+                                        meterial-select ng-model="item.assetDepartment"
+                                        ng-options="asset as asset.assetDepartment for asset in allData">
+                                        <option value="">chooose..</option>
+                                    </select>
+                                </div>
+                                <div class="mx-1">
+                                    <label class="my-0">From Date</label>
+                                    <input class="form-control" placeholder="mm/dd/yyyy" ng-flatpickr
+                                        fp-opts="dateOpts1" ng-model="item.fromDate">
+                                    <ng-model="date1"></span>
+                                </div>
+                                <div class="mx-1">
+                                    <label class="my-0">End Date</label>
+                                    <input class="form-control" placeholder="mm/dd/yyyy" ng-flatpickr
+                                        fp-opts="dateOpts1" ng-model="item.endDate">
+                                    <ng-model="date2"></span>
+                                </div>
+                                <div>
+                                    <label class="my-0 col-12"> &nbsp; </label>
+                                    <button class="btn btn-sm btn-table mx-1" ng-click="assetFilter()">Go</button>
+                                </div>
+                                <div>
+                                    <label class="">Basic View</label> <input type="checkbox">
+                                </div>
+                                <div>
+                                    <label class="">Full View</label> <input type="checkbox">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="table-container  p-3">
+                        <div class="table-body">
+                            <table id="dropouts-table" class="datatable table table-striped table-bordered"
+                                style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Institution</th>
+                                        <th>Department</th>
+                                        <th>Asset Category Type</th>
+                                        <th>Asset Name</th>
+                                        <th>Asset Model</th>
+                                        <th>Order Number</th>
+                                        <th>Asset Status</th>
+                                        <th width=14%>Debit</th>
+                                        <th width=14%>Credit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="asset in assetMasterValue track by $index">
+                                        <td data-title="Asset Date">{{asset.assetPurchaseDate}}</td>
+                                        <td data-title="Institution">{{asset.assetOrganaization}}</td>
+                                        <td data-title="Department">{{asset.assetDepartment}}</td>
+                                        <td data-title="Asset Category Type">{{asset.assetCategoryType}}</td>
+                                        <td data-title="Asset Name">{{asset.assetName}}</td>
+                                        <td data-title="Asset Model">{{asset.assetModel}}</td>
+                                        <td data-title="Order Number">{{asset.orderNumber}}</td>
+                                        <td data-title="Asset Status">{{asset.assetStatus}}</td>
+                                        <td data-title="Asset Price" style="text-align:right">
+                                            {{asset.assetPurchaseCost}}</td>
+                                        <td data-title="Asset Credit" style="text-align:right">{{asset.scrapedValue}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="8"></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    
-    
-    
-        
+    </div>
+</section>

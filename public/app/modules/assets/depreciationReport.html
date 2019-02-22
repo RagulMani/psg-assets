@@ -13,25 +13,24 @@
             <table class="standard-table table-border">
                 <thead>
                     <tr>
-                        <th width="25%">Depreciation Name</th>
+                        <th >Depreciation Name</th>
                         <th>Asset Tag</th>
                         <th>Asset Name</th>
                         <th>Serial Number</th>
-                        <th>Number Of Months</th>
+                        <!-- <th>Number Of Months</th> -->
                         <th>Purchased Date</th>
                         <th>End of Life</th>
 
                     </tr>
                 </thead>
                 <tbody>
-
-
                     <tr ng-repeat="asset in assetMasterValue ">
                         <td data-title="Asset Name"><a href="#" data-toggle="modal" data-target="#viewModal">{{asset.assetDepreciation}}
                             </a> </td>
                         <td data-title="Asset Tag">{{asset.assetTag}}</td>
-                        <td data-title="asset Image">{{asset.assetImage}}</td>
-                        <td data-title="Serial Number">{{asset.assetSerial}}</td>
+                        <td data-title="asset Name">{{asset.assetName}}</td>
+                        <td data-title="Serial Number">{{asset.assetSerialNumber}}</td>
+                        <!-- <td data-title="Purchased Date">{{asset.assetWarranty}}</td> -->
                         <td data-title="Purchased Date">{{asset.assetPurchaseDate}}</td>
                         <td data-title="End Of Life">{{asset.assetNoOfYears}}</td>
                     </tr>

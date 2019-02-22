@@ -243,7 +243,7 @@ router.put('/updateSupplier', authService.verifyCallerWithKeycloak, function (re
     });
 });
 router.delete('/deleteSupplier', authService.verifyCallerWithKeycloak, function (req, res) {
-    assetMasterOne.deleteModel(req.body, function (err, response) {
+    assetMasterOne.deleteSupplier(req.body, function (err, response) {
         if (!err) {
             res.send(response);
             //appLogger.info("success in deleting");

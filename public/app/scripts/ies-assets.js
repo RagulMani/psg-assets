@@ -13,7 +13,7 @@
 
     App.config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/assetMaster');
+            $urlRouterProvider.otherwise('/dashboard');
             $stateProvider
                 .state('dashboard', {
                     url: '/dashboard',
@@ -68,16 +68,62 @@
                     controller: 'assetMasterCtrl'
 
                 })
-                .state('status', {
-                    url: '/assetMaster',
-                    templateUrl: 'app/modules/assets/status.html',
-                    controller: 'assetMasterCtrl'
+                .state('assetReport', {
+                    url: '/assetReport',
+                    templateUrl: 'app/modules/assets/assetReport.html',
+                    controller: 'assetReportCtrl',
+                    resolve: {
+                        loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                insertBefore: '#css-bootstrap',
+                                serie: true,
+                                files: [
+                                    'bower_components/dropzone/dist/dropzone.css',
+                                    'bower_components/dropzone/dist/dropzone.js',
+                                    'bower_components/ng-dropzone/dist/ng-dropzone.min.js',
+                                    'bower_components/tinymce/tinymce.js',
+                                    'bower_components/angular-ui-tinymce/src/tinymce.js',
+                                    'bower_components/angular-tree-control/css/tree-control.css',
+                                    'bower_components/angular-tree-control/css/tree-control-attribute.css',
+                                    'bower_components/angular-tree-control/angular-tree-control.js',
+                                    'bower_components/flatpickr/dist/flatpickr.min.css',
+                                    'bower_components/flatpickr/dist/flatpickr.min.js',
+                                    'bower_components/angular-flatpickr/dist/ng-flatpickr.js',
+                                    'bower_components/datatables.net-dt/css/jquery.dataTables.min.css',
+                                    'bower_components/datatables.net/js/jquery.dataTables.min.js',
+                                ]
+                            });
+                        }]
+                    }
 
                 })
                 .state('viewAsset', {
                     url: '/viewAsset',
                     templateUrl: 'app/modules/assets/viewAsset.html',
-                    controller: 'assetMasterCtrl'
+                    controller: 'assetMasterCtrl',
+                    resolve: {
+                        loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                insertBefore: '#css-bootstrap',
+                                serie: true,
+                                files: [
+                                    'bower_components/dropzone/dist/dropzone.css',
+                                    'bower_components/dropzone/dist/dropzone.js',
+                                    'bower_components/ng-dropzone/dist/ng-dropzone.min.js',
+                                    'bower_components/tinymce/tinymce.js',
+                                    'bower_components/angular-ui-tinymce/src/tinymce.js',
+                                    'bower_components/angular-tree-control/css/tree-control.css',
+                                    'bower_components/angular-tree-control/css/tree-control-attribute.css',
+                                    'bower_components/angular-tree-control/angular-tree-control.js',
+                                    'bower_components/flatpickr/dist/flatpickr.min.css',
+                                    'bower_components/flatpickr/dist/flatpickr.min.js',
+                                    'bower_components/angular-flatpickr/dist/ng-flatpickr.js',
+                                    'bower_components/datatables.net-dt/css/jquery.dataTables.min.css',
+                                    'bower_components/datatables.net/js/jquery.dataTables.min.js',
+                                ]
+                            });
+                        }]
+                    }
                 })
                 .state('editAsset', {
                     url: '/editAsset/:assetId',

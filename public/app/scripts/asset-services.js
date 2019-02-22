@@ -30,6 +30,19 @@
                 callback(error, null);
             });
         }
+        this.getAssetByQuery = function (query, callback) {
+            var responsePromise = $http({
+                method: 'POST',
+                data:{asset:query},
+                headers: { 'Content-Type': 'application/json' },
+                url: 'asset/getAssetByQuery'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
         this.createAsset = function (recordToInsert, callback) {
             var responsePromise = $http({
                 method: 'POST',
