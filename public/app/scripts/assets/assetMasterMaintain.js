@@ -2,21 +2,24 @@
     'use strict';
     var App = angular.module('app');
     App.controller('assetMaintainCtrl', assetMaintainCtrl);
-    assetMaintainCtrl.$inject = ['$scope', '$stateParams', 'assetMaintainService', 'assetMasterService'];/**/
-    function assetMaintainCtrl($scope, $stateParams, assetMaintainService, assetMasterService) { /**/
-        // alert("welcome to maintain");
+    assetMaintainCtrl.$inject = ['$scope', '$stateParams', 'assetMaintainService', 'assetMasterService','assetMasterValueService','$timeout'];/**/
+    function assetMaintainCtrl($scope, $stateParams, assetMaintainService, assetMasterService,assetMasterValueService,$timeout) { 
         $scope.assetMaintain = {};
         $scope.assetMaintainValue = [];
         $scope.newAsset = {};
         $scope.assetMasterValue = [];
         $scope.dataMode = "ADD";
-        // $stateParams = assetId;
 
         assetMasterService.getAssetById($stateParams.assetId, function (err, res) {
             if (!err) {
                 $scope.assetMasterValue = res;
             }
         })
+        // assetMasterValueService.getInsurancebyId($stateparams.insuracneid,function(err,res){
+        //     if(!err){
+        //         $scope.assetInsuracevalue=res;
+        //     }
+        // })
         $scope.setEnvironmentForEdit = function (asset) {
             $scope.dataMode = "EDIT";
             $('#assetModal').modal("show");
@@ -60,6 +63,40 @@
                 $scope.assetMaintainValue.splice($scope.deleteIndex, 1);
             })
         }
+        $scope.DatewiseJson = {
+            "type": "area",
+            "plotarea": {
+                margin: "dynamic"
+            },
+            "plot": {
+                "stacked": false,
+            },
+            "scale-x": {
+                "labels": ["Date 1", "Date 2", "Date 3", "Date 4", "Date 5", "Date 6", "Date 7", "Date 8", "Date 9", "Date 10"] /* Scale Labels */
+            },
+            "series": [{
+                "values": [10, 15, 25, 30, 35, 45, 47, 54],
+                "background-color": "#EDE7F0",
+                /* Single color or gradient (2 colors) */
+                "line-color": "#AD6BAE",
+                "alpha-area": 0.3,
+                /* Shaded region transparency */
+                "marker": {
+                    "background-color": "#5D436A",
+                    "border-width": "5px",
+                    "border-color": "#B0B3DC"
+                }
+            }]
+        };
+        $timeout(function(){
+            // alert("welcome");
+            zingchart.render({
+                id: 'datewise',
+                data: DatewiseJson,
+                defaultsurl: 'assets/css/zingchart_color.txt', // Path to my_theme.txt
+            });
+        },5000)
+
 
         // $scope.imageAttachment = {
         //     dzOptions: {

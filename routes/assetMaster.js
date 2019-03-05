@@ -132,8 +132,8 @@ router.get('/getAllCategories', authService.verifyCallerWithKeycloak, function (
         }
     });
 });
-router.put('/updateCategories', authService.verifyCallerWithKeycloak, function (req, res) {
-    assetMasterOne.updateCategories(req.body.id, req.body.recordToEdit, function (err, response) {
+router.put('/updateCategory', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.updateCategory(req.body.id, req.body.recordToEdit, function (err, response) {
         if (!err) {
             res.send(response);
             //appLogger.info("success in updating");
@@ -244,6 +244,188 @@ router.put('/updateSupplier', authService.verifyCallerWithKeycloak, function (re
 });
 router.delete('/deleteSupplier', authService.verifyCallerWithKeycloak, function (req, res) {
     assetMasterOne.deleteSupplier(req.body, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in deleting");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in deleting ", err);
+        }
+    });
+});
+
+router.post('/createInsurance', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.createInsurance(req.body, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in creation");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in creation ", err);
+        }
+    });
+});``
+router.get('/getAllInsurance', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.getAllInsurance(function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in getAllManufacturer")
+        }
+        else {
+            res.status(500).send(err);
+            // appLogger.error("error in getAllManufacturer",err)
+        }
+    });
+});
+router.get('/readInsuranceById/:id',authService.verifyCallerWithKeycloak, function(req,res,next){
+    assetServices.readinsuracneById(req.params.id,function(err,response){
+        if(!err){
+            res.send(response);
+        }
+        else{
+            console.log("Error Occured while Add");
+            res.status(500).send({ error: err.name, message: err.message });            
+        }
+    })
+})
+router.put('/updateInsurance', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.updateInsurance(req.body.id, req.body.recordToEdit, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in updating");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in updating ", err);
+        }
+    });
+});
+router.delete('/deleteInsurance', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.deleteInsurance(req.body, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in deleting");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in deleting ", err);
+        }
+    });
+});
+
+router.post('/createFund', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.createFund(req.body, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in creation");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in creation ", err);
+        }
+    });
+});``
+router.get('/getAllFund', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.getAllFund(function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in getAllManufacturer")
+        }
+        else {
+            res.status(500).send(err);
+            // appLogger.error("error in getAllManufacturer",err)
+        }
+    });
+});
+router.get('/readFundById/:id',authService.verifyCallerWithKeycloak, function(req,res,next){
+    assetServices.readFundById(req.params.id,function(err,response){
+        if(!err){
+            res.send(response);
+        }
+        else{
+            console.log("Error Occured while Add");
+            res.status(500).send({ error: err.name, message: err.message });            
+        }
+    })
+})
+router.put('/updateFund', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.updateFund(req.body.id, req.body.recordToEdit, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in updating");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in updating ", err);
+        }
+    });
+});
+router.delete('/deleteFund', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.deleteFund(req.body, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in deleting");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in deleting ", err);
+        }
+    });
+});
+
+
+
+router.post('/createContract', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.createContract(req.body, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in creation");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in creation ", err);
+        }
+    });
+});``
+router.get('/getAllContract', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.getAllContract(function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in getAllManufacturer")
+        }
+        else {
+            res.status(500).send(err);
+            // appLogger.error("error in getAllManufacturer",err)
+        }
+    });
+});
+router.get('/readContractById/:id',authService.verifyCallerWithKeycloak, function(req,res,next){
+    assetServices.readContractById(req.params.id,function(err,response){
+        if(!err){
+            res.send(response);
+        }
+        else{
+            console.log("Error Occured while Add");
+            res.status(500).send({ error: err.name, message: err.message });            
+        }
+    })
+})
+router.put('/updateContract', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.updateContract(req.body.id, req.body.recordToEdit, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in updating");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in updating ", err);
+        }
+    });
+});
+router.delete('/deleteContract', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.deleteContract(req.body, function (err, response) {
         if (!err) {
             res.send(response);
             //appLogger.info("success in deleting");

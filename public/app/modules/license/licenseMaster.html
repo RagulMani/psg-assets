@@ -10,7 +10,8 @@
     <div class="element-wrapper">
         <h1 class="element-title">License</h1>
         <div class="element-actions">
-            <a class="add btn btn-primary btn-sm" data-ui-sref="licenseMaster" data-toggle="modal" data-target="#license-modal">
+            <a class="add btn btn-primary btn-sm" data-ui-sref="licenseMaster" data-toggle="modal"
+                data-target="#license-modal">
                 <i class="la la-plus-circle"></i>
                 <span>Add License</span>
             </a>
@@ -32,11 +33,11 @@
                             <td data-title="Software Name">{{license.licenseSoftwareName}}</td>
                             <td data-title="License Name">{{license.LicenseName}}</td>
                             <td>
-                                <a class="btn btn-sm btn-block btn-info rounded-0 py-0 text-white" ng-click="setEnvironmentForEdit(license)"
-                                    data-toggle="modal">
+                                <a class="btn btn-sm btn-block btn-info rounded-0 py-0 text-white"
+                                    ng-click="setEnvironmentForEdit(license)" data-toggle="modal">
                                     <i class="la la-edit"></i> Edit </a>
-                                <a class="btn btn-sm btn-block btn-danger rounded-0 py-0 text-white" ng-click="confirmModal($index)"
-                                    data-toggle="modal">
+                                <a class="btn btn-sm btn-block btn-danger rounded-0 py-0 text-white"
+                                    ng-click="confirmModal($index)" data-toggle="modal">
                                     <i class="la la-trash"></i> Delete </a>
                             </td>
                         </tr>
@@ -64,18 +65,15 @@
                     <div class="row ">
                         <div class="form-group  col-md-6">
                             <label for="licensedInstitution">Select the Institution:</label>
-                            <input type="text" class="form-control form-control-sm" id="licensedInstitution" ng-model="newLicense.licensedInstitution"
-                                placeholder="Institution Name">
+                            <input type="text" class="form-control form-control-sm" id="licensedInstitution"
+                                ng-model="newLicense.licensedInstitution" placeholder="Institution Name">
                         </div>
-
                         <div class="form-group  col-md-6">
                             <label for="licenseDept" class="control-label">Select Department </label>
                             <!--<a href="javascript:void(0)" data-toggle="popover" data-trigger="click" data-placement="top" title="Popover Help title" data-content="And here's some amazing content. It's very engaging. Right?"> <i class="la la-question-circle ml-1 text-primary" ></i></a>-->
-                            <input type="text" class="form-control form-control-sm" id="licenseDept" ng-model="newLicense.licenseDept"
-                                placeholder="Department Name">
+                            <input type="text" class="form-control form-control-sm" id="licenseDept"
+                                ng-model="newLicense.licenseDept" placeholder="Department Name">
                         </div>
-
-
                         <div class="form-group  col-md-6">
                             <label for="licenseSoftwareName">Software Name</label>
                             <input type="textarea" class="form-control form-control-sm" id="licenseSoftwareName"
@@ -89,25 +87,22 @@
                                 <option>Hard Ware</option>
                             </select>
                         </div>
-
                         <div class="form-group  col-md-6">
                             <label for="licenseProductKey">Product Key</label>
-                            <input type="text" class="form-control form-control-sm" id="licenseProductKey" ng-model="newLicense.licenseProductKey"
-                                placeholder="Product Key">
+                            <input type="text" class="form-control form-control-sm" id="licenseProductKey"
+                                ng-model="newLicense.licenseProductKey" placeholder="Product Key">
                         </div>
-
-
                         <div class="form-group  col-md-6">
                             <label for="licenseManufacturer">Select Manufacturer</label>
-                            <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseManufacturer"
-                                id="licenseManufacturer" placeholder="Manufacturer Name">
+                            <input type="text" class="form-control form-control-sm"
+                                ng-model="newLicense.licenseManufacturer" id="licenseManufacturer"
+                                placeholder="Manufacturer Name">
                         </div>
                         <div class="form-group  col-md-6">
                             <label for="LicenseName">Licensed to Name</label>
                             <input type="text" class="form-control form-control-sm" ng-model="newLicense.LicenseName"
                                 id="LicenseName" placeholder="License Name">
                         </div>
-
                         <div class="form-group  col-md-6">
                             <label for="licenseEmail">Licensed to Email</label>
                             <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseEmail"
@@ -115,10 +110,10 @@
                         </div>
                         <div class="form-group  col-md-6">
                             <label for="licenseSupplier">Select Supplier</label>
-                            <input type="text" class="form-control form-control-sm" ng-model="newLicense.licenseSupplier"
-                                id="licenseSupplier" placeholder="Select Supplier">
+                            <input type="text" class="form-control form-control-sm"
+                                ng-model="newLicense.licenseSupplier" id="licenseSupplier"
+                                placeholder="Select Supplier">
                         </div>
-
                         <div class="form-group col-xs-12 col-md-6">
                             <label for="licensePurchaseCost">Purchase Cost</label>
                             <div class="input-group input-group-sm">
@@ -128,12 +123,9 @@
                                 <input type="text" class="form-control form-control-sm" id="licensePurchaseCost"
                                     ng-model="newLicense.licensePurchaseCost" placeholder="Purchase Cost">
                                 <div class="input-group-append">
-
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="form-group  col-md-6">
                             <label for="licensePurchaseDate">Purchase Date</label>
                             <div class="column">
@@ -152,51 +144,33 @@
                         </div>
                         <div class="form-group  col-md-6">
                             <label for="licensePurOrderNumber"> Purchase Order Number</label>
-                            <input type="text" class="form-control form-control-sm" id="licensePurOrderNumber" ng-model="newLicense.licensePurOrderNumber"
-                                placeholder="Purchase Order Number">
+                            <input type="text" class="form-control form-control-sm" id="licensePurOrderNumber"
+                                ng-model="newLicense.licensePurOrderNumber" placeholder="Purchase Order Number">
                         </div>
-
-
                         <div class="form-group  col-md-6">
                             <label for="googleMapUrl">Select Depreciation(In Percentage)</label>
                             <input type="text" class="form-control form-control-sm" id="aDep" ng-model="newLicense.Dep"
                                 placeholder="Select Depreciation">
                         </div>
-
                         <div class="form-group col-md-12">
                             <label for="licenseNotes">Notes</label>
-                            <textarea type="text" class="form-control form-control-sm" id="licenseNotes" ng-model="newLicense.licenseNotes"
-                                placeholder="Notes">
-                                            </textarea>
-                        </div>
-
-
-
-
+                            <textarea type="text" class="form-control form-control-sm" id="licenseNotes"
+                                ng-model="newLicense.licenseNotes" placeholder="Notes">
                     </div>
-                    <div class="col">
-                        <div class="form-group float-right">
-                            <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 ">Cancel</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-success mr-1 " ng-click="saveLicense()">Submit</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="updateLicense(newLicense);"
-                    ng-if="dataMode == 'EDIT'">Update</button>
-
-                        </div>
-                    </div>
-
-
                 </form>
-            <!-- </div>
+            </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveLicense()">Save</button>
-                <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="updateLicense(newLicense);"
-                    ng-if="dataMode == 'EDIT'">Update</button>
+                <div class="form-group float-right">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary mr-1 ">Cancel</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-success mr-1 "
+                        ng-click="saveLicense()">Submit</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-primary"
+                        ng-click="updateLicense(newLicense);" ng-if="dataMode == 'EDIT'">Update</button>
 
-            </div> -->
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
 <div id="confirmModal" class="modal fade">
     <div class="modal-dialog modal-sm modal-confirm">
@@ -207,7 +181,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteLicenseSure()">Confirm</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    ng-click="deleteLicenseSure()">Confirm</button>
             </div>
         </div>
     </div>

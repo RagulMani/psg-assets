@@ -20,9 +20,9 @@
                     templateUrl: 'app/modules/assets/dashboard.html',
                     controller: 'assetMasterCtrl'
                 })
-                .state('assetMaster', {
-                    url: '/assetMaster',
-                    templateUrl: 'app/modules/assets/assetMaster.html',
+                .state('addAsset', {
+                    url: '/addAsset',
+                    templateUrl: 'app/modules/assets/addAsset.html',
                     controller: 'assetMasterCtrl',
                     resolve: {
                         loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -48,25 +48,66 @@
                         }]
                     }
                 })
-
-                .state('form', {
-                    url: '/assetMaster',
-                    templateUrl: 'app/modules/assets/assetForm.html',
+                .state('assetmodel', {
+                    url: '/addAsset',
+                    templateUrl: 'app/modules/assets/assetmodel.html',
                     controller: 'assetMasterCtrl'
 
                 })
-
-                .state('model', {
-                    url: '/assetMaster',
-                    templateUrl: 'app/modules/assets/model.html',
-                    controller: 'assetMasterCtrl'
-
+                .state('viewAsset', {
+                    url: '/viewAsset',
+                    templateUrl: 'app/modules/assets/viewAsset.html',
+                    controller: 'assetMasterCtrl',
+                    resolve: {
+                        loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                insertBefore: '#css-assets',
+                                serie: true,
+                                files: [
+                                    'bower_components/dropzone/dist/dropzone.css',
+                                    'bower_components/dropzone/dist/dropzone.js',
+                                    'bower_components/ng-dropzone/dist/ng-dropzone.min.js',
+                                    'bower_components/tinymce/tinymce.js',
+                                    'bower_components/angular-ui-tinymce/src/tinymce.js',
+                                    'bower_components/angular-tree-control/css/tree-control.css',
+                                    'bower_components/angular-tree-control/css/tree-control-attribute.css',
+                                    'bower_components/angular-tree-control/angular-tree-control.js',
+                                    'bower_components/flatpickr/dist/flatpickr.min.css',
+                                    'bower_components/flatpickr/dist/flatpickr.min.js',
+                                    'bower_components/angular-flatpickr/dist/ng-flatpickr.js',
+                                    'bower_components/datatables.net-dt/css/jquery.dataTables.min.css',
+                                    'bower_components/datatables.net/js/jquery.dataTables.min.js',
+                                ]
+                            });
+                        }]
+                    }
                 })
-                .state('supplier', {
-                    url: '/assetMaster',
-                    templateUrl: 'app/modules/assets/supplier.html',
+                .state('depreciationReport', {
+                    url: '/depreciationReport',
+                    templateUrl: 'app/modules/assets/depreciationReport.html',
                     controller: 'assetMasterCtrl'
-
+                })
+                .state('assetMaintanance', {
+                    url: '/assetMaintanance',
+                    templateUrl: 'app/modules/assets/assetMaintanance.html',
+                    controller: 'assetMasterCtrl'
+                })
+                .state('editAsset', {
+                    url: '/editAsset/:assetId',
+                    templateUrl: 'app/modules/assets/editAsset.html',
+                    controller: 'assetMaintainCtrl',
+                    resolve: {
+                        loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                insertBefore: '#css-assets',
+                                serie: true,
+                                files: [
+                                    'bower_components/zingchart/client/zingchart.min.js',
+                                    'bower_components/ZingChart-AngularJS/src/zingchart-angularjs.js',
+                                ]
+                            });
+                        }]
+                    }
                 })
                 .state('assetReport', {
                     url: '/assetReport',
@@ -97,50 +138,46 @@
                     }
 
                 })
-                .state('viewAsset', {
-                    url: '/viewAsset',
-                    templateUrl: 'app/modules/assets/viewAsset.html',
-                    controller: 'assetMasterCtrl',
+                .state('assetInsurance', {
+                    url: '/assetInsurance',
+                    templateUrl: 'app/modules/masterData/insuranceForm.html',
+                    controller: 'masterDataCtrl',
                     resolve: {
                         loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
-                                insertBefore: '#css-bootstrap',
+                                insertBefore: '#css-assets',
                                 serie: true,
                                 files: [
-                                    'bower_components/dropzone/dist/dropzone.css',
-                                    'bower_components/dropzone/dist/dropzone.js',
-                                    'bower_components/ng-dropzone/dist/ng-dropzone.min.js',
-                                    'bower_components/tinymce/tinymce.js',
-                                    'bower_components/angular-ui-tinymce/src/tinymce.js',
-                                    'bower_components/angular-tree-control/css/tree-control.css',
-                                    'bower_components/angular-tree-control/css/tree-control-attribute.css',
-                                    'bower_components/angular-tree-control/angular-tree-control.js',
-                                    'bower_components/flatpickr/dist/flatpickr.min.css',
-                                    'bower_components/flatpickr/dist/flatpickr.min.js',
-                                    'bower_components/angular-flatpickr/dist/ng-flatpickr.js',
-                                    'bower_components/datatables.net-dt/css/jquery.dataTables.min.css',
-                                    'bower_components/datatables.net/js/jquery.dataTables.min.js',
+                                    'bower_components/zingchart/client/zingchart.min.js',
+                                    'bower_components/ZingChart-AngularJS/src/zingchart-angularjs.js',
                                 ]
                             });
                         }]
                     }
                 })
-                .state('editAsset', {
-                    url: '/editAsset/:assetId',
-                    templateUrl: 'app/modules/assets/editAsset.html',
-                    controller: 'assetMaintainCtrl'
+                .state('assetFunds', {
+                    url: '/assetFunds',
+                    templateUrl: 'app/modules/masterData/fundingList.html',
+                    controller: 'masterDataCtrl',
+                    resolve: {
+                        loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                insertBefore: '#css-assets',
+                                serie: true,
+                                files: [
+                                    'bower_components/zingchart/client/zingchart.min.js',
+                                    'bower_components/ZingChart-AngularJS/src/zingchart-angularjs.js',
+                                ]
+                            });
+                        }]
+                    }
                 })
-                 .state('depreciationReport', {
-                    url: '/depreciationReport',
-                    templateUrl: 'app/modules/assets/depreciationReport.html',
-                    controller: 'assetMasterCtrl'
+                .state('contracts', {
+                    url: '/contracts',
+                    templateUrl: 'app/modules/masterData/contracts.html',
+                    controller: 'masterDataCtrl'
                 })
-                .state('assetMaintanance', {
-                    url: '/assetMaintanance',
-                    templateUrl: 'app/modules/assets/assetMaintanance.html',
-                    controller: 'assetMasterCtrl'
-
-                })
+                
                 .state('masterData', {
                     url: '/masterData',
                     templateUrl: 'app/modules/assets/masterData.html',
@@ -160,12 +197,29 @@
                 })
                 .state('institution', {
                     url: '/institution',
-                    templateUrl: 'app/modules/assets/institution.html',
+                    templateUrl: 'app/modules/masterData/institution.html',
                     controller: 'masterDataCtrl'
-
                 })
-
-
+                .state('manufacturer', {
+                    url: '/manufacturer',
+                    templateUrl: 'app/modules/masterData/manufacturer.html',
+                    controller: 'masterDataCtrl'
+                })
+                .state('category', {
+                    url: '/category',
+                    templateUrl: 'app/modules/masterData/category.html',
+                    controller: 'masterDataCtrl'
+                })
+                .state('model', {
+                    url: '/model',
+                    templateUrl: 'app/modules/masterData/model.html',
+                    controller: 'masterDataCtrl'
+                })
+                .state('supplier', {
+                    url: '/supplier',
+                    templateUrl: 'app/modules/masterData/supplier.html',
+                    controller: 'masterDataCtrl'
+                })
                 .state('licenseMaster', {
                     url: '/licenseMaster',
                     templateUrl: 'app/modules/license/licenseMaster.html',

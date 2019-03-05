@@ -3,6 +3,9 @@ var manufacturerDao = require('../daos/masterDataDao');
 var modelDao = require('../daos/modelDao');
 var categoriesDao = require('../daos/categoryDao');
 var supplierDao =require('../daos/supplierDao');
+var insuranceDao=require('../daos/insuranceDao');
+var fundDao=require('../daos/fundDao');
+var contractDao=require('../daos/contractDao');
 var mongodb = require('../daos/MongodDbUtil');
 var config = require('../config/config.' + process.env.NODE_ENV);
 var entitiesRemoteUrl = config.entitiesRemoteUrl;
@@ -15,7 +18,7 @@ function getAllInstitution(callback) {
     institutionDao.getAll(callback);
 }
 function updateInstitution(id, detailsToUpdate, callback) {
-    institutionDao.update(id, detailsToUpdate, callback);
+    institutionDao.updateById(id, detailsToUpdate, callback);
 }
 function deleteInstitution(id, callback) {
     institutionDao.remove(id.id, callback);
@@ -28,7 +31,7 @@ function getAllManufacturer(callback) {
     manufacturerDao.getAll(callback);
 }
 function updateManufacturer(id, detailsToUpdate, callback) {
-    manufacturerDao.update(id, detailsToUpdate, callback);
+    manufacturerDao.updateById(id, detailsToUpdate, callback);
 }
 function deleteManufacturer(id, callback) {
     manufacturerDao.remove(id.id, callback);
@@ -40,8 +43,8 @@ function createCategories(recordToInsert, callback) {
 function getAllCategories(callback) {
     categoriesDao.getAll(callback);
 }
-function updateCategories(id, detailsToUpdate, callback) {
-    categoriesDao.update(id, detailsToUpdate, callback);
+function updateCategory(id, detailsToUpdate, callback) {
+    categoriesDao.updateById(id, detailsToUpdate, callback);
 }
 function deleteCategories(id, callback) {
     categoriesDao.remove(id.id, callback);
@@ -54,7 +57,7 @@ function getAllModel(callback) {
     modelDao.getAll(callback);
 }
 function updateModel(id, detailsToUpdate, callback) {
-    modelDao.update(id, detailsToUpdate, callback);
+    modelDao.updateById(id, detailsToUpdate, callback);
 }
 function deleteModel(id, callback) {
     modelDao.remove(id.id, callback);
@@ -67,10 +70,57 @@ function getAllSupplier(callback) {
     supplierDao.getAll(callback);
 }
 function updateSupplier(id, detailsToUpdate, callback) {
-    supplierDao.update(id, detailsToUpdate, callback);
+    supplierDao.updateById(id, detailsToUpdate, callback);
 }
 function deleteSupplier(id, callback) {
     supplierDao.remove(id.id, callback);
+}
+
+function createInsurance(recordToInsert, callback) {
+    insuranceDao.create(recordToInsert, callback);
+}
+function getAllInsurance(callback) {
+    insuranceDao.getAll(callback);
+}
+function readInsuranceById(id, callback) {
+    assetDao.getById(id, callback);
+}
+function updateInsurance(id, detailsToUpdate, callback) {
+    insuranceDao.updateById(id, detailsToUpdate, callback);
+}
+function deleteInsurance(id, callback) {
+    insuranceDao.remove(id.id, callback);
+}
+
+function createFund(recordToInsert, callback) {
+    fundDao.create(recordToInsert, callback);
+}
+function getAllFund(callback) {
+    fundDao.getAll(callback);
+}
+function readFundById(id, callback) {
+    assetDao.getById(id, callback);
+}
+function updateFund(id, detailsToUpdate, callback) {
+    fundDao.updateById(id, detailsToUpdate, callback);
+}
+function deleteFund(id, callback) {
+    fundDao.remove(id.id, callback);
+}
+function createContract(recordToInsert, callback) {
+    contractDao.create(recordToInsert, callback);
+}
+function getAllContract(callback) {
+    contractDao.getAll(callback);
+}
+function readContractById(id, callback) {
+    assetDao.getById(id, callback);
+}
+function updateContract(id, detailsToUpdate, callback) {
+    contractDao.updateById(id, detailsToUpdate, callback);
+}
+function deleteContract(id, callback) {
+    contractDao.remove(id.id, callback);
 }
 
 module.exports.createInstitution = createInstitution;
@@ -85,7 +135,7 @@ module.exports.deleteManufacturer = deleteManufacturer;
 
 module.exports.createCategories = createCategories;
 module.exports.getAllCategories = getAllCategories;
-module.exports.updateCategories = updateCategories;
+module.exports.updateCategory = updateCategory;
 module.exports.deleteCategories = deleteCategories;
 
 module.exports.createModel = createModel;
@@ -97,3 +147,21 @@ module.exports.createSupplier = createSupplier;
 module.exports.getAllSupplier = getAllSupplier;
 module.exports.updateSupplier = updateSupplier;
 module.exports.deleteSupplier = deleteSupplier;
+
+module.exports.createInsurance = createInsurance;
+module.exports.getAllInsurance = getAllInsurance;
+module.exports.updateInsurance = updateInsurance;
+module.exports.deleteInsurance = deleteInsurance;
+module.exports.readInsuranceById=readInsuranceById;
+
+module.exports.createFund = createFund;
+module.exports.getAllFund = getAllFund;
+module.exports.updateFund = updateFund;
+module.exports.deleteFund = deleteFund;
+module.exports.readFundById=readFundById;
+
+module.exports.createContract=createContract;
+module.exports.getAllContract=getAllContract;
+module.exports.updateContract=updateContract;
+module.exports.deleteContract=deleteContract;
+module.exports.readContractById=readContractById;

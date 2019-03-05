@@ -30,8 +30,6 @@
             $scope.dataMode = "EDIT";
             $('#institution-modal').modal("show");
             $scope.newInstitution = JSON.parse(JSON.stringify(asset));
-            //alert("item updated Successfully");
-
         }
         $scope.updateInstitution = function () {
             delete $scope.newInstitution.$$hashKey
@@ -46,6 +44,7 @@
                 alert("item updated Successfully");
             })
         }
+
         $scope.removeInstitution = function (index) {
             $scope.newInstitution.splice(index, 1);
         }
@@ -91,9 +90,10 @@
             //alert("item updated Successfully");
 
         }
-        $scope.updateCategories = function () {
+
+        $scope.updateCategory = function () {
             delete $scope.newCategory.$$hashKey
-            assetMasterValueService.updateCategories($scope.newCategory._id, $scope.newCategory, function (err, res) {
+            assetMasterValueService.updateCategory($scope.newCategory._id, $scope.newCategory, function (err, res) {
                 if (!err) {
                     var index = $scope.categoryValue.findIndex(function (data) {
                         return data._id == $scope.newCategory._id;
@@ -153,7 +153,7 @@
         }
         $scope.updateManufacturer = function () {
             delete $scope.newManufacturer.$$hashKey
-            assetMasterValueService.updateManufacturert($scope.newManufacturer._id, $scope.newManufacturer, function (err, res) {
+            assetMasterValueService.updateManufacturer($scope.newManufacturer._id, $scope.newManufacturer, function (err, res) {
                 if (!err) {
                     var index = $scope.manufacturerValue.findIndex(function (data) {
                         return data._id == $scope.newManufacturer._id;
@@ -294,80 +294,172 @@
                 $scope.supplierValue.splice($scope.deleteIndex, 1);
             })
         }
-        $scope.deleteModelSure = function () {
-            assetMasterValueService.deleteModel($scope.modelValue[$scope.deleteIndex]._id, function (err, res) {
-                $("#modelDeleteModal").modal('hide');
-                $scope.modelValue.splice($scope.deleteIndex, 1);
+
+        $scope.newInsurance = {};
+        $scope.insuranceValue = [];
+        $scope.dataMode = "ADD";
+
+        function loadInitialInsurance() {
+            assetMasterValueService.getAllInsurance(function (err, res) {
+                if (!err) {
+                    $scope.insuranceValue = res;
+                }
+            })
+        }
+        loadInitialInsurance();
+        $scope.saveInsurance = function () {
+            assetMasterValueService.createInsurance($scope.newInsurance, function (err, res) {
+                if (!err) {
+                    $scope.insuranceValue.push($scope.newInsurance);
+                    $('#insurance-modal').modal("hide");
+                    alert("Data inserted successfully");
+                }
+            })
+        }
+        $scope.setEnvironmentForInsuranceEdit = function (asset) {
+            $scope.dataMode = "EDIT";
+            $('#insurance-modal').modal("show");
+            $scope.newInsurance = JSON.parse(JSON.stringify(asset));
+        }
+        $scope.updateInsurance = function () {
+            delete $scope.newInsurance.$$hashKey
+            assetMasterValueService.updateInsurance($scope.newInsurance._id, $scope.newInsurance, function (err, res) {
+                if (!err) {
+                    var index = $scope.insuranceValue.findIndex(function (data) {
+                        return data._id == $scope.newInsurance._id;
+                    })
+                    $scope.insuranceValue[index] = $scope.newInsurance;
+                    $('#institution-modal').modal('hide');
+                }
+                alert("item updated Successfully");
             })
         }
 
+        $scope.removeInsurance = function (index) {
+            $scope.newInsurance.splice(index, 1);
+        }
+
+        $scope.insuranceDeleteModal = function (index) {
+            $("#insuranceDeleteModal").modal({ backdrop: 'static', keyboard: false });
+            $scope.deleteIndex = index;
+        }
+
+        $scope.deleteInsuranceSure = function () {
+            assetMasterValueService.deleteInsurance($scope.insuranceValue[$scope.deleteIndex]._id, function (err, res) {
+                $("#insuranceDeleteModal").modal('hide');
+                $scope.insuranceValue.splice($scope.deleteIndex, 1);
+            })
+        }
+
+        $scope.newFund = {};
+        $scope.fundValue = [];
+        $scope.dataMode = "ADD";
+        function loadInitialFund() {
+            assetMasterValueService.getAllFund(function (err, res) {
+                if (!err) {
+                    $scope.fundValue = res;
+                }
+            })
+        }
+        loadInitialFund();
+        $scope.saveFund = function () {
+            assetMasterValueService.createFund($scope.newFund, function (err, res) {
+                if (!err) {
+                    $scope.fundValue.push($scope.newFund);
+                    $('#add_fund').modal("hide");
+                    alert("Data inserted successfully");
+                }
+            })
+        }
+        $scope.setEnvironmentForFundEdit = function (asset) {
+            $scope.dataMode = "EDIT";
+            $('#add_fund').modal("show");
+            $scope.newFund = JSON.parse(JSON.stringify(asset));
+        }
+        $scope.updateFund = function () {
+            delete $scope.newFund.$$hashKey
+            assetMasterValueService.updateFund($scope.newFund._id, $scope.newFund, function (err, res) {
+                if (!err) {
+                    var index = $scope.fundValue.findIndex(function (data) {
+                        return data._id == $scope.newFund._id;
+                    })
+                    $scope.fundValue[index] = $scope.newFund;
+                    $('#add_fund').modal('hide');
+                }
+                alert("item updated Successfully");
+            })
+        }
+
+        $scope.removeFund = function (index) {
+            $scope.newFund.splice(index, 1);
+        }
+
+        $scope.fundDeleteModal = function (index) {
+            $("#fundDeleteModal").modal({ backdrop: 'static', keyboard: false });
+            $scope.deleteIndex = index;
+        }
+
+        $scope.deleteFundSure = function () {
+            assetMasterValueService.deleteFund($scope.fundValue[$scope.deleteIndex]._id, function (err, res) {
+                $("#fundDeleteModal").modal('hide');
+                $scope.fundValue.splice($scope.deleteIndex, 1);
+            })
+        }
+
+        $scope.newContract = {};
+        $scope.contractValue = [];
+        $scope.dataMode = "ADD";
+        function loadInitialContract() {
+            assetMasterValueService.getAllContract(function (err, res) {
+                if (!err) {
+                    $scope.contractValue = res;
+                }
+            })
+        }
+        loadInitialContract();
+        $scope.saveContract = function () {
+            assetMasterValueService.createContract($scope.newContract, function (err, res) {
+                if (!err) {
+                    $scope.contractValue.push($scope.newContract);
+                    $('#add_contract').modal("hide");
+                    alert("Data inserted successfully");
+                }
+            })
+        }
+        $scope.setEnvironmentForContractEdit = function (asset) {
+            $scope.dataMode = "EDIT";
+            $('#add_contract').modal("show");
+            $scope.newContract = JSON.parse(JSON.stringify(asset));
+        }
+        $scope.updateContract = function () {
+            delete $scope.newContract.$$hashKey
+            assetMasterValueService.updateContract($scope.newContract._id, $scope.newContract, function (err, res) {
+                if (!err) {
+                    var index = $scope.contractValue.findIndex(function (data) {
+                        return data._id == $scope.newContract._id;
+                    })
+                    $scope.contractValue[index] = $scope.newContract;
+                    $('#add_contract').modal('hide');
+                }
+                alert("item updated Successfully");
+            })
+        }
+
+        $scope.removeContract = function (index) {
+            $scope.newContract.splice(index, 1);
+        }
+        $scope.contractDeleteModal = function (index) {
+            $("#contractDeleteModal").modal({ backdrop: 'static', keyboard: false });
+            $scope.deleteIndex = index;
+        }
+
+        $scope.deleteContractSure = function () {
+            assetMasterValueService.deleteContract($scope.contractValue[$scope.deleteIndex]._id, function (err, res) {
+                $("#contractDeleteModal").modal('hide');
+                $scope.contractValue.splice($scope.deleteIndex, 1);
+            })
+        }
     }
 })();
 
 
-
-
-
-
-
-// (function () {
-//     'use strict';
-//     var App = angular.module('app');
-//     App.controller('masterDataCtrl', masterDataCtrl);
-//     masterDataCtrl.$inject = ['$scope', 'assetMasterValueService'];
-//     function masterDataCtrl($scope, assetMasterValueService) {
-//         //alert("Welcome to Master");
-
-//         $scope.masterData = {};
-//         $scope.masterDataValue = [];
-//         $scope.dataMode = "ADD";
-//         function loadInitial() {
-//             assetMasterValueService.getAllMasterData(function (err, res) {
-//                 if (!err) {
-//                     $scope.masterDataValue = res;
-//                 }
-//             })
-//         }
-//         loadInitial();
-
-//         $scope.saveMasterData = function () {
-
-//             assetMasterValueService.createMasterData($scope.masterData, function (err, res) {
-//                 if (!err) {
-//                     $scope.masterDataValue.push($scope.masterData);
-//                     alert("Item inserted Successfully");
-//                 }
-
-//             })
-//         }
-//         $scope.setMasterDataForEdit = function (masterData) {
-//             $scope.masterData = JSON.parse(JSON.stringify(masterData));
-//             $scope.dataMode = "EDIT";
-//             $("#basic-modal").modal({ backdrop: 'static', keyboard: false });
-//         }
-//         $scope.saveEditedMasterData = function () {
-//             assetMasterValueService.updateMasterData($scope.masterData._id, $scope.masterData, function (err, res) {
-//                 $scope.masterData.forEach(function (masterdata, index) {
-//                     if (masterdata._id == $scope.masterData._id) {
-//                         $scope.masterData[index] = $scope.masterData;
-//                     }
-//                 })
-//             })
-//             $("#basic-modal").modal('hide');
-//         }
-//         $scope.removeMasterData = function (index) {
-//             $scope.masterDataValue.splice(index, 1);
-//         }
-//         $scope.askDeleteModal = function (index) {
-//             $("#askDeleteModal").modal({ backdrop: 'static', keyboard: false });
-//             $scope.deleteIndex = index;
-//         }
-//         $scope.deleteMasterDataSure = function (masterData) {
-//             assetMasterValueService.deleteMasterData($scope.deleteIndex, function (err, res) {
-//                 console.log("success")
-//             })
-//             $scope.masterDataValue.splice($scope.deleteIndex, 1);
-//             $("#askDeleteModal").modal('hide');
-//         }
-//     }
-// })();

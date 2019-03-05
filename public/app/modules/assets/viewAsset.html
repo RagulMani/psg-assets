@@ -8,90 +8,477 @@
 </ol>
 <section class="content">
     <div class="element-wrapper">
-        <h1 class="element-title">Asset View</h1>
+        <h1 class="element-title">Assets</h1>
         <div class="element-actions">
-            <button class="btn btn-primary btn-sm mr-1 mb-2" data-toggle="collapse" data-target="#drawerFilter">
-                <i class="fas fa-plus"></i>Filters</button>
+            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#assetModal"><i
+                    class="la la-plus-circle"></i>Add an Asset</button>
+            <button class="btn btn-sm btn-primary" data-toggle="collapse" data-target="#drawerFilter"><i
+                    class="la la-filter"></i>Filters</button>
         </div>
     </div>
-    <div class="sidebar-drawer-overlay collapse" id="drawerFilter">
-        <div class="sidebar-drawer">
-            <div class="sidebar-drawer-header d-flex">
-                <div class="flex-grow-1 text-white">Filters</div>
-                <a class="nav-link py-0" data-toggle="collapse" data-target="#drawerFilter">
-                        <i class="fas fa-times">x</i>
-                    </a>
-            </div>
-            <div class="sidebar-drawer-body">
-                <div class="w-100" id="sidebarBody">
-                    <!--company -->
-                    <div class="card">
-                        <div class="card-header d-flex"> <span class="flex-grow-1">Institution Name </span> <a
-                                class="link mr-4" ng-click="clearAllFilter('clearcname')">Clear</a> <a
-                                class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
-                                data-target="#sidebarCategory1"><i class="fa fa-angle-up"></i></a>
-                        </div>
-                        <div class="card-body collapse show" id="sidebarCategory1">
-                            <label class="option d-block" ng-repeat="asset in assetMasterValue| filter:assetOrganaization">
-                                <input type="checkbox">
-                                <span class="checkbox" ng-click="assetFilter(asset.assetOrganaization)"></span>
-                                {{asset.assetOrganaization}} </label>
+    <div class="card">
+        <div class="card-body1">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-header">
+                        <div class="standard-table-collapsible-header px-0">
+                            <div class="row mx-0">
+                                <div class="col-md-10"></div>
+                                <div class="col-md-2 text-right border-right">
+                                    <div class="input-group input-group-sm py-2">
+                                        <input type="text" class="form-control" ng-model="search" placeholder="Search"
+                                            aria-label="Search" aria-described by="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button"> <i
+                                                    class="la la-search mr-0"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Domain -->
-                    <div class="card">
-                        <div class="card-header d-flex"> <span class="flex-grow-1">Domain </span> <a class="link mr-4"
-                                ng-click="clearAllFilter('clearJtitle');">Clear</a> <a
-                                class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
-                                data-target="#sidebarCategory2"><i class="fa fa-angle-up"></i></a>
+                    <table class="standard-table table-border not-responsive">
+                        <thead>
+                            <tr>
+                                <th>Asset Tag ID</th>
+                                <th>Description</th>
+                                <th>Brand</th>
+                                <th>Purchase Date</th>
+                                <th class="text-center" width="200">Cost</th>
+                                <th class="text-center" width="200">Status</th>
+                                <th class="text-center" width="100">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr ng-repeat="asset in assetMasterValue track by $index | filter:search "> -->
+                            <tr ng-repeat="asset in assetMasterValue  | filter:search ">
+                                <td data-title="Asset Tag"><a class="nav-link page-scroll"
+                                        data-ui-sref="editAsset({assetId:asset._id})" data-ui-sref-active="active"
+                                        data-toggle="collapse"
+                                        data-target=".megamenu-collapse.show">{{asset.assetTagId}}</a>
+                                </td>
+                                <td data-title="Asset Description">{{asset.assetDescription}}</td>
+                                <td data-title="asset Brand">{{asset.assetBrand}}
+                                    <!-- <img class="card-img"
+                                                    src="{{asset.fileAttachmentDetails.imageUrl}}">  -->
+                                </td>
+                                <td data-title="Asset Purchase Date">{{asset.assetPurchaseDate}}</td>
+                                <td data-title="Asset Cost" style="text-align:right">₹.{{asset.assetPurchaseCost}}</td>
+                                <td data-title="Asset Status">{{asset.assetStatus}}</td>
+                                <td data-title="Action" class="action">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <a class="btn btn-table btn-sm rounded-0 py-0"
+                                                ng-click="setEnvironmentForEdit(asset)" data-toggle="modal">
+                                                <i class="la la-edit"></i> Edit </a>
+                                            <a class="btn btn-table btn-sm rounded-0 py-0"
+                                                ng-click="confirmModal($index)"> <i class="la la-trash"></i>
+                                                Delete </a> <a class="more-action" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"><i
+                                                    class="la la-ellipsis-v"></i> </a>
+                                            <div class="dropdown-menu py-0" aria-labelledby="moduleversion">
+                                                <ul class="list-group my-0">
+                                                    <li class="list-group-item"><a><i
+                                                                class="la la-sign-out mr-1"></i>Check Out</a></li>
+                                                    <li class="list-group-item"><a><i
+                                                                class="la la-sign-in mr-1"></i>Lease</a></li>
+                                                    <li class="list-group-item"><a><i
+                                                                class="la la-thumbs-down mr-1"></i>Lost/Missing</a></li>
+                                                    <li class="list-group-item"><a><i
+                                                                class="la la-wrench mr-1"></i>Repair</a></li>
+                                                    <li class="list-group-item"><a><i
+                                                                class="la la-unlink mr-1"></i>Broken</a></li>
+                                                    <li class="list-group-item"><a><i
+                                                                class="la la-tag mr-1"></i>Sell</a></li>
+                                                    <li class="list-group-item"><a><i
+                                                                class="la la-heart mr-1"></i>Donate</a></li>
+                                                    <li class="list-group-item"><a><i
+                                                                class="la la-exchange mr-1"></i>Reallocate</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="modal fade" id="assetModal" data-keyboard="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" ng-if="dataMode == 'ADD'">Add Asset</h6>
+                <h6 class="modal-title" ng-if="dataMode == 'EDIT'">Edit Asset</h6>
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">×</span>
+                    <span class="sr-only">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="newAssetform">
+                        <h3 class="subtitle">Basic Information</h3>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="assetId" class="control-label">Asset Tag ID</label>
+                                <input type="text" class="form-control form-control-sm" id="assetTagId" name="Asset TagId"
+                                    validation="required" ng-model="newAsset.assetTagId">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="assetName" class="control-label">Asset Name</label>
+                                <input type="text" class="form-control form-control-sm" id="assetName" validation="required"
+                                    ng-model="newAsset.assetName">
+                            </div>
                         </div>
-                        <div class="card-body collapse show" id="sidebarCategory2">
-                            <label class="option d-block" ng-repeat="job in jobarr | orderBy">
-                                <input ng-checked="JtitleActive[Jtilte]" ng-model='JtilteActive[Jtitle]'
-                                    ng-change="filterSelect(Jtitle, JtitleActive[Jtitle], 'dataJtitle')"
-                                    type="checkbox">
-                                <span class="checkbox" ng-click="domain(job.Jtitle)"></span> {{job.Jtitle}} </label>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="assetPurchaseCost" class="control-label">Cost</label>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend"> <span class="input-group-text font-wwight-bold">&#8377;</span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" id="assetPurchaseCost"
+                                        ng-model="newAsset.assetPurchaseCost">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <label for="assetPurchaseDate">Purchase Date</label>
+                                        <div class="input-group">
+                                            <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
+                                                fp-opts="dateOpts1" ng-model="newAsset.assetPurchaseDate">
+                                            <div class="input-group-append"> <span class="input-group-text"><i
+                                                        class="la la-calendar"></i></span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12 col-md-6">
+                                        <label for="vendor">Purchased From</label>
+                                        <input type="text" class="form-control form-control-sm" id="vendor"
+                                            ng-model="newAsset.vendor">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="assetSerialNumber" class="control-label">Serial Number</label>
+                                <input type="text" class="form-control form-control-sm" id="assetSerialNumber"
+                                    ng-model="newAsset.assetSerialNumber">
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <label for="assetbrand">Brand</label>
+                                        <input type="text" class="form-control form-control-sm" id="assetBrand"
+                                            ng-model="newAsset.assetBrand">
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <label for="assetmodel">Model</label>
+                                        <input type="text" class="form-control form-control-sm" id="assetModel"
+                                            ng-model="newAsset.assetModel">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="subtitle mt-4" id="Personal">Institution, Location, Department & Category</h3>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-3">
+                                <label for="institutionName">Institution</label>
+                                <div class="column">
+                                    <ui-select ng-model="newAsset.institution" title="Select">
+                                        <ui-select-match placeholder="Select">{{ $select.selected.institutionName }}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in (institutions | filter: $select.search)">
+                                            <div ng-bind="item.institutionName"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+            
+                            </div>
+                            <div class="form-group col-xs-12 col-md-3">
+                                <label for="assetLocation">Location</label>
+                                <select required class="form-control custom-select form-control-sm" id="assetLocation"
+                                    ng-model="newAsset.assetLocation">
+                                    <option disabled selected>Please Select Location</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-3">
+                                <label for="assetDepartment">Department</label>
+                                <div class="column">
+                                    <ui-select ng-model="newAsset.institution" title="Select">
+                                        <ui-select-match placeholder="Select">{{ $select.selected.DepartmentName }}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in (institutions | filter: $select.search)">
+                                            <div ng-bind="item.DepartmentName"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-3">
+                                <label for="assetCategory">Category</label>
+                                <div class="column">
+                                    <ui-select ng-model="newAsset.Category" title="Select">
+                                        <ui-select-match placeholder="Select">{{ $select.selected.CategoryName}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in (categories | filter: $select.search)">
+                                            <div ng-bind="item.CategoryName"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="subtitle mt-4">Depreciation</h3>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group form-group-sm mb-2">
+                                    <label for="depreciable_asset" class="col-form-label">Depreciable Asset</label>
+                                    <div class="option-group">
+                                        <label class="option">
+                                            <input name="payment" checked="" type="radio" ng-model="newAsset.assetDepreciationYes">
+                                            <span class="radio"></span> Yes </label>
+                                        <label class="option">
+                                            <input name="payment" type="radio" ng-model="newAsset.assetDepreciationNo">
+                                            <span class="radio"></span> No </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group w-100">
+                                    <label for="depriciationDate">Date Acquired</label>
+                                    <div class="input-group">
+                                        <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
+                                            fp-opts="dateOpts1" ng-model="newAsset.depriciationDate">
+                                        <div class="input-group-append"> <span class="input-group-text"><i
+                                                    class="la la-calendar"></i></span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="form-group form-group-sm mb-2">
+                                            <label for="assetDepreciationCost">Depreciable Cost</label>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend"> <span
+                                                        class="input-group-text font-wwight-bold">&#8377;</span> </div>
+                                                <input type="text" class="form-control form-control-sm" id="assetDepreciationCost"
+                                                    ng-model="newAsset.assetDepreciationCost">
+                                            </div>
+                                            <span class="help-block">including sales tax, freight and installation</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="form-group form-group-sm mb-2">
+                                            <label for="assetDepreciationMethod" class="control-label">Depreciation Method</label>
+                                            <select required class="form-control custom-select form-control-sm"
+                                                id="assetDepreciationMethod" ng-model="newAsset.assetDepreciationMethod">
+                                                <option selected="selected" value="1"></option>
+                                                <option value="Staight Line Depreciation"> Staight Line Depreciation</option>
+                                                <option value="Double Declining Balance">Double Declining Balance</option>
+                                                <option value="150% Declining Balance">150% Declining Balance</option>
+                                                <option value="Sum of the Years' Digits">Sum of the Years' Digits</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <label for="assetLife">Asset Life</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control form-control-sm" id="assetLife"
+                                                ng-model="newAsset.assetLife">
+                                            <div class="input-group-append"> <span class="input-group-text font-wwight-bold">in
+                                                    months</span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <label for="assetSalvageValue">Salvage Value</label>
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend"> <span
+                                                    class="input-group-text font-wwight-bold">&#8377;</span> </div>
+                                            <input type="text" class="form-control form-control-sm" id="assetSalvageValue"
+                                                ng-model="newAsset.assetSalvageValue">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="subtitle mt-4" id="Personal">Funding Source</h3>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="fundingSource">Department</label>
+                                <div class="column">
+                                    <ui-select ng-model="newAsset.fund" title="Select">
+                                        <ui-select-match placeholder="Select">{{ $select.selected.fundName }}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in (fundValues | filter: $select.search)">
+                                            <div ng-bind="item.fundName"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-6">
+                                <label for="amountDebit" class="control-label">Amount Debited</label>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend"> <span class="input-group-text font-wwight-bold">&#8377;</span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" id="amountDebit"
+                                        ng-model="newAsset.amountDebit">
+                                </div>
+                                <span class="help-block">Funds utilized for this purchase</span>
+                            </div>
+                        </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group float-right mt-3">
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary mr-1 ">Cancel</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-success" ng-if="dataMode=='ADD'"
+                        ng-click="saveAsset()">Submit</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-success" ng-if="dataMode=='EDIT'"
+                        ng-click="updateAsset()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sidebar-drawer-overlay collapse" id="drawerFilter">
+    <div class="sidebar-drawer">
+        <div class="sidebar-drawer-header d-flex">
+            <div class="flex-grow-1 text-white">Filters</div>
+            <a class="nav-link py-0" data-toggle="collapse" data-target="#drawerFilter"><i
+                    class="la la-times drawer-close"></i></a>
+        </div>
+        <div class="sidebar-drawer-body">
+            <div class="w-100" id="sidebarBody">
+
+                <!-- Site -->
+
+                <div class="card">
+                    <div class="card-header d-flex"> <span class="flex-grow-1">Institution</span> <a
+                            class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
+                            data-target="#sidebarCategory1"><i class="la la-angle-up"></i></a> </div>
+                    <div class="card-body collapse show" id="sidebarCategory1">
+                        <select class="custom-select form-control form-control-sm" id="assetOrganaization"
+                            meterial-select ng-model="item.assetOrganaization"
+                            ng-options="asset as asset.assetOrganaization for asset in newOrg">
+                            <option value="">All Institutions..</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Location -->
+
+                <div class="card">
+                    <div class="card-header d-flex"> <span class="flex-grow-1">Location</span> <a
+                            class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
+                            data-target="#sidebarCategory3"><i class="la la-angle-up"></i></a> </div>
+                    <div class="card-body collapse show" id="sidebarCategory3">
+                        <select class="form-control custom-select" data-val="true" id="assetLocation" meterial-select
+                            ng-model="item.assetLocation"
+                            ng-options="asset as asset.assetLocation for asset in newLocation">
+                            <option value="">All Locations..</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Category -->
+
+                <div class="card">
+                    <div class="card-header d-flex"> <span class="flex-grow-1">Category </span> <a
+                            class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
+                            data-target="#sidebarCategory4"><i class="la la-angle-up"></i></a> </div>
+                    <div class="card-body collapse show" id="sidebarCategory4">
+                        <select class="form-control custom-select" data-val="true" id="assetCategoryType"
+                            meterial-select ng-model="item.assetCategoryType"
+                            ng-options="asset as asset.assetCategoryType for asset in newCate">>
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Department -->
+
+                <div class="card">
+                    <div class="card-header d-flex"> <span class="flex-grow-1">Department</span> <a
+                            class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
+                            data-target="#sidebarCategory5"><i class="la la-angle-up"></i></a> </div>
+                    <div class="card-body collapse show" id="sidebarCategory5">
+                        <select class="custom-select form-control form-control-sm" id="assetDepartment" meterial-select
+                            ng-model="item.assetDepartment"
+                            ng-options="asset as asset.assetDepartment for asset in newDept">
+                            <option value="">All Departments</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Status -->
+
+                <div class="card">
+                    <div class="card-header d-flex"> <span class="flex-grow-1">Status</span> <a
+                            class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
+                            data-target="#sidebarCategory6"><i class="la la-angle-up"></i></a> </div>
+                    <div class="card-body collapse show" id="sidebarCategory6">
+                        <select class="form-control custom-select" id="assetStatus" meterial-select
+                            ng-model="item.assetStatus" ng-options="asset as asset.assetStatus for asset in newStatus">
+                            <option value="">Any Status</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Asset Date -->
+
+                <div class="card">
+                    <div class="card-header d-flex"> <span class="flex-grow-1">Asset Purchase Date</span> <a
+                            class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
+                            data-target="#sidebarCategory7"><i class="la la-angle-up"></i></a> </div>
+                    <div class="card-body collapse show" id="sidebarCategory7">
+                        <div class="form-group">
+                            <label class="control-label" for="QuickDateRange">Quick Date Range</label>
+                            <select class="form-control custom-select valid" id="QuickDateRange" name="QuickDateRange">
+                                <option selected="selected" value="0">...</option>
+                                <option value="2019">Current Year</option>
+                                <option value="2018">Year 2018</option>
+                                <option value="2017">Year 2017</option>
+                                <option value="2016">Year 2016</option>
+                                <option value="2015">Year 2015</option>
+                                <option value="2014">Year 2014</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="CustomDateRange_1">Custom Date Range</label>
+                            <div class="input-group input-group-sm finput-daterange">
+                                <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
+                                    fp-opts="dateOpts1" ng-model="item.fromDate">
+                                <div class="input-group-append">
+                                    <label class="input-group-text border-right-0" for="inputGroupSelect02">to</label>
+                                </div>
+                                <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
+                                    fp-opts="dateOpts2" ng-model="item.endDate">
+                            </div>
                         </div>
                     </div>
                 </div>
-</section>
+            </div>
+            <div class="col-lg-12">
 
-<div class="row mb-4">
-    <div class="col-12">
-        <div class="table-container  p-3">
-            <div class="table-body">
-                <table id="dropouts-table" class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th width="25%">Asset Name</th>
-                            <th>Asset Tag</th>
-                            <th>Asset Image</th>
-                            <th>Serial Number</th>
-                            <th>Asset Model</th>
-                            <th>Asset Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="asset in assetMasterValue ">
-                            <td data-title="Asset Name"><a class="nav-link page-scroll"
-                                    data-ui-sref="editAsset({assetId:asset._id})" data-ui-sref-active="active"
-                                    data-toggle="collapse" data-target=".megamenu-collapse.show">{{asset.assetName}}</a>
-                            </td>
-                            <td data-title="Asset Tag">{{asset.assetTag}}</td>
-                            <td data-title="asset Image"><img class="card-img"
-                                    src="{{asset.fileAttachmentDetails.imageUrl}}"> </td>
-                            <td data-title="Serial Number">{{asset.assetSerialNumber}}</td>
-                            <td data-title="Asset Model">{{asset.assetModel}}</td>
-                            <td data-title="Asset Status">{{asset.assetStatus}}</td>
-                            <td>
-                                <a class="btn btn-sm btn-block btn-danger rounded-0 py-0 text-white"
-                                    ng-click="confirmModal($index)" data-toggle="modal">
-                                    <i class="la la-trash"></i> Delete </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="form-group float-right mt-3">
+                    <a class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"></a>
+                    <label class="my-0 col-12"> &nbsp; </label>
+                    <button class="btn btn-sm btn-table mx-1" data-dismiss="sidebar-drawer"
+                        ng-click="assetFilter()">Go</button>
+                </div>
             </div>
         </div>
     </div>

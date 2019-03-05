@@ -2,23 +2,31 @@
     'use strict';
     var App = angular.module('app');
     App.controller('assetMasterCtrl', assetMasterCtrl);
-    assetMasterCtrl.$inject = ['$scope', 'assetMasterService', '$timeout', '$window', 'assetMaintainService'];
-    function assetMasterCtrl($scope, assetMasterService, $timeout, $window, assetMaintainService) {
+    assetMasterCtrl.$inject = ['$scope', 'assetMasterService', '$timeout', '$window', 'assetMasterValueService'];
+    function assetMasterCtrl($scope, assetMasterService, $timeout, $window, assetMasterValueService) {
 
         $scope.goToAsset = function (asset) {
             $state.go('assetMaster', { asset: asset });
         }
-        //alert("welcome");
         $scope.newAsset = {};
         $scope.assetMasterValue = [];
         $scope.assetFilter = [];
         $scope.asset = [];
         $scope.assetMaintainValue = [];
+        $scope.newData = [];
         $scope.dataMode = "ADD";
+        $scope.item = {};
         function loadInitial() {
             assetMasterService.getAllAsset(function (err, res) {
                 if (!err) {
                     $scope.assetMasterValue = res;
+                    $scope.allData = res;
+                    $scope.newOrg = unique("assetOrganaization");
+                    $scope.newDept = unique("assetDepartment");
+                    $scope.newLocation = unique("assetLocation");
+                    $scope.newCate = unique("assetCategoryType");
+                    $scope.newStatus = unique("assetStatus");
+                    // straightLine(allData);
                     angular.element('#filterResult').toggle();
                     $('#dropouts-table').DataTable().clear();
                     $('#dropouts-table').DataTable().destroy();
@@ -31,6 +39,33 @@
             })
         }
         loadInitial();
+        assetMasterValueService.getAllInstitution(function (err, res) {
+            if (!err) {
+                $scope.institutions = res;
+            }
+        })
+        assetMasterValueService.getAllCategories(function(err,res){
+            if(!err){
+                $scope.categories=res;
+            }
+        })
+        assetMasterValueService.getAllInsurance(function(err,res){
+            if(!err){
+                $scope.insuranceValues=res;
+            }
+        })
+        assetMasterValueService.getAllContract(function(err,res){
+            if(!err){
+                $scope.contractValues=res;
+            }
+        })
+        assetMasterValueService.getAllFund(function(err,res){
+            if(!err){
+                $scope.fundValues=res;
+            }
+        })
+
+        
         $scope.saveAsset = function () {
             assetMasterService.createAsset($scope.newAsset, function (err, res) {
                 if (!err) {
@@ -74,7 +109,6 @@
                 $scope.assetMasterValue.splice($scope.deleteIndex, 1);
             })
         }
-
         $scope.imageAttachment = {
             dzOptions: {
                 url: "asset/file/upload",
@@ -152,16 +186,100 @@
                 }
             })
         }
-        $scope.assetFilter = function (assetMasterValue, filter) {
-            var result = [];
-            for (i = 0; i < assetMasterValue.length; i++) {
-                for (var prop in filter) {
-                    if (assetMasterValue.hasOwnProperty(prop) && assetMasterValue[i][prop] === filter[prop]) {
-                        result.push(assetMasterValue[i]);
+
+        function unique(key) {
+            var newArr = [];
+            var origLen = $scope.allData.length;
+            var found;
+            var x;
+            var y;
+            for (x = 0; x < origLen; x++) {
+                found = undefined;
+                for (y = 0; y < newArr.length; y++) {
+                    if ($scope.allData[x][key] === newArr[y][key]) {
+                        found = true;
+                        break;
                     }
                 }
+                if (!found) {
+                    newArr.push($scope.allData[x]);
+                }
             }
-            return result;
+            return newArr;
         }
+        //  straightLine();
+        // function straightLine() {
+        //     $scope.depriciation =( ($scope.item["assetPurchaseCost"] - $scope.item["residualvalue"])/($scope.item["assetDepreciation"]));
+        //     $scope.depriciation = ((45000 - 2500) / 3);
+        // }
+        $scope.assetFilter = function () {
+            var query = {};
+            if ($scope.item["assetOrganaization"]) {
+                query["assetOrganaization"] = $scope.item["assetOrganaization"]["assetOrganaization"];
+            }
+            if ($scope.item["assetLocation"]) {
+                query["assetLocation"] = $scope.item["assetLocation"]["assetLocation"];
+            }
+            if ($scope.item["assetCategoryType"]) {
+                query["assetCategoryType"] = $scope.item["assetCategoryType"]["assetCategoryType"];
+            }
+            if ($scope.item["assetDepartment"]) {
+                query["assetDepartment"] = $scope.item["assetDepartment"]["assetDepartment"];
+            }
+            if ($scope.item["assetStatus"]) {
+                query["assetStatus"] = $scope.item["assetStatus"]["assetStatus"];
+            }
+            if ($scope.item["fromDate"]) {
+                query["assetPurchaseDate"] = { $gte: $scope.item["fromDate"] };
+            }
+            if ($scope.item["endDate"]) {
+                query["assetPurchaseDate"] = { $lte: $scope.item["endDate"] };
+            }
+            assetMasterService.getAssetByQuery(query, function (err, res) {
+                if (!err) {
+                    $scope.assetMasterValue = res;
+                }
+                else {
+                    console.log(err);
+                }
+
+            });
+        }
+
+        // $scope.DatewiseJson = {
+        //     "type": "area",
+        //     "plotarea": {
+        //         margin: "dynamic"
+        //     },
+        //     "plot": {
+        //         "stacked": false,
+        //     },
+        //     "scale-x": {
+        //         "labels": ["Date 1", "Date 2", "Date 3", "Date 4", "Date 5", "Date 6", "Date 7", "Date 8", "Date 9", "Date 10"] /* Scale Labels */
+        //     },
+        //     "series": [{
+        //         "values": [20, 40, 25, 50, 15, 45, 33, 34],
+        //         "background-color": "#EDE7F0",
+        //         /* Single color or gradient (2 colors) */
+        //         "line-color": "#AD6BAE",
+        //         "alpha-area": 0.3,
+        //         /* Shaded region transparency */
+        //         "marker": {
+        //             "background-color": "#5D436A",
+        //             "border-width": "5px",
+        //             "border-color": "#B0B3DC"
+        //         }
+        //     }]
+        // };
+        // $timeout(function(){
+        //     // alert("welcome");
+        //     zingchart.render({
+        //         id: 'datewise',
+        //         data: DatewiseJson,
+        //         defaultsurl: 'assets/css/zingchart_color.txt', // Path to my_theme.txt
+        //     });
+        // },5000)
+
+
     }
 })();

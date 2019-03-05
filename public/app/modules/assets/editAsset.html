@@ -9,109 +9,67 @@
 
 <section class="content">
     <div class="element-wrapper">
-        <h1 class="element-title">Asset Details</h1>
+        <h1 class="element-title">Assets View</h1>
     </div>
-    <div class="row">
-        <div class="col-xl-6">
-            <!-- Basic -->
-            <div class="card">
-                <div class="card-body">
-                    <!-- <div ng-repeat="asset in assetMasterValue"> -->
-                    <h3 class="subtitle">Asset : {{assetMasterValue.assetName}}
-                        <span class="element-actions float-right">
-
-                            <a class="add btn btn-primary btn-sm text-white"
-                                ng-click="setEnvironmentForEdit(assetMasterValue)" data-toggle="modal"
-                                data-target="#assetModal">
-                                <i class="la la-edit"></i><span>Edit</span>
-                            </a>
-                        </span>
-                    </h3>
-                    <ul>
-                        <h6>Asset Name</h6>
-                        <span class="desc">{{assetMasterValue.assetName}}</span> <br>
-                        <h6>Institution Name</h6>
-                        <span class="desc">{{assetMasterValue.assetOrganaization}}</span> <br>
-                        <h6>Department Name</h6>
-                        <span class="desc">{{assetMasterValue.assetDepartment}}</span> <br>
-                        <h6>Asset Tag</h6>
-                        <span class="desc">{{assetMasterValue.assetTag}}</span> <br>
-                        <h6>Asset Model</h6>
-                        <span class="desc">{{assetMasterValue.assetModel}}</span> <br>
-                        <h6>Asset Status</h6>
-                        <span class="desc">{{assetMasterValue.assetStatus}} </span> <br>
-                        <h6>Asset Serial Number</h6>
-                        <span class="desc">{{assetMasterValue.assetSerialNumber}}</span> <br>
-                        <h6>Asset Purchase Date</h6>
-                        <span class="desc">{{assetMasterValue.assetPurchaseDate}}</span> <br>
-                        <h6>Supplier Name</h6>
-                        <span class="desc">{{assetMasterValue.assetSupplier}}</span> <br>
-                        <h6>Order Number</h6>
-                        <span class="desc">{{assetMasterValue.orderNumber}}</span> <br>
-                        <h6>Purchase Cost</h6>
-                        <span class="desc">{{assetMasterValue.assetPurchaseCost}}</span> <br>
-                        <h6>Depreciation </h6>
-                        <span class="desc">{{assetMasterValue.assetDepreciation}}</span> <br>
-                        <h6>Warranty</h6>
-                        <span class="desc">{{assetMasterValue.assetWarranty}}</span> <br>
-                        <h6>Annual Maintenance</h6>
-                        <span class="desc">{{assetMasterValue.assetMaintain}} </span> <br>
-                        <h6>Start Date</h6>
-                        <span class="desc">{{assetMasterValue.maintainStartDate}}</span>
-                        <h6>End Date</h6>
-                        <span class="desc">{{assetMasterValue.maintainEndDate}}</span>
-                        <h6>Maintenance Amount</h6>
-                        <span class="desc">{{assetMasterValue.maintainAmount}}</span>
-                        <h6>Notes</h6>
-                        <span class="desc">{{assetMasterValue.assetNotes}}</span> <br>
-                        <h6>Asset Image</h6>
-                        <span class="desc"><img class="card-img"
-                                src="{{assetMasterValue.fileAttachmentDetails.imageUrl}}"></span> <br>
-                    </ul>
-                    <!-- </div> -->
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 ">
-            <div class="card p-3">
-                <div class="element-wrapper">
-                    <h1 class="element-title">Add Maintenance</h1>
-                    <div class="element-actions">
-                        <a class="add btn btn-primary btn-sm text-white" data-toggle="modal"
-                            data-target="#Maintenance-modal">
-                            <i class="la la-plus-circle mr-1"></i><span>Add Maintenance</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="card mb-0 pb-0">
-                    <div class="card-body-padded">
-                        <div class="table-container">
-                            <!-- table-padded -->
-                            <table class="table ">
-                                <thead>
-                                    <tr>
-
-                                        <th>Maintenance Type</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th width="100px">Amount</th>
-                                        <th>Status Notes</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ">
+                        <div class="col-md-2">
+                            <div class="asset-image"> <img class="img-fluid"
+                                    src="{{assetMasterValue.fileAttachmentDetails.imageUrl}}" alt=""> </div>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive"
+                                style="margin-bottom:0 !important;">
                                 <tbody>
-                                    <tr ng-repeat="Maintain in assetMaintainValue ">
-                                        <td>{{Maintain.assetMaintainType}}</td>
-                                        <td>{{Maintain.assetMaintenanceStartDate}}</td>
-                                        <td>{{Maintain.assetMaintenanceEndDate}}</td>
-                                        <td>{{Maintain.assetMaintainAmount}}</td>
-                                        <td>{{Maintain.assetMaintainNotes}}</td>
-                                        <!-- <td class="nowrap"><span class="status-pill smaller green"></span><span>Active</span></td> -->
-                                        <td data-title="Action" class="action-btn px-0">
-                                            <a class="btn btn-sm btn-block btn-danger rounded-0 py-0 text-white"
-                                                ng-click="confirmModal($index)" data-toggle="modal">
-                                                <i class="la la-trash"></i> Delete </a>
-                                        </td>
+                                    <tr>
+                                        <td>Asset Tag ID</td>
+                                        <td>{{assetMasterValue.assetTagId}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Purchase Date</td>
+                                        <td>{{assetMasterValue.assetPurchaseDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cost</td>
+                                        <td>{{assetMasterValue.assetPurchaseCost}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Brand</td>
+                                        <td>{{assetMasterValue.assetBrand}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Model</td>
+                                        <td>{{assetMasterValue.assetModel}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive"
+                                style="margin-bottom:0 !important;">
+                                <tbody>
+                                    <tr>
+                                        <td>Institution</td>
+                                        <td>{{assetMasterValue.institution.institutionName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Department</td>
+                                        <td>{{assetMasterValue.institution.DepartmentName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Location</td>
+                                        <td>{{assetMasterValue.assetLocation}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Category</td>
+                                        <td>{{assetMasterValue.Category.CategoryName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td class="success"> {{assetMasterValue.assetStatus}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -121,474 +79,551 @@
             </div>
         </div>
     </div>
-</section>
-
-<div id="assetModal" class="modal fade" data-keyboard="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title">Asset View</h6>
-                <button type="button" class="close" data-dismiss="modal" ng-click="dataMode='ADD'">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">close</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form name="newAssetform">
-                    <div class="row">
-                        <h3 class="subtitle col-md-12" id="Personal">Edit Asset</h3>
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label class="required" for="assetOrganaization">Select the Institution:</label>
-                                <select required class="form-control form-control-sm" id="assetOrganaization"
-                                    validation="required" ng-model="newAsset.assetOrganaization"
-                                    placeholder="Select Status">
-                                    <option value="" disabled selected>Select Institution</option>
-                                    <option value="PSG TECH">PSG TECH</option>
-                                    <option value="PSG ARTS">PSG ARTS</option>
-                                    <option value="PSG IMSR">PSG IMSR</option>
-                                    <option value="PSG KRISHNAMMAL">PSG KRISHNAMMAL</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="required" class="control-label">Select Department </label>
-                                <select required class="form-control form-control-sm" id="assetDepartment"
-                                    validation="required" ng-model="newAsset.assetDepartment"
-                                    placeholder="Select Department">
-                                    <option value="" disabled selected>Select Department</option>
-                                    <option value="Automobile">Automobile</option>
-                                    <option value="Applied Mathematics">Applied Mathematics</option>
-                                    <option value="Aeronautical">Aeronautical</option>
-                                    <option value="Agriculture">Agriculture</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-4" ng-if="newAsset.assetDepartment != NULL">
-                                <div class="col-sm-12 form-group">
-                                    <label class="control-label" for="assignedPerson">Asset Assigned Person Name</label>
-                                    <div class="input-group-prepend">
-                                        <input type="text" class="form-control" id="assignedPerson"
-                                            name="assignedPerson" ng-model="newAsset.assignedPerson"
-                                            validation="required">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4" ng-if="newAsset.assetDepartment != NULL">
-                                <div class="col-sm-12 form-group">
-                                    <label class="control-label" for="assignedPersonRole">Role</label>
-                                    <div class="input-group-prepend">
-                                        <input type="text" class="form-control" id="assignedPersonRole"
-                                            name="assignedPersonRole" ng-model="newAsset.assignedPersonRole"
-                                            validation="required">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4" ng-if="newAsset.assetDepartment != NULL">
-                                <div class="col-sm-12 form-group">
-                                    <label class="control-label" for="assignedPersonNumber">Contact Number</label>
-                                    <div class="input-group-prepend">
-                                        <input type="text" class="form-control" id="assignedPersonNumber"
-                                            name="assignedPersonNumber" ng-model="newAsset.assignedPersonNumber"
-                                            validation="required">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="required" for="inputName">Asset Tag</label>
-                                <input type="textarea" class="form-control form-control-sm" id="assetTag"
-                                    name="Asset Tag" placeholder="Name" validation="required"
-                                    ng-model="newAsset.assetTag" />
-                            </div>
-                            <div class="col-md-6 form-group">
-                                    <label class="required">Asset Category Type</label>
-                                    <select required class="form-control form-control-sm" id="assetCategoryType"
-                                    ng-model="newAsset.assetCategoryType" placeholder="Select Status">
-                                    <option value="" disabled selected>Select Type</option>
-                                    <option value="Fixed Assets">Fixed Assets</option>
-                                    <option value="IT Assets">IT Assets</option>
-                                    <option value="consumable">consumable</option>
-                                    <option value="Current Assets">Current Assets</option>
-                                    </select>
-                                </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetModel">Model</label>
-                                <input type="textarea" class="form-control form-control-sm" id="assetModel"
-                                    ng-model="newAsset.assetModel" placeholder="Model Name">
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetStatus">Select Status</label>
-                                <select required class="form-control form-control-sm" id="assetStatus"
-                                    ng-model="newAsset.assetStatus" placeholder="Select Status">
-                                    <option value="" disabled selected>Select Status</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="Ready to deploy">Ready to deploy</option>
-                                    <option value="Deployed">Deployed</option>
-                                    <option value="Archived">Archived</option>
-                                    <option value="Broken">Broken</option>
-                                    <option value="Lost/Stolen">Lost/Stolen</option>
-                                    <option value="Out of Maintanance">Out of Maintanance</option>
-                                    <option value="Scraped">Scraped</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-sm-4" ng-if="newAsset.assetStatus=='Scraped'">
-                                        <div class="col-sm-12 form-group">
-                                            <label class="control-label" for="scrapedValue">Scraped Value</label>
-                                            <div class="input-group-prepend">
-                                                <input type="text" class="form-control" id="scrapedValue"
-                                                    name="scrapedValue" ng-model="newAsset.scrapedValue"
-                                                    validation="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4" ng-if="newAsset.assetStatus=='Scraped'">
-                                        <div class="col-sm-12 form-group">
-                                            <label class="control-label" for="scrapedRemarks">Remarks</label>
-                                            <div class="input-group-prepend">
-                                                <input type="text" class="form-control" id="scrapedRemarks"
-                                                    name="scrapedRemarks" ng-model="newAsset.scrapedRemarks"
-                                                    validation="required">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4" ng-if="newAsset.assetStatus=='Scraped'">
-                                        <div class="col-sm-12 form-group">
-                                            <label class="control-label" for="scrapedApproval">Approval</label>
-                                            <div class="input-group-prepend">
-                                                <button type="button" class="btn btn-info mr-1 mb-2">Info</button>
-                                                <!-- <input type="button" class="form-control" id="scrapedApproval"
-                                                            name="scrapedApproval" ng-model="newAsset.scrapedApproval"
-                                                            validation="required"> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetSerialNumber">Serial Number</label>
-                                <input type="text" class="form-control form-control-sm"
-                                    ng-model="newAsset.assetSerialNumber" id="assetSerialNumber"
-                                    placeholder="Serial Number">
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetName">Asset Name</label>
-                                <input type="text" class="form-control form-control-sm" ng-model="newAsset.assetName"
-                                    id="assetName" placeholder="Asset Name">
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetPurchaseDate">Purchase Date</label>
-                                <div class="column">
-                                    <input class="form-control form-control-sm" ng-flatpickr fp-opts="dateOpts1"
-                                        ng-model="newAsset.assetPurchaseDate" id="assetPurchaseDate"
-                                        placeholder="mm/dd/yyyy">
-                                    <span class="calender-caret" ng-model="newAsset.assetPurchaseDate"></span>
-                                </div>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetSupplier">Select Supplier</label>
-                                <input type="text" class="form-control form-control-sm"
-                                    ng-model="newAsset.assetSupplier" id="assetSupplier" placeholder="Select Supplier">
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="orderNumber">Order Number</label>
-                                <input type="text" class="form-control form-control-sm" id="orderNumber"
-                                    ng-model="newAsset.orderNumber" placeholder="Order Number">
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="referenceNumber">Internal Reference Number</label>
-                                <input type="text" class="form-control form-control-sm" id="referenceNumber"
-                                    ng-model="newAsset.referenceNumber" placeholder="Internal Reference Number">
-                                <small class="form-text text-muted">This filed manual entered by the user</small>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetPurchaseCost">Purchase Cost(in Indian Rupees)</label>
-                                <div class="input-group input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text font-wwight-bold">&#8377;</span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm" id="assetPurchaseCost"
-                                        ng-model="newAsset.assetPurchaseCost" placeholder="purchase cost">
-                                </div>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="nominalAccountNumber">Nominal Account Number</label>
-                                <input type="text" class="form-control form-control-sm" id="nominalAccountNumber"
-                                    ng-model="newAsset.nominalAccountNumber" placeholder="Nominal Account Number">
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetLocation">Location of the asset</label>
-                                <input type="text" class="form-control form-control-sm" id="assetLocation"
-                                    ng-model="newAsset.assetLocation" placeholder="Location of the asset">
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetDepreciation">Select Depreciation(In Percentage)</label>
-                                <input type="text" class="form-control form-control-sm" id="assetDepreciation" disabled
-                                    ng-model="newAsset.assetDepreciation" placeholder="Depreciation Amount">
-                                <small class="form-text text-muted">Will be computed automatically</small>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetSalvageValue">Expected Salvage Value</label>
-                                <input type="text" class="form-control form-control-sm" id="assetSalvageValue"
-                                    ng-model="newAsset.assetSalvageValue" placeholder="asset Salvage Value">
-                            </div>
-
-                            <div class="form-group  col-md-6">
-                                <label for="assetWarranty">Warranty</label>
-                                <select class="form-control form-control-sm" id="assetWarranty"
-                                    ng-model="newAsset.assetWarranty" placeholder="Warranty">
-                                    <option value="" disabled selected>Select Status</option>
-                                    <option value="YES">Yes</option>
-                                    <option value="NO">No</option>
-                                </select>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-sm-3" ng-if="newAsset.assetWarranty=='YES'">
-                                        <div class="form-group">
-                                            <label for="warrantyStartDate" class="required">Warranty Start Date</label>
-                                            <div class="column">
-                                                <input class="form-control form-control-sm" placeholder="DD/MM/YYYY"
-                                                    id="warrantyStartDate" ng-flatpickr fp-opts="dateOpts1"
-                                                    ng-model="newAsset.warrantyStartDate">
-                                                <span class="calender-caret"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3" ng-if="newAsset.assetWarranty=='YES'">
-                                        <div class=" form-group">
-                                            <label for="warrantyEndDate" class="required"> Warranty End Date</label>
-                                            <div class="column">
-                                                <input class="form-control form-control-sm" placeholder="DD/MM/YYYY"
-                                                    id="warrantyEndDate" ng-flatpickr fp-opts="dateOpts1"
-                                                    ng-model="newAsset.warrantyEndDate">
-                                                <span class="calender-caret"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3" ng-if="newAsset.assetWarranty=='YES'">
-                                        <div class="form-group">
-                                            <label for="warrantyNotes">Remarks</label>
-                                            <textarea type="textarea" ng-model="newAsset.warrantyNotes"
-                                                class="form-control form-control-sm" validation="required"
-                                                placeholder="Remarks"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3" ng-if="newAsset.assetWarranty=='YES'">
-                                        <div class="form-group ">
-                                            <label for="warrantyCard">Upload Warranty card</label>
-                                            <div class="dropzone dropzone-formcontroll col-md-6"
-                                                options="imageAttachment.dzOptions"
-                                                callbacks="imageAttachment.dzCallbacks"
-                                                methods="imageAttachment.dzMethods" ng-dropzone
-                                                ng-model="newAsset.warrantyCardImage">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetInsurance">Insurance</label>
-                                <select class="form-control form-control-sm" id="assetInsurance"
-                                    ng-model="newAsset.assetInsurance" placeholder="Insurance">
-                                    <option value="" disabled selected>Select Status</option>
-                                    <option value="YES">Yes</option>
-                                    <option value="NO">No</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
-                                        <div class="form-group ">
-                                            <label for="insuranceCompany">Insurance Company</label>
-                                            <input type="text" id="insuranceCompany"
-                                                ng-model="newAsset.insuranceCompany"
-                                                class="form-control form-control-sm" validation="required"
-                                                placeholder="Company Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
-                                        <div class="form-group">
-                                            <label for="insuranceAmount">Insurance Amount</label>
-
-                                            <input type="text" id="insuranceAmount" ng-model="newAsset.insuranceAmount"
-                                                class="form-control form-control-sm" validation="required"
-                                                placeholder="Amount">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
-                                        <div class="form-group">
-                                            <label for="insuranceStartDate" class="required"> Insurance Start
-                                                Date</label>
-                                            <div class="column">
-                                                <input class="form-control form-control-sm" placeholder="DD/MM/YYYY"
-                                                    id="insuranceStartDate" ng-flatpickr fp-opts="dateOpts1"
-                                                    ng-model="newAsset.insuranceStartDate">
-                                                <span class="calender-caret"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3" ng-if="newAsset.assetInsurance=='YES'">
-                                        <div class="form-group">
-                                            <label for="insuranceEndDate" class="required"> Insurance End Date</label>
-                                            <div class="column">
-                                                <input class="form-control form-control-sm" placeholder="DD/MM/YYYY"
-                                                    id="insuranceEndDate" ng-flatpickr fp-opts="dateOpts1"
-                                                    ng-model="newAsset.insuranceEndDate">
-                                                <span class="calender-caret"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label class="control-label" for="assetMaintain">Annual Maintenance</label>
-                                <select class="form-control form-control-sm" id="assetMaintain"
-                                    ng-model="newAsset.assetMaintain" placeholder="Select Status">
-                                    <option value="" disabled selected>Select Status</option>
-                                    <option value="YES">Yes</option>
-                                    <option value="NO">No</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-lg-4" ng-if="newAsset.assetMaintain=='YES'">
-                                        <div class="form-group">
-                                            <label for="maintainStartDate" class="required">Start Date</label>
-                                            <div class="column">
-                                                <input class="form-control form-control-sm" placeholder="DD/MM/YYYY"
-                                                    id="maintainStartDate" ng-flatpickr fp-opts="dateOpts1"
-                                                    ng-model="newAsset.maintainStartDate">
-                                                <span class="calender-caret"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4" ng-if="newAsset.assetMaintain=='YES'">
-                                        <div class=" form-group">
-                                            <label for="maintainEndDate" class="required">End Date</label>
-                                            <div class="column">
-                                                <input class="form-control form-control-sm" placeholder="DD/MM/YYYY"
-                                                    id="maintainEndDate" ng-flatpickr fp-opts="dateOpts1"
-                                                    ng-model="newAsset.maintainEndDate">
-                                                <span class="calender-caret"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4" ng-if="newAsset.assetMaintain=='YES'">
-                                        <div class=" form-group">
-                                            <label class="control-label" for="maintainAmount">Maintenance Amount</label>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text font-wwight-bold">&#8377;</span>
-                                                <input type="text" class="form-control" id="maintainAmount"
-                                                    name="maintainAmount" ng-model="newAsset.maintainAmount"
-                                                    validation="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group  col-md-6">
-                                <label for="assetNotes">Notes</label>
-                                <textarea type="textarea" ng-model="newAsset.assetNotes"
-                                    class="form-control form-control-sm" validation="required"
-                                    placeholder="Notes"></textarea>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetImage">Upload Image</label>
-                                <div class="dropzone dropzone-formcontroll col-md-6" options="imageAttachment.dzOptions"
-                                    callbacks="imageAttachment.dzCallbacks" methods="imageAttachment.dzMethods"
-                                    ng-dropzone>
-                                </div>
-                            </div>
+    <div class="card mt-3">
+        <ul class="nav nav-tabs nav-tabs-highlight mb-0">
+            <li class="nav-item"><a href="#nav-basic" class="nav-link active" data-toggle="tab">Basic</a></li>
+            <li class="nav-item"><a href="#nav-depreciation" class="nav-link" data-toggle="tab">Depreciation</a></li>
+            <li class="nav-item"><a href="#nav-warranty" class="nav-link" data-toggle="tab">Warranty</a></li>
+            <li class="nav-item"><a href="#nav-contracts" class="nav-link" data-toggle="tab">Contracts</a></li>
+            <li class="nav-item"><a href="#nav-insurance" class="nav-link" data-toggle="tab">Insurances</a></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" data-toggle="tab">Reserve</a></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" data-toggle="tab">Audit</a></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" data-toggle="tab">History</a></li>
+        </ul>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
+                <div class="card-body">
+                    <div class="form-row static">
+                        <div class="col-md-2">
+                            <h4><span> Miscellaneous</span></h4>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="form-group float-right mt-3">
-                                <button type="button" data-dismiss="modal"
-                                    class="btn btn-secondary mr-1 ">Cancel</button>
-                                <button type="button" data-dismiss="modal" class="btn btn-success"
-                                    ng-click="updateAsset()">Submit</button>
-                            </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Serial No</td>
+                                        <td>{{assetMasterValue.assetSerialNumber}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Purchased from</td>
+                                        <td>{{assetMasterValue.vendor}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                    <div class="form-row static">
+                        <div class="col-md-2">
+                            <h4><span> Funding</span></h4>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Funding Source</td>
+                                        <td>{{assetMasterValue.fund.fundName}}</td>
+
+                                        <!-- <td><a onclick="javascript: quickView('/assettiger/funds/quickview/')"></a></td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Amount Debited</td>
+                                        <td>{{assetMasterValue.amountDebit}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-row static" style="">
+                        <div class="col-md-2">
+                            <h4><span>Depreciation</span></h4>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Depreciable Cost</td>
+                                        <td>{{assetMasterValue.assetDepreciationCost}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Salvage Value</td>
+                                        <td>{{assetMasterValue.assetSalvageValue}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date Acquired</td>
+                                        <td>{{assetMasterValue.depriciationDate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Asset Life (months)</td>
+                                        <td>{{assetMasterValue.assetLife}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Depr. Method</td>
+                                        <td>{{assetMasterValue.assetDepreciationMethod}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-row static mat-asset-detail-event" style="">
+                        <div class="col-md-2">
+                            <h4><span> Creation</span></h4>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Date Created</td>
+                                        <td>{{assetMasterValue.assetPurchaseDate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-asset not-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>Created by</td>
+                                        <td>User Name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-depreciation" role="tabpanel" aria-labelledby="nav-depreciation-tab">
+                <div class="card-body">
+                    <div class="text-right mb-3">
+                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#depreciation"><i
+                                class="la la-plus-circle"></i>Manage</button>
+                    </div>
+                    <table class="table table-bordered table-depreciation-source mb-5">
+                        <thead>
+                            <tr>
+                                <th>Date Acquired</th>
+                                <th>Depreciable Cost</th>
+                                <th>Salvage Value</th>
+                                <th>Asset Life</th>
+                                <th>Depreciation Method</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{assetMasterValue.depriciationDate}}</td>
+                                <td>{{assetMasterValue.assetDepreciationCost}}</td>
+                                <td>{{assetMasterValue.assetSalvageValue}}</td>
+                                <td>{{assetMasterValue.assetLife}}</td>
+                                <td>{{assetMasterValue.assetDepreciationMethod}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div zingchart id="datewise" zc-json="DatewiseJson" zc-width=100%></div>
+                    <table class="table standard-table table-border">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Year</th>
+                                <th>Depreciation expense</th>
+                                <th>Accumulated depreciation at year-end</th>
+                                <th>Book value at year-end</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>₹1,222.00</td>
+                            </tr>
+                            <tr class="">
+                                <td> 1st </td>
+                                <td colspan="1">2019</td>
+                                <td>₹1,120.17</td>
+                                <td>₹1,120.17</td>
+                                <td>₹101.83</td>
+                            </tr>
+                            <tr class="">
+                                <td> 2nd </td>
+                                <td colspan="1">2020</td>
+                                <td>₹101.83</td>
+                                <td>₹1,222.00</td>
+                                <td>₹0.00</td>
+                            </tr>
+                            <tr class="">
+                                <td> 3rd </td>
+                                <td colspan="1">2021</td>
+                                <td>₹0.00</td>
+                                <td>₹1,222.00</td>
+                                <td>₹0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-warranty" role="tabpanel" aria-labelledby="nav-warranty-tab">
+                <div class="card-body">
+                    <div class="text-right mb-3">
+                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#depreciation"><i
+                                class="la la-plus-circle"></i>Add New</button>
+                    </div>
+                    <table class="table standard-table table-border" id="matWarranty">
+                        <thead class="flip-content">
+                            <tr role="row">
+                                <th>Active</th>
+                                <th>Expiration Date</th>
+                                <th>Length</th>
+                                <th>Notes</th>
+                                <th class="action1">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td><i class="la la-check-circle text-success font-size-16"></i></td>
+                                <td data-order="20190228">{{assetMasterValue.warrantyEndDate}}</td>
+                                <td>12 months</td>
+                                <td class="text-center"><i class="icon icon-info font-red" data-toggle="tooltip"
+                                        data-placement="top" title=""
+                                        data-original-title="asdasd"></i>{{assetMasterValue.warrantyNotes}}</td>
+                                <td data-title="Action" class="action">
+                                    <div class="input-group">
+                                        <div class="input-group-append"> <a class="btn btn-table btn-sm rounded-0 py-0">
+                                                <i class="la la-edit"></i> Edit </a> </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="nav-contracts" role="tabpanel" aria-labelledby="nav-contracts-tab">
+                <div class="card-body">
+                    <div class="text-right mb-3">
+                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#contracts"><i
+                                class="la la-link"></i>Link Contract</button>
+                    </div>
+                    <table class="table standard-table table-border" id="matWarranty">
+                        <thead class="flip-content">
+                            <tr role="row">
+                                <th>Contract Title</th>
+                                <th>Vendor</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Description</th>
+                                <th class="action1">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="contract in contractValues">
+                                <td>{{contract.contractName}}</td>
+                                <td data-order="20190228">{{contractValue.contractVendor}}</td>
+                                <td>{{contractValue.contractStartDate}}</td>
+                                <td class="text-center">{{contractValue.contractEndDate}}<i
+                                        class="icon icon-info font-red" data-toggle="tooltip" data-placement="top"
+                                        title="" data-original-title="asdasd"></i></td>
+                                <td class="text-center">{{contractValue.contractDesc}}</td>
+                                <td data-title="Action" class="action">
+                                    <div class="input-group">
+                                        <div class="input-group-append"> <a class="btn btn-table btn-sm rounded-0 py-0">
+                                                <i class="la la-unlink"></i> Detach </a> </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-insurance" role="tabpanel" aria-labelledby="nav-contracts-tab">
+                <div class="card-body">
+
+                    <div class="text-right mb-3">
+                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_insurance"><i
+                                class="la la-link"></i>Link Insurance</button>
+                    </div>
+                    <table class="standard-table table-border not-responsive">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Insurer</th>
+                                <th>Start Date</th>
+                                <th class="text-center" width="200">End Date</th>
+                                <th class="text-center" width="200">Status</th>
+                                <th class="text-center" width="100">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>{{insuranceValue.insuranceDesc}}</td>
+                                <td>{{insuranceValue.insurer}}</td>
+                                <td>{{insuranceValue.insuranceStartDate}}</td>
+                                <td>{{insuranceValue.insuraceeEndDate}}</td>
+                                <td>{{insuranceValue.insuracenStatus}}</td>
+                                <td data-title="Action" class="action">
+                                    <div class="input-group">
+                                            <div class="input-group-append"> <a class="btn btn-table btn-sm rounded-0 py-0">
+                                                    <i class="la la-unlink"></i> Detach </a> </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal fade" id="add_insurance" tabindex="-1" role="dialog" aria-labelledby="add_insurance_Modal"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel">Add an Insurance Policy</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                                    aria-hidden="true">&times;</span> </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="insurance_name">Insurance Company</label>
+                                            <input type="text" class="form-control form-control-sm" id="insurance_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="insurance_desc">Description</label>
+                                            <input type="text" class="form-control form-control-sm" id="insurance_desc">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="policy_number">Policy Number</label>
+                                            <input type="text" class="form-control form-control-sm" id="policy_number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="contact_person">Coverage</label>
+                                            <input type="text" class="form-control form-control-sm" id="contact_person">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <div class="form-group w-100">
+                                                <label for="datepicker">Start Date</label>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-sm" placeholder="dd/mm/yyyy"
+                                                        ng-flatpickr fp-opts="dateOpts1" ng-model="date1">
+                                                    <div class="input-group-append"> <span class="input-group-text"><i
+                                                                class="la la-calendar"></i></span> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <div class="form-group w-100">
+                                                <label for="datepicker">End Date</label>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-sm" placeholder="dd/mm/yyyy"
+                                                        ng-flatpickr fp-opts="dateOpts1" ng-model="date1">
+                                                    <div class="input-group-append"> <span class="input-group-text"><i
+                                                                class="la la-calendar"></i></span> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="policy_deductible">Deductible</label>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend"> <span
+                                                        class="input-group-text font-wwight-bold">&#8377;</span> </div>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    id="householdincome">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="contact_premium">Premium</label>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend"> <span
+                                                        class="input-group-text font-wwight-bold">&#8377;</span> </div>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    id="householdincome">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="policy_coverage">Contact Person</label>
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="policy_coverage">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="contact_mobile">Mobile</label>
+                                            <input type="text" class="form-control form-control-sm" id="contact_mobile">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label for="contact_email">Email</label>
+                                            <input type="text" class="form-control form-control-sm" id="contact_email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary">Add Insurance Policy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="depreciation" tabindex="-1" role="dialog" aria-labelledby="depreciationModal"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel">Manage Asset Depreciation</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <form>
+                        <div class="form-group form-group-sm mb-2">
+                            <label for="depreciable_asset" class="col-form-label">Depreciable Asset</label>
+                            <div class="option-group">
+                                <label class="option">
+                                    <input name="payment" checked="" type="radio">
+                                    <span class="radio"></span> Yes </label>
+                                <label class="option">
+                                    <input name="payment" type="radio">
+                                    <span class="radio"></span> No </label>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm mb-2">
+                            <label for="addrline1text">Depreciable Cost</label>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend"> <span
+                                        class="input-group-text font-wwight-bold">&#8377;</span> </div>
+                                <input type="text" class="form-control form-control-sm" id="householdincome">
+                            </div>
+                            <span class="help-block">including sales tax, freight and installation</span>
+                        </div>
+                        <div class="form-group form-group-sm mb-2">
+                            <label for="addrline1text">Salvage Value</label>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend"> <span
+                                        class="input-group-text font-wwight-bold">&#8377;</span> </div>
+                                <input type="text" class="form-control form-control-sm" id="householdincome">
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm mb-2">
+                            <label for="addrline1text">Asset Life</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm" id="householdincome">
+                                <div class="input-group-append"> <span class="input-group-text font-wwight-bold">in
+                                        months</span> </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm mb-2">
+                            <label for="nativity" class="control-label">Depreciation Method</label>
+                            <select required class="form-control custom-select form-control-sm" id="nativity">
+                                <option selected="selected" value="2">Double Declining Balance</option>
+                                <option value="3">150% Declining Balance</option>
+                                <option value="4">Sum of the Years' Digits</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-group-sm mb-2">
+                            <div class="form-group w-100">
+                                <label for="datepicker">Date Acquired</label>
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
+                                        fp-opts="dateOpts1" ng-model="date1">
+                                    <div class="input-group-append"> <span class="input-group-text"><i
+                                                class="la la-calendar"></i></span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Update</button>
             </div>
         </div>
     </div>
 </div>
 
-
-<div id="Maintenance-modal" class="modal fade" data-keyboard="true">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="contracts" tabindex="-1" role="dialog" aria-labelledby="contractsModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title">New Maintenance</h6>
-                <button type="button" class="close" data-dismiss="modal" ng-click="dataMode='ADD'">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">close</span>
-                </button>
+                <h6 class="modal-title" id="exampleModalLabel">Link an existing Contract</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
             </div>
             <div class="modal-body">
-                <form name="assetMaintenanceform">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="assetMaintainType">Select the Type of Maintenance</label>
-                                <select class="form-control form-control-sm" id="assetMaintainType"
-                                    ng-model="assetMaintain.assetMaintainType" placeholder="Select Maintanace Type">
-                                    <option value="" disabled selected>Select Status</option>
-                                    <option value="Maintanace">Maintenance</option>
-                                    <option value="Repair">Repair</option>
-                                    <option value="Upgrade">Upgrade</option>
-                                </select>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetMaintenanceStartDate">Start Date</label>
-                                <div class="column">
-                                    <input class="form-control form-control-sm" placeholder="dd-mm-yyyy" ng-flatpickr
-                                        fp-opts="dateOpts1" ng-model="assetMaintain.assetMaintenanceStartDate"
-                                        id="assetMaintenanceStartDate">
-                                    <span class="calender-caret"
-                                        ng-model="assetMaintain.assetMaintenanceStartDate"></span>
-                                </div>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetMaintenanceEndDate">End Date</label>
-                                <div class="column">
-                                    <input class="form-control form-control-sm" placeholder="dd-mm-yyyy" ng-flatpickr
-                                        fp-opts="dateOpts1" ng-model="assetMaintain.assetMaintenanceEndDate"
-                                        id="assetMaintenanceEndDate">
-                                    <span class="calender-caret"
-                                        ng-model="assetMaintain.assetMaintenanceEndDate"></span>
-                                </div>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetMaintainAmount">Amount(In Rupees)</label>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text font-wwight-bold">&#8377;</span>
-                                    <input type="text" class="form-control form-control-sm" id="assetMaintainAmount"
-                                        ng-model="assetMaintain.assetMaintainAmount" placeholder="Amount">
-                                </div>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="assetMaintainNotes">Notes</label>
-                                <textarea type="textarea" class="form-control form-control-sm" id="assetMaintainNotes"
-                                    ng-model="assetMaintain.assetMaintainNotes" placeholder="Model Name">
-                                </textarea>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group float-right">
-                                <button type="button" data-dismiss="modal" class="btn btn-primary mr-1">Cancel</button>
-                                <button type="button" data-dismiss="modal" class="btn btn-success"
-                                    ng-if="dataMode == 'ADD'" ng-click="saveAssetMaintain()">Submit</button>
-                            </div>
-                        </div>
+                <p>Select a contract from the list below. To define a new contract go to Setup > Contracts.</p>
+                <form>
+
+
+                    <div class="form-group form-group-sm mb-2">
+                        <label for="nativity" class="control-label">Select Contract</label>
+                        <select required class="form-control custom-select form-control-sm" id="nativity">
+                            <option selected="selected" value="2">Contract Title: Start Date - End Date</option>
+                        </select>
                     </div>
+
                 </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Link Contract</button>
             </div>
         </div>
     </div>

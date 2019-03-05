@@ -14,11 +14,15 @@
         $scope.assetMaintainValue = [];
         $scope.dataMode = "ADD";
         $scope.item = {};
+        // $scope.filterData = [];
         function loadInitial() {
             assetMasterService.getAllAsset(function (err, res) {
                 if (!err) {
                     $scope.assetMasterValue = res;
                     $scope.allData = res;
+                    $scope.newArr = unique("assetOrganaization");
+                    $scope.newArr1 = unique("assetDepartment");
+                    $scope.filterData = res;
                     angular.element('#filterResult').toggle();
                     $('#dropouts-table').DataTable().clear();
                     $('#dropouts-table').DataTable().destroy();
@@ -78,6 +82,7 @@
             })
         }
         loadInitial();
+
         $scope.saveAsset = function () {
             assetMasterService.createAsset($scope.newAsset, function (err, res) {
                 if (!err) {
@@ -199,6 +204,28 @@
                 }
             })
         }
+
+        function unique(key) {
+            var newArr = [];
+            var origLen = $scope.allData.length;
+            var found;
+            var x;
+            var y;
+            for (x = 0; x < origLen; x++) {
+                found = undefined;
+                for (y = 0; y < newArr.length; y++) {
+                    if ($scope.allData[x][key] === newArr[y][key]) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    newArr.push($scope.allData[x]);
+                }
+            }
+            return newArr;
+        }
+        
         $scope.assetFilter = function () {
             var query = {};
             if ($scope.item["assetOrganaization"]) {

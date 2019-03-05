@@ -1,0 +1,529 @@
+/* Room List */
+
+[class*="room-thumb-list-"]{
+    background: #f8f8f8      !important;
+}
+.room-thumb-list-2 img{
+    width: 100%;
+    height:100%;
+    object-fit: none;
+}
+[class*="room-thumb-list-"] h5 {
+    font-weight:700;
+    color:#2962FF;
+}
+
+.for-booking {
+        background-color: #f1f1f1
+}
+
+ ul.facility-icon {
+    column-count: 3;
+    column-gap: 1rem;
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+
+[class*="room-thumb-"] .room-size, [class*="room-thumb-list-"] .facility-icon li,
+    {
+color: #666
+    }
+ [class*="room-thumb-"] .per-night small {
+         color: #a5a5a5
+ }
+
+[class*="room-thumb-"] .room-info{
+    display: inline-block;
+}
+[class*="room-thumb-"] .facility-icon li{
+    padding: 2px 2px;
+    margin: 1px 0;
+    line-height:1.2;
+}
+[class*="room-thumb-"] .room-size{
+    padding: 9px 15px;
+    font-weight: 500
+}
+
+/*[class*="room-thumb-list-"] .facility-icon{
+    float: left;
+    list-style: none;
+    margin:0;
+    padding:0;
+    display: table;
+    position: relative;
+    z-index: 999;
+    width: 140%;
+    overflow: hidden;
+
+}
+[class*="room-thumb-list-"] .facility-icon li {
+    border: 0px solid #aaa;
+    margin-right: 6px;
+    float: left;
+    position: relative;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+}
+*/
+
+[class*="room-thumb-list-"] .room-size {
+    border: 1px solid transparent;
+    float: left;
+    margin-left: 5px
+}
+[class*="room-thumb-list-"] .per-night{
+    text-align: center;
+    margin-bottom: 25px
+}
+[class*="room-thumb-list-"] .for-booking{
+    margin-left: -15px;
+    padding: 60px 0;
+    text-align: center
+}
+[class*="room-thumb-list-"] .room-info {
+    padding: 10px 0 10px 0
+}
+ul.facility-icon li i{
+    vertical-align: middle;
+    margin-right: 2px;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    color: #E11C63;
+}
+
+
+ul.facility-icon li:last-child:before{
+    display:none;
+}
+
+.room-thumb-list-2 .for-booking{
+    height: 100%;
+    border-left: none;
+    margin-top: 0;
+    padding: 30px 0 0;
+}
+.room-thumb .subtext,
+.room-info .subtext {
+    line-height: 26px;
+}
+
+.for-booking .btn{
+    white-space: normal;
+    color: #fff !important
+}
+
+[class*="room-thumb-list-"] .room-info{
+     padding: 0 15px 0 0
+}
+
+.down-line-left{
+    /* padding-bottom: 15px */
+}
+.down-line-left:after{
+    width: 30px;
+    height: 3px;
+    left: 0;
+    background-color: #0665D0 !imp[ortant];
+    bottom: 0
+}
+.down-line-center:after{
+    width: 50px;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    background-color: #0665D0;
+}
+
+.hover_zoom :before, .hover_zoom:before{
+    z-index: 1
+}
+
+/*** Stay View ***/
+.gh-notify{
+    list-style-type: none;
+    width: 100%;
+    margin-bottom: 0;
+}
+.gh-notify li{
+    border-left: 1px solid #ccc;
+    display: inline-block
+}
+.gh-notify li a{
+    cursor: default;
+    padding: 2px 20px 2px 10px;
+    text-align: left;
+    display: block;
+    font-size: 0.8rem;
+}
+.gh-notify li a span{
+    display: block;
+    font-size: 1.1rem;
+    padding-top: 2px;
+
+}
+.gh-notify li a span i{
+    font-size: 1.25rem;
+    vertical-align: middle;
+}
+.vacent{
+    color: #ffab01;
+}
+.occupied{
+    color: #0041f5;
+}
+.reserved{
+    color: #2b9683;
+}
+.outorder{
+    color: #e60a31;
+}
+.dueout{
+    color: #4c32e9;
+}
+.dirty{
+    color: #f62d51;
+}
+.all{
+    color: #545b62;
+}
+
+.bg-vacent{
+    background-color: #ffab01 !important;
+}
+.bg-occupied{
+    background-color: #0041f5 !important;
+}
+.bg-reserved{
+    background-color: #2b9683 !important;
+}
+.bg-outorder{
+    background-color: #e60a31 !important;
+}
+.bg-dueout{
+    background-color: #4c32e9 !important;
+}
+.bg-dirty{
+    background-color: #f62d51 !important;
+}
+.bg-all{
+    background-color: #545b62 !important;
+}
+
+.gh-calender-header{
+    background-color: #F8F6F9;
+    padding: 15px;
+}
+.gh-calender-header h5{
+    margin-bottom: 0;
+    color: #9ca2af;
+    font-weight: 400;
+}
+.gh-calender-header h5 a i{
+    font-size: 16px !important;
+    cursor: pointer;
+    margin: 0 8px;
+    color: #342f50;
+}
+.day-view a{
+    cursor: pointer;
+    color: #342f50;
+    margin: 0 5px;
+    font-weight: 600;
+}
+.day-view span{
+    padding: 5px 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #342f50;
+    font-weight: 700;
+}
+.multi-day-view a{
+    padding: 5px 5px;
+    background-color: #fff;
+    font-weight: 500;
+    display: inline-block;
+    cursor: pointer;
+    width: 80px;
+    text-align: center;
+}
+.multi-day-view a:hover{
+    background-color: #ccc;
+}
+.multi-day-view a.active, .multi-day-view a.active:hover{
+    background-color: #342f50;
+    color: #fff !important;
+}
+
+.gh-gantt-table-wrapper .gantt-table tr th{
+    min-width: 40px !important;
+}
+.gh-gantt-table-wrapper .gantt-sidebar .thead-date th{
+    height: 40px;
+}
+.gh-gantt-table-wrapper .gantt-sidebar table.gantt-table tbody tr {
+    border-left: 0px;
+}
+.gh-gantt-table-wrapper .thead-date tr th{
+    background-color: #fff;
+    height: 20px;
+    padding: 0 0.2rem;
+}
+.gh-gantt-table-wrapper .secondary-thead tr th{
+    height: 30px;
+    padding: 0.4rem;
+}
+.gh-gantt-table-wrapper .gantt-table .thead-date tr:last-child th{
+    font-weight: 400;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+}
+.gh-gantt-table-wrapper .gantt-table tr td {
+    font-size: 0.75rem;
+    border-right: 1px solid #e8e8e8;
+}
+.gh-gantt-table-wrapper .gantt-table tr.tr-parent td:last-child{
+    border-right:0;
+}
+.gh-gantt-table-wrapper .gantt-container .gantt-table tr td {
+    padding: 0.25rem 0;
+    position: relative;
+    height: 26px;
+}
+.gh-gantt-table-wrapper .gantt-table tr td {
+    padding: 0.2rem 0.5rem;
+    height: 25px;
+}
+.gh-gantt-table-wrapper .task-progress-bar{
+    top: 2px;
+    position: absolute;
+    height: 21px;
+    border-radius: 15px !important;
+    cursor: default;
+}
+.gh-gantt-table-wrapper .task-progress-bar .progress-bar {
+    height: 19px;
+    padding: 2px 8px;
+    text-align: left;
+}
+
+.gh-gantt-table-wrapper .room-notify-icon{
+    background-color: #ddd;
+    display:inline-block;
+    vertical-align: inline;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+}
+.gh-gantt-table-wrapper th.current-date{
+    background-color: #342F51 !important;
+    color: #fff !important;
+    border: 0 !important;
+    border-right: 1px solid #e8e8e8 !important;
+}
+.gh-gantt-table-wrapper th.holiday-date{
+    background-color: #dcdcdc !important;
+    border: 0 !important;
+    border-right: 1px solid #e8e8e8 !important;
+}
+.gh-gantt-table-wrapper .gantt-container {
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.gh-dropdown{
+    position: static !important;
+}
+.gh-dropdown .dropdown-menu{
+    border-radius: 0 !important;
+    max-width: 250px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.gh-dropdown .dropdown-menu div{
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+.gh-dropdown .dropdown-menu span, .gh-dropdown .dropdown-menu span i{
+    font-weight: 500 !important;
+    color: #342f50;
+}
+.gh-dropdown .dropdown-menu h6{
+    color: #342f50;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+
+/*** Floors & Rooms ***/
+.room-list{
+    width: 150px;
+    height: 100px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    margin: 0px 15px 15px 0px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+.room-list a.edit-room{
+    position: absolute;
+    right: 5px;
+    top: 6px;
+    color: #5059db;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.room-details{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: #fff;
+    cursor: pointer;
+    padding: 0px 5px;
+    font-size: 0.70rem;
+    border-bottom-right-radius: 2px;
+    text-transform: uppercase;
+}
+.room-list .input-group, .room-list  .form-control{
+    height: 30px;
+}
+.room-list .form-control:disabled, .room-list .form-control[readonly] {
+    background-color: #f7f7f7;
+    opacity: 1;
+}
+.room-list img{
+    width: 100%;
+    object-fit: cover;
+    height: 120px;
+}
+.room-status {
+    font-size: 0.8rem;
+    text-align: center;
+    opacity: 0.8;
+    padding-top: 3px;
+}
+.card-roomview .room-list{
+    margin: 7px 15px 7px 0px;
+}
+.card-roomview .room-status i{
+    font-size: 1.75rem;
+}
+.room-details{
+    font-weight: 500 !important;
+    font-size: 0.85rem;
+    padding: 7px 10px;
+    position: static;
+    width: 100%;
+    display: block;
+    background-color: transparent !important;
+    color: #333;
+    border-bottom: 1px solid #f5f5f5;
+}
+.room-status-footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 4px 5px 5px;
+    color: #fff;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    line-height: 0.8rem;
+}
+
+
+@media(max-width : 767px){
+    .gh-notify {
+        margin-bottom: 0;
+        padding-left: 10px;
+    }
+    .gh-notify li {
+        border: 1px solid #ccc;
+        width: 30%;
+        margin: 0 1% 10px;
+    }
+    .gh-notify li a {
+        padding: 2px 5px 2px 5px;
+        font-size: 0.75rem;
+    }
+    .gh-calender-header h5 {
+        font-size: 1rem;
+    }
+    .gh-calender-header {
+        padding: 15px 5px;
+    }
+    .day-view span {
+        font-size: 12px;
+    }
+    .day-view a {
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    /*** Room List ***/
+    .room-info{
+        padding: 0 15px !important;
+    }
+    .card-roomview .collapse .card-body{
+        text-align: center;
+    }
+    .card-roomview .room-list {
+        margin: 5px 10px 4px 0px;
+    }
+    .card-roomview .room-list {
+        width: 130px;
+    }
+}
+
+@media(min-width : 1700px){
+.gantt-sidebar .thead-date th, .gh-gantt-table-wrapper .gantt-sidebar .gantt-table tr th{
+    width: 15% !important;
+    min-width: 15% !important;
+}
+}
+@media(min-width : 1800px){
+.gantt-sidebar .thead-date th, .gh-gantt-table-wrapper .gantt-sidebar .gantt-table tr th{
+    width: 12% !important;
+    min-width: 12% !important;
+}
+}
+@media(min-width : 1900px){
+    .gantt-sidebar .thead-date th, .gh-gantt-table-wrapper .gantt-sidebar .gantt-table tr th{
+        width: 9% !important;
+        min-width: 9% !important;
+    }
+
+}
+
+/* Assets */
+
+.asset-image img {
+    max-height:160px;
+    padding:10px;
+}
+
+.table-asset > tbody > tr > td {
+    padding:5px 10px;
+}
+
+.table-asset > tbody > tr > td:nth-child(1) { text-align: left; width: 40%; color: #555; background: #F9F7FA;}
+.table-asset > tbody > tr > td:nth-child(2) { font-weight: 600; font-size: 14px; }
+
+.form-row.static {
+           padding: 25px 0 0 10px;
+    border-top: 1px solid #e5e5e5;
+    margin: 25px 0 0 0;
+}
+
+.form-row.static:first-child {
+border-top:none;
+padding:0;
+margin:0;
+}
+
+.form-row.static h4 {
+    font-size:1.3em !important;
+}

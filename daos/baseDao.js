@@ -45,7 +45,7 @@ function getById(id, callback) {
         } else {
             callback(err, null);
         }
-    });
+    }) ;
 }
 
 function getByQuery(query, projection, callback) {
@@ -196,7 +196,6 @@ function updateById(id, detailsToUpdate, callback) {
         if (deletedId) {
             detailsToUpdate._id = deletedId;
         }
-
         if (!err) {
             callback(null, result);
         } else {
