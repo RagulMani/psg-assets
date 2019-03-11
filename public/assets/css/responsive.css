@@ -153,11 +153,15 @@
      .steps > ul > li {
         width: 100%; }
     .steps > ul > li.current:after {
-          background-color: #6F79D0; }
+          background-color: #6F79D0; 
+        }
 
 }
  @media (max-width: 800px) {
 
+.table-asset > tbody > tr > td:nth-child(1) {
+    width:100%;
+}
 table:not(.not-responsive)>thead{
          display: none;
     }
@@ -178,7 +182,7 @@ table:not(.not-responsive)>tbody>tr>td{
          white-space: normal;
          text-align: left !important;
          display: block;
-         min-height: 1em;
+         min-height: 40px;
          font-size: 0.75rem;
          padding: 0.5rem 0.6rem;
     }
@@ -190,7 +194,7 @@ table:not(.not-responsive)>tbody>tr>td::before{
          -ms-word-wrap: break-word;
          word-wrap: break-word;
          text-align: left;
-         font-weight: bold;
+         font-weight: 600;
          content: attr(data-title);
     }
 table:not(.not-responsive)>tbody>tr>td.action{
@@ -329,6 +333,11 @@ table:not(.not-responsive).table-border>tbody>tr>td.action a {
       .steps > ul > li:last-child:after {
             background-color: #6F79D0; }
 
+    .admission-column .card-group, .admission-column .card-group .card{
+        display: block;
+    }
+    
+
 }
 /** Medium devices (tablets, 768px and up) **/
  @media (min-width: 577px) and (max-width: 768px) {
@@ -352,7 +361,7 @@ body{
     font-size: .95rem;
 }
 .table-container, .form-control, table:not(.not-responsive)>tbody>tr>td{
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
 }
 table:not(.not-responsive)>tbody>tr>td::before{
     font-size: 0.9rem !important;

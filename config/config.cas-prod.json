@@ -12,7 +12,9 @@
         "facultiesSearch": "http://laudea.psgcas.ac.in/fis/faculties/search",
         "facultiesInDepartment": "http://laudea.psgcas.ac.in/fis/faculties/departmentName",
         "currentAcademicYear": "http://laudea.psgcas.ac.in/courses/academicTerms/getCurrentAcademicYear",
-        "departmentEventList": "http://laudea.psgcas.ac.in/events/events/getAllEventListWithProjection"
+        "departmentEventList": "http://laudea.psgcas.ac.in/events/events/getAllEventListWithProjection",
+        "nodeSearch": "http://laudea.psgcas.ac.in/groups/groups/getSelectedNodesWithProjection",
+        "getMembers": "http://laudea.psgcas.ac.in/groups/members/getMembersForNode"
     },
     "dbConfig": {
         "url": "mongodb://localhost:27017/ies-assets"

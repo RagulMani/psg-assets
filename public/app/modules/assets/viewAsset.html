@@ -74,9 +74,9 @@
                                                 <i class="la la-edit"></i> Edit </a>
                                             <a class="btn btn-table btn-sm rounded-0 py-0"
                                                 ng-click="confirmModal($index)"> <i class="la la-trash"></i>
-                                                Delete </a> <a class="more-action" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false"><i
-                                                    class="la la-ellipsis-v"></i> </a>
+                                                Delete </a>
+                                            <a class="more-action" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false"><i class="la la-ellipsis-v"></i> </a>
                                             <div class="dropdown-menu py-0" aria-labelledby="moduleversion">
                                                 <ul class="list-group my-0">
                                                     <li class="list-group-item"><a><i
@@ -109,8 +109,6 @@
     </div>
 </section>
 
-
-
 <div class="modal fade" id="assetModal" data-keyboard="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -123,221 +121,236 @@
             </div>
             <div class="modal-body">
                 <form name="newAssetform">
-                        <h3 class="subtitle">Basic Information</h3>
-                        <div class="row">
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label for="assetId" class="control-label">Asset Tag ID</label>
-                                <input type="text" class="form-control form-control-sm" id="assetTagId" name="Asset TagId"
-                                    validation="required" ng-model="newAsset.assetTagId">
-                            </div>
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label for="assetName" class="control-label">Asset Name</label>
-                                <input type="text" class="form-control form-control-sm" id="assetName" validation="required"
-                                    ng-model="newAsset.assetName">
+                    <h3 class="subtitle">Basic Information</h3>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label for="assetId" class="control-label">Asset Tag ID</label>
+                            <input type="text" class="form-control form-control-sm" id="assetTagId" name="Asset TagId"
+                                validation="required" ng-model="newAsset.assetTagId">
+                        </div>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label for="assetName" class="control-label">Asset Name</label>
+                            <input type="text" class="form-control form-control-sm" id="assetName" validation="required"
+                                ng-model="newAsset.assetName">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-4">
+                            <label for="assetPurchaseCost" class="control-label">Cost</label>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend"> <span
+                                        class="input-group-text font-wwight-bold">&#8377;</span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" id="assetPurchaseCost"
+                                    ng-model="newAsset.assetPurchaseCost">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label for="assetPurchaseCost" class="control-label">Cost</label>
-                                <div class="input-group input-group-sm">
-                                    <div class="input-group-prepend"> <span class="input-group-text font-wwight-bold">&#8377;</span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm" id="assetPurchaseCost"
-                                        ng-model="newAsset.assetPurchaseCost">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-6">
-                                        <label for="assetPurchaseDate">Purchase Date</label>
-                                        <div class="input-group">
-                                            <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
-                                                fp-opts="dateOpts1" ng-model="newAsset.assetPurchaseDate">
-                                            <div class="input-group-append"> <span class="input-group-text"><i
-                                                        class="la la-calendar"></i></span> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-xs-12 col-md-6">
-                                        <label for="vendor">Purchased From</label>
-                                        <input type="text" class="form-control form-control-sm" id="vendor"
-                                            ng-model="newAsset.vendor">
-                                    </div>
-                                </div>
+                        <div class="form-group col-xs-12 col-md-4">
+                            <label for="assetPurchaseDate">Purchase Date</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
+                                    fp-opts="dateOpts1" ng-model="newAsset.assetPurchaseDate">
+                                <div class="input-group-append"> <span class="input-group-text"><i
+                                            class="la la-calendar"></i></span> </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label for="assetSerialNumber" class="control-label">Serial Number</label>
-                                <input type="text" class="form-control form-control-sm" id="assetSerialNumber"
-                                    ng-model="newAsset.assetSerialNumber">
-                            </div>
-                            <div class="form-group col-xs-12 col-md-6">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-6">
-                                        <label for="assetbrand">Brand</label>
-                                        <input type="text" class="form-control form-control-sm" id="assetBrand"
-                                            ng-model="newAsset.assetBrand">
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <label for="assetmodel">Model</label>
-                                        <input type="text" class="form-control form-control-sm" id="assetModel"
-                                            ng-model="newAsset.assetModel">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group col-xs-12 col-md-4">
+                            <label for="vendor">Purchased From</label>
+                            <input type="text" class="form-control form-control-sm" id="vendor"
+                                ng-model="newAsset.vendor">
                         </div>
-                        <h3 class="subtitle mt-4" id="Personal">Institution, Location, Department & Category</h3>
-                        <div class="row">
-                            <div class="form-group col-xs-12 col-md-3">
-                                <label for="institutionName">Institution</label>
-                                <div class="column">
-                                    <ui-select ng-model="newAsset.institution" title="Select">
-                                        <ui-select-match placeholder="Select">{{ $select.selected.institutionName }}
-                                        </ui-select-match>
-                                        <ui-select-choices repeat="item in (institutions | filter: $select.search)">
-                                            <div ng-bind="item.institutionName"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
-            
-                            </div>
-                            <div class="form-group col-xs-12 col-md-3">
-                                <label for="assetLocation">Location</label>
-                                <select required class="form-control custom-select form-control-sm" id="assetLocation"
-                                    ng-model="newAsset.assetLocation">
-                                    <option disabled selected>Please Select Location</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-xs-12 col-md-3">
-                                <label for="assetDepartment">Department</label>
-                                <div class="column">
-                                    <ui-select ng-model="newAsset.institution" title="Select">
-                                        <ui-select-match placeholder="Select">{{ $select.selected.DepartmentName }}
-                                        </ui-select-match>
-                                        <ui-select-choices repeat="item in (institutions | filter: $select.search)">
-                                            <div ng-bind="item.DepartmentName"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
-                            </div>
-                            <div class="form-group col-xs-12 col-md-3">
-                                <label for="assetCategory">Category</label>
-                                <div class="column">
-                                    <ui-select ng-model="newAsset.Category" title="Select">
-                                        <ui-select-match placeholder="Select">{{ $select.selected.CategoryName}}
-                                        </ui-select-match>
-                                        <ui-select-choices repeat="item in (categories | filter: $select.search)">
-                                            <div ng-bind="item.CategoryName"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-4">
+                            <label for="assetSerialNumber" class="control-label">Serial Number</label>
+                            <input type="text" class="form-control form-control-sm" id="assetSerialNumber"
+                                ng-model="newAsset.assetSerialNumber">
+                        </div>
+
+                        <div class="form-group col-xs-12 col-md-4">
+                            <label for="assetbrand">Brand</label>
+                            <input type="text" class="form-control form-control-sm" id="assetBrand"
+                                ng-model="newAsset.assetBrand">
+                        </div>
+                        <div class="form-group col-xs-12 col-md-4">
+                            <label for="assetmodel">Model</label>
+                            <input type="text" class="form-control form-control-sm" id="assetModel"
+                                ng-model="newAsset.assetModel">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-6">
+                            <div class="column">
+                                <label for="assetImage" class="control-label">Asset Image</label>
+                                <div class="dropzone dropzone-formcontrol-lg" options="imageAttachment.dzOptions"
+                                    callbacks="imageAttachment.dzCallbacks" methods="imageAttachment.dzMethods"
+                                    ng-dropzone>
                                 </div>
                             </div>
                         </div>
-                        <h3 class="subtitle mt-4">Depreciation</h3>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group form-group-sm mb-2">
-                                    <label for="depreciable_asset" class="col-form-label">Depreciable Asset</label>
-                                    <div class="option-group">
-                                        <label class="option">
-                                            <input name="payment" checked="" type="radio" ng-model="newAsset.assetDepreciationYes">
-                                            <span class="radio"></span> Yes </label>
-                                        <label class="option">
-                                            <input name="payment" type="radio" ng-model="newAsset.assetDepreciationNo">
-                                            <span class="radio"></span> No </label>
-                                    </div>
-                                </div>
+                    </div>
+                    <h3 class="subtitle mt-4" id="Personal">Institution, Location, Department & Category</h3>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-3">
+                            <label for="institutionName">Institution</label>
+                            <div class="column">
+                                <ui-select ng-model="newAsset.institution" title="Select">
+                                    <ui-select-match placeholder="Select">{{ $select.selected.institutionName }}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="item in (institutions | filter: $select.search)">
+                                        <div ng-bind="item.institutionName"></div>
+                                    </ui-select-choices>
+                                </ui-select>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group w-100">
-                                    <label for="depriciationDate">Date Acquired</label>
-                                    <div class="input-group">
-                                        <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
-                                            fp-opts="dateOpts1" ng-model="newAsset.depriciationDate">
-                                        <div class="input-group-append"> <span class="input-group-text"><i
-                                                    class="la la-calendar"></i></span> </div>
-                                    </div>
+
+                        </div>
+                        <div class="form-group col-xs-12 col-md-3">
+                            <label for="assetLocation">Location</label>
+                            <select required class="form-control custom-select form-control-sm" id="assetLocation"
+                                ng-model="newAsset.assetLocation">
+                                <option disabled selected>Please Select Location</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-3">
+                            <label for="assetDepartment">Department</label>
+                            <div class="column">
+                                <ui-select ng-model="newAsset.institution" title="Select">
+                                    <ui-select-match placeholder="Select">{{ $select.selected.DepartmentName }}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="item in (institutions | filter: $select.search)">
+                                        <div ng-bind="item.DepartmentName"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-3">
+                            <label for="assetCategory">Category</label>
+                            <div class="column">
+                                <ui-select ng-model="newAsset.Category" title="Select">
+                                    <ui-select-match placeholder="Select">{{ $select.selected.CategoryName}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="item in (categories | filter: $select.search)">
+                                        <div ng-bind="item.CategoryName"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="subtitle mt-4">Depreciation</h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group form-group-sm mb-2">
+                                <label for="depreciable_asset" class="col-form-label">Depreciable Asset</label>
+                                <div class="option-group">
+                                    <label class="option">
+                                        <input name="payment" checked="" type="radio"
+                                            ng-model="newAsset.assetDepreciationYes">
+                                        <span class="radio"></span> Yes </label>
+                                    <label class="option">
+                                        <input name="payment" type="radio" ng-model="newAsset.assetDepreciationNo">
+                                        <span class="radio"></span> No </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-xs-12 col-md-6">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group form-group-sm mb-2">
-                                            <label for="assetDepreciationCost">Depreciable Cost</label>
-                                            <div class="input-group input-group-sm">
-                                                <div class="input-group-prepend"> <span
-                                                        class="input-group-text font-wwight-bold">&#8377;</span> </div>
-                                                <input type="text" class="form-control form-control-sm" id="assetDepreciationCost"
-                                                    ng-model="newAsset.assetDepreciationCost">
-                                            </div>
-                                            <span class="help-block">including sales tax, freight and installation</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group form-group-sm mb-2">
-                                            <label for="assetDepreciationMethod" class="control-label">Depreciation Method</label>
-                                            <select required class="form-control custom-select form-control-sm"
-                                                id="assetDepreciationMethod" ng-model="newAsset.assetDepreciationMethod">
-                                                <option selected="selected" value="1"></option>
-                                                <option value="Staight Line Depreciation"> Staight Line Depreciation</option>
-                                                <option value="Double Declining Balance">Double Declining Balance</option>
-                                                <option value="150% Declining Balance">150% Declining Balance</option>
-                                                <option value="Sum of the Years' Digits">Sum of the Years' Digits</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                        <div class="col-md-3">
+                            <div class="form-group w-100">
+                                <label for="depriciationDate">Date Acquired</label>
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" ng-flatpickr
+                                        fp-opts="dateOpts1" ng-model="newAsset.depriciationDate">
+                                    <div class="input-group-append"> <span class="input-group-text"><i
+                                                class="la la-calendar"></i></span> </div>
                                 </div>
                             </div>
-                            <div class="form-group col-xs-12 col-md-6">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-6">
-                                        <label for="assetLife">Asset Life</label>
-                                        <div class="input-group input-group-sm">
-                                            <input type="text" class="form-control form-control-sm" id="assetLife"
-                                                ng-model="newAsset.assetLife">
-                                            <div class="input-group-append"> <span class="input-group-text font-wwight-bold">in
-                                                    months</span> </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <label for="assetSalvageValue">Salvage Value</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-6">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="form-group form-group-sm mb-2">
+                                        <label for="assetDepreciationCost">Depreciable Cost</label>
                                         <div class="input-group input-group-sm">
                                             <div class="input-group-prepend"> <span
                                                     class="input-group-text font-wwight-bold">&#8377;</span> </div>
-                                            <input type="text" class="form-control form-control-sm" id="assetSalvageValue"
-                                                ng-model="newAsset.assetSalvageValue">
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="assetDepreciationCost" ng-model="newAsset.assetDepreciationCost">
                                         </div>
+                                        <span class="help-block">including sales tax, freight and installation</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="form-group form-group-sm mb-2">
+                                        <label for="assetDepreciationMethod" class="control-label">Depreciation
+                                            Method</label>
+                                        <select required class="form-control custom-select form-control-sm"
+                                            id="assetDepreciationMethod" ng-model="newAsset.assetDepreciationMethod">
+                                            <option selected="selected" value="1"></option>
+                                            <option value="Staight Line Depreciation"> Staight Line Depreciation
+                                            </option>
+                                            <option value="Double Declining Balance">Double Declining Balance</option>
+                                            <option value="150% Declining Balance">150% Declining Balance</option>
+                                            <option value="Sum of the Years' Digits">Sum of the Years' Digits</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <h3 class="subtitle mt-4" id="Personal">Funding Source</h3>
-                        <div class="row">
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label for="fundingSource">Department</label>
-                                <div class="column">
-                                    <ui-select ng-model="newAsset.fund" title="Select">
-                                        <ui-select-match placeholder="Select">{{ $select.selected.fundName }}
-                                        </ui-select-match>
-                                        <ui-select-choices repeat="item in (fundValues | filter: $select.search)">
-                                            <div ng-bind="item.fundName"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
-                            </div>
-                            <div class="form-group col-xs-12 col-md-6">
-                                <label for="amountDebit" class="control-label">Amount Debited</label>
-                                <div class="input-group input-group-sm">
-                                    <div class="input-group-prepend"> <span class="input-group-text font-wwight-bold">&#8377;</span>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <label for="assetLife">Asset Life</label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control form-control-sm" id="assetLife"
+                                            ng-model="newAsset.assetLife">
+                                        <div class="input-group-append"> <span
+                                                class="input-group-text font-wwight-bold">in
+                                                months</span> </div>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm" id="amountDebit"
-                                        ng-model="newAsset.amountDebit">
                                 </div>
-                                <span class="help-block">Funds utilized for this purchase</span>
+                                <div class="col-xs-12 col-md-6">
+                                    <label for="assetSalvageValue">Salvage Value</label>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend"> <span
+                                                class="input-group-text font-wwight-bold">&#8377;</span> </div>
+                                        <input type="text" class="form-control form-control-sm" id="assetSalvageValue"
+                                            ng-model="newAsset.assetSalvageValue">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <h3 class="subtitle mt-4" id="Personal">Funding Source</h3>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label for="fundingSource">Department</label>
+                            <div class="column">
+                                <ui-select ng-model="newAsset.fund" title="Select">
+                                    <ui-select-match placeholder="Select">{{ $select.selected.fundName }}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="item in (fundValues | filter: $select.search)">
+                                        <div ng-bind="item.fundName"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label for="amountDebit" class="control-label">Amount Debited</label>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend"> <span
+                                        class="input-group-text font-wwight-bold">&#8377;</span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" id="amountDebit"
+                                    ng-model="newAsset.amountDebit">
+                            </div>
+                            <span class="help-block">Funds utilized for this purchase</span>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -370,16 +383,20 @@
                             class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
                             data-target="#sidebarCategory1"><i class="la la-angle-up"></i></a> </div>
                     <div class="card-body collapse show" id="sidebarCategory1">
-                        <select class="custom-select form-control form-control-sm" id="assetOrganaization"
-                            meterial-select ng-model="item.assetOrganaization"
-                            ng-options="asset as asset.assetOrganaization for asset in newOrg">
-                            <option value="">All Institutions..</option>
-                        </select>
+                        <div class="column">
+                            <ui-select ng-model="newAsset.institution" title="Select">
+                                <ui-select-match placeholder="Select">
+                                    {{ $select.selected.institutionName }}
+                                </ui-select-match>
+                                <ui-select-choices repeat="itemNew in (institutions | filter: $select.search)">
+                                    <div ng-bind="itemNew.institutionName"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Location -->
-
                 <div class="card">
                     <div class="card-header d-flex"> <span class="flex-grow-1">Location</span> <a
                             class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
@@ -394,17 +411,21 @@
                 </div>
 
                 <!-- Category -->
-
                 <div class="card">
                     <div class="card-header d-flex"> <span class="flex-grow-1">Category </span> <a
                             class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
                             data-target="#sidebarCategory4"><i class="la la-angle-up"></i></a> </div>
                     <div class="card-body collapse show" id="sidebarCategory4">
-                        <select class="form-control custom-select" data-val="true" id="assetCategoryType"
-                            meterial-select ng-model="item.assetCategoryType"
-                            ng-options="asset as asset.assetCategoryType for asset in newCate">>
-                            <option value="">All Categories</option>
-                        </select>
+                        <div class="column">
+                                <ui-select ng-model="newAsset.Category" title="Select">
+                                    <ui-select-match placeholder="Select">
+                                        {{ $select.selected.CategoryType }}
+                                    </ui-select-match> 
+                                    <ui-select-choices repeat="itemNew in (categories | filter: $select.search)">
+                                        <div ng-bind="itemNew.CategoryType"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
                     </div>
                 </div>
 
@@ -415,11 +436,24 @@
                             class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"
                             data-target="#sidebarCategory5"><i class="la la-angle-up"></i></a> </div>
                     <div class="card-body collapse show" id="sidebarCategory5">
-                        <select class="custom-select form-control form-control-sm" id="assetDepartment" meterial-select
-                            ng-model="item.assetDepartment"
-                            ng-options="asset as asset.assetDepartment for asset in newDept">
-                            <option value="">All Departments</option>
-                        </select>
+                        <div class="column">
+                                <ui-select ng-model="newAsset.department" title="Select">
+                                    <ui-select-match placeholder="Select">
+                                        {{ $select.selected.pathName }}
+                                    </ui-select-match> 
+                                    <ui-select-choices repeat="itemNew in (availableGroups | filter: $select.search)">
+                                        <div ng-bind="itemNew.pathName"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <!-- <ui-select ng-model="newAsset.department" title="Select">
+                                    <ui-select-match placeholder="Select usergroup..."> {{$select.selected.pathName}}
+                                    </ui-select-match>
+                                    <ui-select-choices
+                                        repeat="item in (availableGroups | filter: $select.search)">
+                                        <div ng-bind="item.pathName | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select> -->
                     </div>
                 </div>
 
@@ -472,12 +506,11 @@
                 </div>
             </div>
             <div class="col-lg-12">
-
                 <div class="form-group float-right mt-3">
                     <a class="link mr-4">Clear</a> <a class="sidebar-dropdown-icon mr-2" data-toggle="collapse"></a>
                     <label class="my-0 col-12"> &nbsp; </label>
                     <button class="btn btn-sm btn-table mx-1" data-dismiss="sidebar-drawer"
-                        ng-click="assetFilter()">Go</button>
+                        ng-click="assetFilter(newAsset.institution)">Go</button>
                 </div>
             </div>
         </div>

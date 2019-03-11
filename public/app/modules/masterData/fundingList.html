@@ -51,6 +51,7 @@
                                         <th>Name</th>
                                         <th>Description</th>
                                         <th>Amount</th>
+                                        <th>Expenses</th>
                                         <th>Available</th>
                                         <th>Start Date</th>
                                         <th class="text-center" width="200">End Date</th>
@@ -64,6 +65,7 @@
                                         <td>{{fund.fundName}}</td>
                                         <td>{{fund.fundDescription}}</td>
                                         <td style="text-align:right">₹.{{fund.fundAmount}}</td>
+                                        <td style="text-align:right"></td>
                                         <td style="text-align:right">₹.{{fund.fundAvailable}}</td>
                                         <td>{{fund.fundStartDate}}</td>
                                         <td>{{fund.fundEndDate}}</td>
@@ -105,9 +107,23 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
-                                <label for="fundName">Name</label>
+                                <label for="fundInstitutionName">Institution Name</label>
+                                <input type="text" class="form-control form-control-sm" id="fundInstitutionName"
+                                    ng-model="newFund.fundInstitutionName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label for="fundName">Fund Type</label>
                                 <input type="text" class="form-control form-control-sm" id="fundName"
                                     ng-model="newFund.fundName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
+                                <label for="fundDeptName">Institution Name</label>
+                                <input type="text" class="form-control form-control-sm" id="fundDeptName"
+                                    ng-model="newFund.fundDeptName">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -174,7 +190,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-if="dataMode == 'ADD'" ng-click="saveFund()">Add
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-if="dataMode == 'ADD'"
+                    ng-click="saveFund()">Add
                     Funding</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" ng-if="dataMode == 'EDIT'"
                     ng-click="updateFund(fund)">Update

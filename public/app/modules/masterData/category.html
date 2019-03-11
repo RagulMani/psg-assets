@@ -8,10 +8,12 @@
 </ol>
 <section class="content">
     <div class="element-wrapper">
-        <h1 class="element-title">Categories</h1>
+        <h1 class="element-title">Categories and Model</h1>
         <div class="element-actions">
             <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#categories-modal"><i
-                    class="la la-plus-circle"></i>Add Category</button>
+                    class="la la-plus-circle"></i>Asset Category</button>
+            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#categories-modal"><i
+                    class="la la-plus-circle"></i>Add Category and Model</button>
         </div>
     </div>
     <div class="card" id="search">
@@ -37,19 +39,22 @@
                 <table class="standard-table table-border standard-table-checkbox">
                     <thead>
                         <tr>
-                            <th width="25%">Category Name</th>
-                            <th>Category Type</th>
+                            <th width="25%">Manufacturer Name</th>
+                            <th>Asset Category</th>
+                            <th>Product Type</th>
+                            <th>Model Name</th>
                             <th>Depreciation</th>
                             <th width="9%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr ng-repeat="Category in categoryValue |filter:search">
-                            <td data-title="Category  Name"><a href="#" data-toggle="modal"
-                                    data-target="#categories-modal">{{Category.CategoryName}}
+                            <td data-title="Manufacturer Name"><a href="#" data-toggle="modal"
+                                    data-target="#categories-modal">{{Category.manufacturer.manufacturerName}}
                                 </a> </td>
                             <td data-title="Category Type">{{Category.CategoryType}}</td>
+                            <td data-title="Product Name">{{Category.productName}}</td>
+                            <td data-title="Model Name">{{Category.modelName}}</td>
                             <td data-title="Depreciation">{{Category.depreciationName}}</td>
                             <td data-title="Action" class="action">
                                 <div class="input-group">
@@ -87,18 +92,20 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="assetType">Asset Type</label>
-                                <input type="text" class="form-control form-control-sm" id="assetType"
-                                    ng-model="newCategory.assetType" placeholder="Asset Type">
+                                <label for="manufacturerName">Manufacturer Name</label>
+                                <div class="column">
+                                    <ui-select ng-model="newCategory.manufacturer" title="Select">
+                                        <ui-select-match placeholder="Select">{{ $select.selected.manufacturerName }}
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                            repeat="item in (manufacturerDatas | filter: $select.search)">
+                                            <div ng-bind="item.manufacturerName"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="CategoryName">Category name:</label>
-                                <input type="text" class="form-control form-control-sm" id="CategoryName"
-                                    ng-model="newCategory.CategoryName" placeholder="Category Name">
-
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="CategoryType">Category Type:</label>
+                                <label for="CategoryType">Category Type</label>
                                 <select required class="form-control form-control-sm" id="CategoryType"
                                     ng-model="newCategory.CategoryType" placeholder="Category type">
                                     <option value="">All Categories</option>
@@ -112,17 +119,25 @@
                                     <option value="Software">Software</option>
                                     <option value="Vehicles">Vehicles</option>
                                 </select>
+
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="depreciationName">Depreciation(In months):</label>
-                                <input type="text" class="form-control form-control-sm" id="depreciationName"
-                                    ng-model="newCategory.depreciationName" placeholder="Depreciation Name">
+                                <label for="productName">Product Type</label>
+                                <input type="text" class="form-control form-control-sm" id="productName"
+                                    ng-model="newCategory.productName">
                             </div>
-
+                            <div class="form-group col-md-6">
+                                <label for="modelName">Model Name</label>
+                                <input type="text" class="form-control form-control-sm" id="modelName"
+                                    ng-model="newCategory.modelName">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="modelNumber">Model Number</label>
+                                <input type="text" class="form-control form-control-sm" id="modelNumber"
+                                    ng-model="newCategory.modelNumber">
+                            </div>
                         </div>
-
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">

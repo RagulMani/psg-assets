@@ -2,13 +2,11 @@
     'use strict';
     var App = angular.module('app');
     App.controller('assetReportCtrl', assetReportCtrl);
-    assetReportCtrl.$inject = ['$scope', 'assetMasterService', '$timeout', '$window', 'assetMaintainService'];
-    function assetReportCtrl($scope, assetMasterService, $timeout, $window, assetMaintainService) {
-
+    assetReportCtrl.$inject = ['$scope', 'assetMasterService', '$timeout', '$window', 'assetMasterValueService'];
+    function assetReportCtrl($scope, assetMasterService, $timeout, $window, assetMasterValueService) {
         $scope.goToAsset = function (asset) {
             $state.go('assetMaster', { asset: asset });
         }
-        //alert("welcome");
         $scope.newAsset = {};
         $scope.assetMasterValue = [];
         $scope.assetMaintainValue = [];
@@ -20,7 +18,7 @@
                 if (!err) {
                     $scope.assetMasterValue = res;
                     $scope.allData = res;
-                    $scope.newArr = unique("assetOrganaization");
+                    $scope.newArr = unique("institution.institutionName");
                     $scope.newArr1 = unique("assetDepartment");
                     $scope.filterData = res;
                     angular.element('#filterResult').toggle();
@@ -32,16 +30,9 @@
 
                             "footerCallback": function (row, data, start, end, display) {
                                 var api = this.api(), data;
-
-                                // Remove the formatting to get integer data for summation
                                 var intVal = function (i) {
-                                    // var lastThree = result[0].substring(result[0].length - 3);
-                                    // var otherNumbers = result[0].substring(0, result[0].length - 3);
-                                    // if (otherNumbers != '')
-                                    //     lastThree = ',' + lastThree;
                                     return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
                                 };
-                                // Total over all pages
                                 var total = api
                                     .column(8)
                                     .data()
@@ -77,12 +68,15 @@
                             }
                         });
                     }, 50);
-
                 }
             })
         }
         loadInitial();
-
+        assetMasterValueService.getAllInstitution(function (err, res) {
+            if (!err) {
+                $scope.institutions = res;
+            }
+        })
         $scope.saveAsset = function () {
             assetMasterService.createAsset($scope.newAsset, function (err, res) {
                 if (!err) {
@@ -126,7 +120,6 @@
                 $scope.assetMasterValue.splice($scope.deleteIndex, 1);
             })
         }
-
         $scope.imageAttachment = {
             dzOptions: {
                 url: "asset/file/upload",
@@ -204,7 +197,6 @@
                 }
             })
         }
-
         function unique(key) {
             var newArr = [];
             var origLen = $scope.allData.length;
@@ -225,11 +217,10 @@
             }
             return newArr;
         }
-        
         $scope.assetFilter = function () {
             var query = {};
-            if ($scope.item["assetOrganaization"]) {
-                query["assetOrganaization"] = $scope.item["assetOrganaization"]["assetOrganaization"];
+            if ($scope.item["institution.institutionName"]) {
+                query["institution.institutionName"] = $scope.item["institution.institutionName"]["institution.institutionName"];
             }
             if ($scope.item["assetDepartment"]) {
                 query["assetDepartment"] = $scope.item["assetDepartment"]["assetDepartment"];
@@ -249,9 +240,6 @@
                 }
 
             });
-
-            //get by query
-
         }
     }
 })();

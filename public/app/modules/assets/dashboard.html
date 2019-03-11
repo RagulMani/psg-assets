@@ -7,7 +7,7 @@
     </li>
 </ol>
 
-<section class="content">
+<!-- <section class="content">
     <div class="element-wrapper">
         <h1 class="element-title">Asset Dashboard</h1>
         <div class="element-actions"> </div>
@@ -26,8 +26,8 @@
                     </div>
                     <div class="row text-center text-white mt-3">
                         <div class="col-6"> <span class="font-14">Deploy:</span>
-                                <span class="font-medium">{{asset.assetStatus}}
-                                </span> </div>
+                            <span class="font-medium">{{asset.assetStatus}}
+                            </span> </div>
                         <div class="col-6"> <span class="font-14">Online: </span> <span class="font-medium">90%
                                 (1125)</span> </div>
                     </div>
@@ -35,4 +35,165 @@
             </div>
         </div>
     </div>
+</section> -->
+
+<section class="content">
+    <div class="element-wrapper">
+        <h1 class="element-title">Assets Dashboard</h1>
+        <div class="element-actions"> </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card bg-theme1">
+                <div class="card-body text-white text-right">
+                    <h6>Number of Assets</h6>
+                    <div ng-repeat="asset in assetMasterValue">
+                    </div>
+                    <h1 class="text-white">{{assetMasterValue.length}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-theme2">
+                <div class="card-body text-white text-right">
+                    <h6>NAV: Net Asset Value</h6>
+                    <h1 class="mb-0">₹ 1,018</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-theme3">
+                <div class="card-body text-white text-right">
+                    <h6>Value of Assets</h6>
+                    <div ng-repeat="asset in assetMasterValue">
+                        <h1 class="mb-0">₹.{{asset.assetPurchaseCost}}</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-theme4">
+                <div class="card-body text-white text-right">
+                    <h6>Purchases in this Fiscal Year</h6>
+                    <h1 class="mb-0">1</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header with-select bg-light d-flex justify-content-between">
+                    <h6>Asset Value by Category</h6>
+
+                </div>
+                <div class="card-body">
+                    <div zingchart id="CommunityEnrollments" zc-json="CommunityEnrollmentsJson" zc-width=100%
+                        zc-height=600></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+                <div class="card-header with-select bg-light d-flex justify-content-between">
+                    <h6>Funding</h6>
+
+                </div>
+                <div class="card-body">
+                    <div zingchart id="Enrollments" zc-json="EnrollmentsJson" zc-width=100% zc-height=435></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header with-select bg-light d-flex justify-content-between">
+                    <h6>Asset Alerts</h6>
+
+                </div>
+                <div class="card-group">
+                    <div class="card border-left-0">
+                        <div class="card-body">
+                            <h6 class="text-center text-success">769</h6>
+                            <p class="card-text text-center">Warranties Expiring</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="text-center text-danger">18</h6>
+                            <p class="card-text text-center">Insurances Expirng</p>
+                        </div>
+                    </div>
+                    <div class="card border-right-0">
+                        <div class="card-body">
+                            <h6 class="text-center text-warning">78</h6>
+                            <p class="card-text text-center">Contracts Expiring</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div fc fc-options="calendarOptions" ng-model="events" class="calendar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header with-select bg-light d-flex justify-content-between">
+                    <h6>Asset Availability</h6>
+                </div>
+                <div class="card-group">
+                    <div class="card border-bottom-0 border-left-0">
+                        <div class="card-body">
+                            <h6 class="text-center text-success">769</h6>
+                            <p class="card-text text-center">Checked In</p>
+                        </div>
+                    </div>
+                    <div class="card border-bottom-0">
+                        <div class="card-body">
+                            <h6 class="text-center text-danger">18</h6>
+                            <p class="card-text text-center">Checked Out</p>
+                        </div>
+                    </div>
+                    <div class="card border-bottom-0 border-right-0">
+                        <div class="card-body">
+                            <h6 class="text-center text-warning">78</h6>
+                            <p class="card-text text-center">Maintenance</p>
+                        </div>
+                    </div>
+                </div>
+                <table class="table mb-0 border-top-0 not-responsive">
+                    <tbody>
+                        <tr>
+                            <th>Asset Tag ID</th>
+                            <th>Asset Name</th>
+                            <th>Check-out Date</th>
+                            <th>Due Date</th>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </section>

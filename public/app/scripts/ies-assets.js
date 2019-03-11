@@ -18,7 +18,23 @@
                 .state('dashboard', {
                     url: '/dashboard',
                     templateUrl: 'app/modules/assets/dashboard.html',
-                    controller: 'assetMasterCtrl'
+                    controller: 'dashBoardCtrl',
+                    resolve: { 
+                        loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                insertBefore: '#css-bootstrap',
+                                serie: true,
+                                files :[
+                                    'bower_components/zingchart/client/zingchart.min.js',
+                                    'bower_components/ZingChart-AngularJS/src/zingchart-angularjs.js', 
+                                    'bower_components/fullcalendar/dist/fullcalendar.min.css',
+                                    'bower_components/moment/min/moment.min.js',
+                                    'bower_components/fullcalendar/dist/fullcalendar.min.js',
+                                    'bower_components/angular-fullcalendar/dist/angular-fullcalendar.min.js', 
+                                ]
+                            });
+                        }]
+                    }
                 })
                 .state('addAsset', {
                     url: '/addAsset',
@@ -141,7 +157,7 @@
                 .state('assetInsurance', {
                     url: '/assetInsurance',
                     templateUrl: 'app/modules/masterData/insuranceForm.html',
-                    controller: 'masterDataCtrl',
+                    controller: 'insuranceCtrl',
                     resolve: {
                         loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
@@ -158,7 +174,7 @@
                 .state('assetFunds', {
                     url: '/assetFunds',
                     templateUrl: 'app/modules/masterData/fundingList.html',
-                    controller: 'masterDataCtrl',
+                    controller: 'fundCtrl',
                     resolve: {
                         loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load({
@@ -175,7 +191,7 @@
                 .state('contracts', {
                     url: '/contracts',
                     templateUrl: 'app/modules/masterData/contracts.html',
-                    controller: 'masterDataCtrl'
+                    controller: 'contractCtrl'
                 })
                 
                 .state('masterData', {
@@ -198,27 +214,44 @@
                 .state('institution', {
                     url: '/institution',
                     templateUrl: 'app/modules/masterData/institution.html',
-                    controller: 'masterDataCtrl'
+                    controller: 'institutionCtrl',
+                    resolve: {
+                        loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                insertBefore: '#css-bootstrap',
+                                serie: true,
+                                files: [
+                                    'bower_components/ng-tags-input/ng-tags-input.css',
+                                    'bower_components/ng-tags-input/ng-tags-input.js',
+                                ]
+                            });
+                        }]
+                    }
                 })
                 .state('manufacturer', {
                     url: '/manufacturer',
                     templateUrl: 'app/modules/masterData/manufacturer.html',
-                    controller: 'masterDataCtrl'
+                    controller: 'manufacturerCtrl'
                 })
                 .state('category', {
                     url: '/category',
                     templateUrl: 'app/modules/masterData/category.html',
-                    controller: 'masterDataCtrl'
+                    controller: 'categoryCtrl'
                 })
-                .state('model', {
-                    url: '/model',
-                    templateUrl: 'app/modules/masterData/model.html',
-                    controller: 'masterDataCtrl'
+                .state('depreciation', {
+                    url: '/depreciation',
+                    templateUrl: 'app/modules/masterData/depreciation.html',
+                    controller: 'depreciationCtrl'
                 })
                 .state('supplier', {
                     url: '/supplier',
                     templateUrl: 'app/modules/masterData/supplier.html',
-                    controller: 'masterDataCtrl'
+                    controller: 'supplierCtrl'
+                })
+                .state('locations', {
+                    url: '/locations',
+                    templateUrl: 'app/modules/masterData/location.html',
+                    controller: 'locationCtrl'
                 })
                 .state('licenseMaster', {
                     url: '/licenseMaster',

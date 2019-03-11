@@ -157,8 +157,8 @@ router.delete('/deleteCategories', authService.verifyCallerWithKeycloak, functio
     });
 });
 
-router.post('/createModel', authService.verifyCallerWithKeycloak, function (req, res) {
-    assetMasterOne.createModel(req.body, function (err, response) {
+router.post('/createDepreciation', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.createDepreciation(req.body, function (err, response) {
         if (!err) {
             res.send(response);
             //appLogger.info("success in creation");
@@ -169,8 +169,8 @@ router.post('/createModel', authService.verifyCallerWithKeycloak, function (req,
         }
     });
 });``
-router.get('/getAllModel', authService.verifyCallerWithKeycloak, function (req, res) {
-    assetMasterOne.getAllModel(function (err, response) {
+router.get('/getAllDepreciation', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.getAllDepreciation(function (err, response) {
         if (!err) {
             res.send(response);
             //appLogger.info("success in getAllManufacturer")
@@ -181,8 +181,8 @@ router.get('/getAllModel', authService.verifyCallerWithKeycloak, function (req, 
         }
     });
 });
-router.put('/updateModel', authService.verifyCallerWithKeycloak, function (req, res) {
-    assetMasterOne.updateModel(req.body.id, req.body.recordToEdit, function (err, response) {
+router.put('/updateDepreciation', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.updateDepreciation(req.body.id, req.body.recordToEdit, function (err, response) {
         if (!err) {
             res.send(response);
             //appLogger.info("success in updating");
@@ -193,8 +193,8 @@ router.put('/updateModel', authService.verifyCallerWithKeycloak, function (req, 
         }
     });
 });
-router.delete('/deleteModel', authService.verifyCallerWithKeycloak, function (req, res) {
-    assetMasterOne.deleteModel(req.body, function (err, response) {
+router.delete('/deleteDepreciation', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.deleteDepreciation(req.body, function (err, response) {
         if (!err) {
             res.send(response);
             //appLogger.info("success in deleting");
@@ -426,6 +426,64 @@ router.put('/updateContract', authService.verifyCallerWithKeycloak, function (re
 });
 router.delete('/deleteContract', authService.verifyCallerWithKeycloak, function (req, res) {
     assetMasterOne.deleteContract(req.body, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in deleting");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in deleting ", err);
+        }
+    });
+});
+
+router.post('/createLocation', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.createLocation(req.body, function (err, response) {
+        if (!err) {
+            res.send(response);
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in creation ", err);
+        }
+    });
+});``
+router.get('/getAllLocation', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.getAllLocation(function (err, response) {
+        if (!err) {
+            res.send(response);
+        }
+        else {
+            res.status(500).send(err);
+            // appLogger.error("error in getAllManufacturer",err)
+        }
+    });
+});
+router.get('/readLocationById/:id',authService.verifyCallerWithKeycloak, function(req,res,next){
+    assetServices.readLocationById(req.params.id,function(err,response){
+        if(!err){
+            res.send(response);
+        }
+        else{
+            console.log("Error Occured while Add");
+            res.status(500).send({ error: err.name, message: err.message });            
+        }
+    })
+})
+router.put('/updateLocation', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.updateLocation(req.body.id, req.body.recordToEdit, function (err, response) {
+        if (!err) {
+            res.send(response);
+            //appLogger.info("success in updating");
+        }
+        else {
+            res.status(500).send(err);
+            appLogger.error("error in updating ", err);
+        }
+    });
+});
+router.delete('/deleteLocation', authService.verifyCallerWithKeycloak, function (req, res) {
+    assetMasterOne.deleteLocation(req.body, function (err, response) {
         if (!err) {
             res.send(response);
             //appLogger.info("success in deleting");

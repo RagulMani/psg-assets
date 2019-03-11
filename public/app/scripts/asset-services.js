@@ -22,7 +22,7 @@
             var responsePromise = $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/readAssetById/'+ id
+                url: 'asset/readAssetById/' + id
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -33,9 +33,23 @@
         this.getAssetByQuery = function (query, callback) {
             var responsePromise = $http({
                 method: 'POST',
-                data:{asset:query},
+                data: { asset: query },
                 headers: { 'Content-Type': 'application/json' },
                 url: 'asset/getAssetByQuery'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+
+        this.getSelectedNodes = function (filterQuery, callback) {
+            var responsePromise = $http({
+                method: 'POST',
+                data: filterQuery,
+                headers: { 'Content-Type': 'application/json' },
+                url: 'asset/getSelectedNodes'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -83,7 +97,7 @@
             });
         }
         this.removeDirtyAttachment = function (id, callback) {
-            var responseData = $http ({
+            var responseData = $http({
                 method: 'DELETE',
                 data: { "dirtyFileId": id },
                 timeout: 2 * 60 * 1000,

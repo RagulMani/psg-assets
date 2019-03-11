@@ -1,11 +1,12 @@
 var institutionDao = require('../daos/institutionDao');
 var manufacturerDao = require('../daos/masterDataDao');
-var modelDao = require('../daos/modelDao');
+var depreciationDao = require('../daos/DepreciationDao');
 var categoriesDao = require('../daos/categoryDao');
-var supplierDao =require('../daos/supplierDao');
-var insuranceDao=require('../daos/insuranceDao');
-var fundDao=require('../daos/fundDao');
-var contractDao=require('../daos/contractDao');
+var supplierDao = require('../daos/supplierDao');
+var insuranceDao = require('../daos/insuranceDao');
+var fundDao = require('../daos/fundDao');
+var contractDao = require('../daos/contractDao');
+var locationDao=require('../daos/locationDao');
 var mongodb = require('../daos/MongodDbUtil');
 var config = require('../config/config.' + process.env.NODE_ENV);
 var entitiesRemoteUrl = config.entitiesRemoteUrl;
@@ -50,17 +51,17 @@ function deleteCategories(id, callback) {
     categoriesDao.remove(id.id, callback);
 }
 
-function createModel(recordToInsert, callback) {
-    modelDao.create(recordToInsert, callback);
+function createDepreciation(recordToInsert, callback) {
+    depreciationDao.create(recordToInsert, callback);
 }
-function getAllModel(callback) {
-    modelDao.getAll(callback);
+function getAllDepreciation(callback) {
+    depreciationDao.getAll(callback);
 }
-function updateModel(id, detailsToUpdate, callback) {
-    modelDao.updateById(id, detailsToUpdate, callback);
+function updateDepreciation(id, detailsToUpdate, callback) {
+    depreciationDao.updateById(id, detailsToUpdate, callback);
 }
-function deleteModel(id, callback) {
-    modelDao.remove(id.id, callback);
+function deleteDepreciation(id, callback) {
+    depreciationDao.remove(id.id, callback);
 }
 
 function createSupplier(recordToInsert, callback) {
@@ -123,6 +124,22 @@ function deleteContract(id, callback) {
     contractDao.remove(id.id, callback);
 }
 
+function createLocation(recordToInsert, callback) {
+    locationDao.create(recordToInsert, callback);
+}
+function getAllLocation(callback) {
+    locationDao.getAll(callback);
+}
+function readLocationById(id, callback) {
+    locationDao.getById(id, callback);
+}
+function updateLocation(id, detailsToUpdate, callback) {
+    locationDao.updateById(id, detailsToUpdate, callback);
+}
+function deleteLocation(id, callback) {
+    locationDao.remove(id.id, callback);
+}
+
 module.exports.createInstitution = createInstitution;
 module.exports.getAllInstitution = getAllInstitution;
 module.exports.updateInstitution = updateInstitution;
@@ -138,10 +155,10 @@ module.exports.getAllCategories = getAllCategories;
 module.exports.updateCategory = updateCategory;
 module.exports.deleteCategories = deleteCategories;
 
-module.exports.createModel = createModel;
-module.exports.getAllModel = getAllModel;
-module.exports.updateModel = updateModel;
-module.exports.deleteModel = deleteModel;
+module.exports.createDepreciation = createDepreciation;
+module.exports.getAllDepreciation = getAllDepreciation;
+module.exports.updateDepreciation = updateDepreciation;
+module.exports.deleteDepreciation = deleteDepreciation;
 
 module.exports.createSupplier = createSupplier;
 module.exports.getAllSupplier = getAllSupplier;
@@ -152,16 +169,22 @@ module.exports.createInsurance = createInsurance;
 module.exports.getAllInsurance = getAllInsurance;
 module.exports.updateInsurance = updateInsurance;
 module.exports.deleteInsurance = deleteInsurance;
-module.exports.readInsuranceById=readInsuranceById;
+module.exports.readInsuranceById = readInsuranceById;
 
 module.exports.createFund = createFund;
 module.exports.getAllFund = getAllFund;
 module.exports.updateFund = updateFund;
 module.exports.deleteFund = deleteFund;
-module.exports.readFundById=readFundById;
+module.exports.readFundById = readFundById;
 
-module.exports.createContract=createContract;
-module.exports.getAllContract=getAllContract;
-module.exports.updateContract=updateContract;
-module.exports.deleteContract=deleteContract;
-module.exports.readContractById=readContractById;
+module.exports.createContract = createContract;
+module.exports.getAllContract = getAllContract;
+module.exports.updateContract = updateContract;
+module.exports.deleteContract = deleteContract;
+module.exports.readContractById = readContractById;
+
+module.exports.createLocation = createLocation;
+module.exports.getAllLocation = getAllLocation;
+module.exports.updateLocation = updateLocation;;
+module.exports.readLocationById = readLocationById;
+module.exports.deleteLocation = deleteLocation;

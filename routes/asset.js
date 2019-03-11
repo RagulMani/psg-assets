@@ -1,7 +1,7 @@
-var express=require('express');
-var router=express.Router();
-var assetServices=require('../services/assetsService');
-var appLogger=require('../logging/appLogger');
+var express = require('express');
+var router = express.Router();
+var assetServices = require('../services/assetsService');
+var appLogger = require('../logging/appLogger');
 var authService = require('../services/authService');
 var multer = require('multer');
 var config = require('../config/config.' + process.env.NODE_ENV);
@@ -9,24 +9,26 @@ const storage = require('multer-gridfs-storage')({
     url: config.dbConfig.url
 });
 var gridfs = require('../daos/gridfsDao');
+var Client=require('node-rest-Client').Client;
+var entitiesRemoteUrl=config.entitiesRemoteUrl;
 const upload = multer({ storage: storage });
 
-router.post('/createAsset',authService.verifyCallerWithKeycloak, function(req,res,next){
-    assetServices.createAsset(req.body, function(err,details){
-        if(!err){
-           // appLogger.info("Oraganazation Details Displayed");
+router.post('/createAsset', authService.verifyCallerWithKeycloak, function (req, res, next) {
+    assetServices.createAsset(req.body, function (err, details) {
+        if (!err) {
+            // appLogger.info("Oraganazation Details Displayed");
             console.log("Asset Created");
             res.send(details);
         }
-        else{
+        else {
             // appLogger.error({err:err},"Error while Creating Asset");
             console.log("Error Occured");
-            res.status(500).send({error:err.name,message:err.message});
+            res.status(500).send({ error: err.name, message: err.message });
         }
     });
 });
 
-router.get('/getAllAsset',authService.verifyCallerWithKeycloak, function (req, res, next) {
+router.get('/getAllAsset', authService.verifyCallerWithKeycloak, function (req, res, next) {
     assetServices.getAllAsset(function (err, response) {
         if (!err) {
             // appLogger.info(" successfully updated");
@@ -41,11 +43,11 @@ router.get('/getAllAsset',authService.verifyCallerWithKeycloak, function (req, r
     });
 });
 
-router.post('/getAssetByQuery',authService.verifyCallerWithKeycloak, function (req, res, next) {
-    assetServices.getAssetByQuery(req.body.asset,function (err, response) {
+router.post('/getAssetByQuery', authService.verifyCallerWithKeycloak, function (req, res, next) {
+    assetServices.getAssetByQuery(req.body.asset, function (err, response) {
         if (!err) {
             // appLogger.info(" successfully updated");
-            
+
             res.send(response);
         }
         else {
@@ -55,21 +57,46 @@ router.post('/getAssetByQuery',authService.verifyCallerWithKeycloak, function (r
         }
     });
 });
-router.get('/readAssetById/:id',authService.verifyCallerWithKeycloak, function(req,res,next){
-    assetServices.readAssetById(req.params.id,function(err,response){
-        if(!err){
+
+router.post('/getSelectedNodes', authService.verifyCallerWithKeycloak, function (req, res) {
+    var client = new Client();
+
+    // remote url has to come from configuration file based on entity name
+    var remoteUrl = entitiesRemoteUrl["nodeSearch"];
+    // set content-type header and data as json in args parameter
+    var args = {
+        data: { filterQuery: req.body, projection: ["path", "type", "pathName", "orgUnit", "parentName", "programmeName", "programmeCategory", "batchYear", "department"] },
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "annasarpprasanna"
+        }
+    };
+    // direct way
+    client.post(remoteUrl, args, function (data, response) {
+        // parsed response body as js object
+        if (response.statusCode == 200) {
+            res.send(data);
+        }
+
+    }).on('error', function (e) {
+        res.status(500).send({ err: e });
+    }).end()
+});
+router.get('/readAssetById/:id', authService.verifyCallerWithKeycloak, function (req, res, next) {
+    assetServices.readAssetById(req.params.id, function (err, response) {
+        if (!err) {
             console.log("Choosen item Dispalys Here");
             res.send(response);
         }
-        else{
+        else {
             console.log("Error Occured while Add");
-            res.status(500).send({ error: err.name, message: err.message });            
+            res.status(500).send({ error: err.name, message: err.message });
         }
     })
 })
 
 router.put('/updateAsset', authService.verifyCallerWithKeycloak, function (req, res, next) {
-    assetServices.updateAsset(req.body.id,req.body.recordToEdit,function (err, response) {
+    assetServices.updateAsset(req.body.id, req.body.recordToEdit, function (err, response) {
         if (!err) {
             // appLogger.info("Details successfully updated");
             console.log("Update Successfully");
@@ -84,7 +111,7 @@ router.put('/updateAsset', authService.verifyCallerWithKeycloak, function (req, 
 });
 
 router.delete('/deleteAsset', authService.verifyCallerWithKeycloak, function (req, res) {
-    assetServices.deleteAsset(req.body,function (err, response) {
+    assetServices.deleteAsset(req.body, function (err, response) {
         if (!err) {
             // appLogger.info("Authority details successfully deleted");
             //console.log("Item removed Successfully");
@@ -128,20 +155,20 @@ router.delete('/removeDirtyAttachment', function (req, res) {
 })
 
 
-router.post('/createAssetMaintain',authService.verifyCallerWithKeycloak, function(req,res,next){
-    assetServices.createAssetMaintain(req.body, function(err,details){
-        if(!err){
-           // appLogger.info("Oraganazation Details Displayed");
+router.post('/createAssetMaintain', authService.verifyCallerWithKeycloak, function (req, res, next) {
+    assetServices.createAssetMaintain(req.body, function (err, details) {
+        if (!err) {
+            // appLogger.info("Oraganazation Details Displayed");
             res.send(details);
         }
-        else{
+        else {
             // appLogger.error({err:err},"Error while Creating Asset");
-            res.status(500).send({error:err.name,message:err.message});
+            res.status(500).send({ error: err.name, message: err.message });
         }
     });
 });
 
-router.get('/getAllAssetMaintain',authService.verifyCallerWithKeycloak, function (req, res, next) {
+router.get('/getAllAssetMaintain', authService.verifyCallerWithKeycloak, function (req, res, next) {
     assetServices.getAllAssetMaintain(function (err, response) {
         if (!err) {
             // appLogger.info(" successfully updated");
@@ -155,7 +182,7 @@ router.get('/getAllAssetMaintain',authService.verifyCallerWithKeycloak, function
 });
 
 router.put('/updateAssetMaintain', authService.verifyCallerWithKeycloak, function (req, res, next) {
-    assetServices.updateAssetMaintain(req.body.id,req.body.recordToEdit,function (err, response) {
+    assetServices.updateAssetMaintain(req.body.id, req.body.recordToEdit, function (err, response) {
         if (!err) {
             // appLogger.info("Details successfully updated");
             res.send(response);
@@ -168,7 +195,7 @@ router.put('/updateAssetMaintain', authService.verifyCallerWithKeycloak, functio
 });
 
 router.delete('/deleteAssetMaintain', authService.verifyCallerWithKeycloak, function (req, res) {
-    assetServices.deleteAssetMaintain(req.body,function (err, response) {
+    assetServices.deleteAssetMaintain(req.body, function (err, response) {
         if (!err) {
             // appLogger.info("Authority details successfully deleted");
             res.send(response);
@@ -199,7 +226,7 @@ router.get('/getAllComponent', authService.verifyCallerWithKeycloak, function (r
         }
         else {
             res.status(500).send(err);
-           // appLogger.error("error in getallComponents",err)
+            // appLogger.error("error in getallComponents",err)
         }
     });
 });
@@ -248,7 +275,7 @@ router.get('/getAllLicense', authService.verifyCallerWithKeycloak, function (req
         }
         else {
             res.status(500).send(err);
-           // appLogger.error("error in getallLicense",err)
+            // appLogger.error("error in getallLicense",err)
         }
     });
 });
@@ -277,4 +304,4 @@ router.delete('/deleteLicense', authService.verifyCallerWithKeycloak, function (
     });
 });
 
-module.exports  = router;
+module.exports = router;

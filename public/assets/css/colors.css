@@ -332,6 +332,16 @@ a.btn.disabled,fieldset:disabled a.btn{
     color: #fff;
  }
 
+ .btn-outline-opacity {
+    border: 2px solid rgba(120, 129, 149, 0.59); !important;
+    color: #bbb !important;
+ }
+
+ .btn-outline-opacity:hover {
+     border: 2px solid rgba(120, 129, 149, 0.99); !important;
+    color: #fff !important;
+ }
+
 
 .btn-table {
 background: linear-gradient(to bottom, #f9f9f9, #efefef);
@@ -1017,6 +1027,19 @@ a.bg-secondary:focus,a.bg-secondary:hover,button.bg-secondary:focus,button.bg-se
 .bg-success {
  background-color:#36bea6!important
 }
+
+.bg-theme1 {
+  background-color: #6F7DCB !important
+}
+.bg-theme2 {
+    background-color: #CBBE6E !important
+}
+.bg-theme3 {
+    background-color: #70CCBF !important
+}
+.bg-theme4 {
+    background-color: #9170CC !important
+}
 a.bg-success:focus,a.bg-success:hover,button.bg-success:focus,button.bg-success:hover {
  background-color:#2b9683!important
 }
@@ -1090,14 +1113,19 @@ a.bg-purple:focus,a.bg-purple:hover,button.bg-purple:focus,button.bg-purple:hove
 }
 
 .bg-success {
-    background-color: #45ACA4 !important;
+    background-color: #22C03B !important;
 }
 .bg-warning, .badge-warning {
-    background-color: #C3A64E !important;
+    background-color: #E6C529 !important;
 }
 .bg-danger {
-    background-color: #BE4C55 !important;
+    background-color: #E63329 !important;
 }
+
+.bg-profile {
+    background-color: #3D3E6B !important;
+}
+
 .progress-bar {
     background-color:#887BB0
 }
@@ -1106,11 +1134,27 @@ a.bg-purple:focus,a.bg-purple:hover,button.bg-purple:focus,button.bg-purple:hove
     color: #2962FF !important;
 }
 
+.text-grey {
+    color: #ccc !important;
+}
+
+.text-violet {
+    color: #606BCB !important;
+}
+
+.text-blue {
+    color: #31D9D9 !important;
+}
+
 .text-purple {
     color: #7A3183 !important;
 }
 .text-mauve {
     color:#96638B !important;
+}
+
+.text-orange {
+    color: #FC831F !important;
 }
 
 /** Login Page **/

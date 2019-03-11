@@ -6,7 +6,7 @@
     assetMasterValueService.$inject = ["$http", "$rootScope"];
     function assetMasterValueService($http, $rootScope) {
 
-        
+
         this.getAllInstitution = function (callback) {
             var responsePromise = $http({
                 method: 'GET',
@@ -160,11 +160,11 @@
                 callback(error, null);
             });
         }
-        this.getAllModel = function (callback) {
+        this.getAllDepreciation = function (callback) {
             var responsePromise = $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'assetMaster/getAllModel'
+                url: 'assetMaster/getAllDepreciation'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -172,12 +172,12 @@
                 callback(error, null);
             });
         }
-        this.createModel= function (recordToInsert, callback) {
+        this.createDepreciation = function (recordToInsert, callback) {
             var responsePromise = $http({
                 method: 'POST',
                 data: recordToInsert,
                 headers: { 'Content-Type': 'application/json' },
-                url: 'assetMaster/createModel'
+                url: 'assetMaster/createDepreciation'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -185,12 +185,12 @@
                 callback(error, null);
             });
         }
-        this.updateModel = function (id, recordToEdit, callback) {
+        this.updateDepreciation = function (id, recordToEdit, callback) {
             var responsePromise = $http({
                 method: 'PUT',
                 data: JSON.stringify({ id: id, recordToEdit: recordToEdit }),
                 headers: { 'Content-Type': 'application/json' },
-                url: 'assetMaster/updateModel'
+                url: 'assetMaster/updateDepreciation'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -198,12 +198,12 @@
                 callback(error, null);
             });
         }
-        this.deleteModel = function (id, callback) {
+        this.deleteDepreciation = function (id, callback) {
             var responsePromise = $http({
                 method: 'DELETE',
                 data: { id: id },
                 headers: { 'Content-Type': 'application/json' },
-                url: 'assetMaster/deleteModel'
+                url: 'assetMaster/deleteDepreciation'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -279,7 +279,7 @@
             var responsePromise = $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/readInsuranceById/'+ id
+                url: 'asset/readInsuranceById/' + id
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -342,7 +342,7 @@
             var responsePromise = $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/readFundById/'+ id
+                url: 'asset/readFundById/' + id
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -406,7 +406,7 @@
             var responsePromise = $http({
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                url: 'asset/readContractById/'+ id
+                url: 'asset/readContractById/' + id
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);
@@ -446,6 +446,70 @@
                 data: { id: id },
                 headers: { 'Content-Type': 'application/json' },
                 url: 'assetMaster/deleteContract'
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+
+        this.getAllLocation = function (callback) {
+            var responsePromise = $http({
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/getAllLocation '
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.getLocationById = function (id, callback) {
+            var responsePromise = $http({
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                url: 'asset/readLocationById/' + id
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.createLocation = function (recordToInsert, callback) {
+            var responsePromise = $http({
+                method: 'POST',
+                data: recordToInsert,
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/createLocation '
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.updateLocation = function (id, recordToEdit, callback) {
+            var responsePromise = $http({
+                method: 'PUT',
+                data: JSON.stringify({ id: id, recordToEdit: recordToEdit }),
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/updateLocation '
+            });
+            responsePromise.then(function (responseData) {
+                callback(null, responseData.data);
+            }, function (error) {
+                callback(error, null);
+            });
+        }
+        this.deleteLocation = function (id, callback) {
+            var responsePromise = $http({
+                method: 'DELETE',
+                data: { id: id },
+                headers: { 'Content-Type': 'application/json' },
+                url: 'assetMaster/deleteLocation'
             });
             responsePromise.then(function (responseData) {
                 callback(null, responseData.data);

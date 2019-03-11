@@ -57,15 +57,15 @@
                                     </tr>
                                     <tr>
                                         <td>Department</td>
-                                        <td>{{assetMasterValue.institution.DepartmentName}}</td>
+                                        <td>{{assetMasterValue.department.pathName}}</td>
                                     </tr>
                                     <tr>
                                         <td>Location</td>
-                                        <td>{{assetMasterValue.assetLocation}}</td>
+                                        <td>{{assetMasterValue.location.buildingName}},{{assetMasterValue.location.departmentName}},{{assetMasterValue.location.floorName}},{{assetMasterValue.location.roomNumber}}</td>
                                     </tr>
                                     <tr>
                                         <td>Category</td>
-                                        <td>{{assetMasterValue.Category.CategoryName}}</td>
+                                        <td>{{assetMasterValue.Category.CategoryType}}</td>
                                     </tr>
                                     <tr>
                                         <td>Status</td>
@@ -112,7 +112,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Purchased from</td>
-                                        <td>{{assetMasterValue.vendor}}</td>
+                                        <td>{{assetMasterValue.supplier.supplierName}},{{assetMasterValue.supplier.supplierCity}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -128,8 +128,6 @@
                                     <tr>
                                         <td>Funding Source</td>
                                         <td>{{assetMasterValue.fund.fundName}}</td>
-
-                                        <!-- <td><a onclick="javascript: quickView('/assettiger/funds/quickview/')"></a></td> -->
                                     </tr>
                                 </tbody>
                             </table>
@@ -536,7 +534,7 @@
                             <label for="depreciable_asset" class="col-form-label">Depreciable Asset</label>
                             <div class="option-group">
                                 <label class="option">
-                                    <input name="payment" checked="" type="radio">
+                                    <input name="payment"  type="radio">
                                     <span class="radio"></span> Yes </label>
                                 <label class="option">
                                     <input name="payment" type="radio">
@@ -546,8 +544,8 @@
                         <div class="form-group form-group-sm mb-2">
                             <label for="addrline1text">Depreciable Cost</label>
                             <div class="input-group input-group-sm">
-                                <div class="input-group-prepend"> <span
-                                        class="input-group-text font-wwight-bold">&#8377;</span> </div>
+                                <div class="input-group-prepend">
+                                     <span class="input-group-text font-wwight-bold">&#8377;</span> </div>
                                 <input type="text" class="form-control form-control-sm" id="householdincome">
                             </div>
                             <span class="help-block">including sales tax, freight and installation</span>
@@ -570,7 +568,7 @@
                         </div>
                         <div class="form-group form-group-sm mb-2">
                             <label for="nativity" class="control-label">Depreciation Method</label>
-                            <select required class="form-control custom-select form-control-sm" id="nativity">
+                            <select required class="form-control form-control-sm" id="nativity">
                                 <option selected="selected" value="2">Double Declining Balance</option>
                                 <option value="3">150% Declining Balance</option>
                                 <option value="4">Sum of the Years' Digits</option>
