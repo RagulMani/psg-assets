@@ -25,7 +25,7 @@
             })
 
         }
-        $scope.setEnvironmentFordepreciationEdit = function (asset) {
+        $scope.setEnvironmentForDepreciationEdit = function (asset) {
             $scope.dataMode = "EDIT";
             $('#add-modal').modal("show");
             $scope.newDepreciation = JSON.parse(JSON.stringify(asset));

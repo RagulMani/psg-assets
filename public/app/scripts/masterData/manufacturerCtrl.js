@@ -20,9 +20,7 @@
         $scope.saveManufacturer = function () {
             assetMasterValueService.createManufacturer($scope.newManufacturer, function (err, res) {
                 if (!err) {
-                    // console.log($scope.newManufacturer);
                     $scope.manufacturerValue.push($scope.newManufacturer);
-                    //console.log($scope.manufacturerValue);
                     $('#manufacturer-modal').modal("hide");
                     alert("Data inserted successfully");
                 }
@@ -112,7 +110,6 @@
                         "originalName": file.name,
                         "imageUrl": "asset/loadimg/" + file.id + "/" + file.name + "/" + file.type
                     };
-                    //console.info("details",$scope.imageInput.fileAttachmentDetails);
                 },
                 "error": function (file) {
                 },
